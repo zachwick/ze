@@ -30,7 +30,11 @@
 
 /*** data ***/
 
-struct termios orig_termios;
+struct editorConfig {
+  struct termios orig_termios;
+};
+
+struct editorConfig E;
 
 /*** terminal ***/
 
@@ -47,7 +51,7 @@ die(const char *s)
 void
 disableRawMode()
 {
-  if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios) == -1) {
+  if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &E.orig_termios) == -1) {
     die("tcsetattr");
   }
 }
@@ -55,12 +59,12 @@ disableRawMode()
 void
 enableRawMode()
 {
-  if (tcgetattr(STDIN_FILENO, &orig_termios) == -1) {
+  if (tcgetattr(STDIN_FILENO, &E.orig_termios) == -1) {
     die("tcgetattr");
   }
   atexit(disableRawMode);
 
-  struct termios raw = orig_termios;
+  struct termios raw = E.orig_termios;
   raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
   raw.c_oflag &= ~(OPOST);
   raw.c_cflag |= ~(CS8);
@@ -89,9 +93,22 @@ editorReadKey()
 /*** output ***/
 
 void
+editorDrawRows()
+{
+  int y;
+  for (y = 0; y < 24; y++) {
+    write(STDOUT_FILENO, "~\r\n", 3);
+  }
+}
+
+void
 editorRefreshScreen()
 {
   write(STDOUT_FILENO, "\x1b[2J", 4);
+  write(STDOUT_FILENO, "\x1b[H", 3);
+
+  editorDrawRows();
+
   write(STDOUT_FILENO, "\x1b[H", 3);
 }
 
