@@ -24,7 +24,15 @@
 #include <termios.h>
 #include <unistd.h>
 
+/*** defines ***/
+
+#define CTRL_KEY(k) ((k) & 0x1f)
+
+/*** data ***/
+
 struct termios orig_termios;
+
+/*** terminal ***/
 
 void
 die(const char *s)
@@ -62,6 +70,8 @@ enableRawMode()
   }
 }
 
+/*** init ***/
+
 int
 main()
 {
@@ -77,7 +87,9 @@ main()
     } else {
       printf("%d ('%c')\r\n", c, c);
     }
-    if (c == 'q') break;
+    if (c == CTRL_KEY('q')) {
+      break;
+    }
   }
   return 0;
 }
