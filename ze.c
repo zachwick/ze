@@ -31,9 +31,17 @@
 #define ZE_VERSION "0.0.1"
 #define CTRL_KEY(k) ((k) & 0x1f)
 
+enum editorKey {
+  ARROW_LEFT = CTRL_KEY('b'),
+  ARROW_RIGHT = CTRL_KEY('f'),
+  ARROW_UP = CTRL_KEY('p'),
+  ARROW_DOWN = CTRL_KEY('n')
+};
+
 /*** data ***/
 
 struct editorConfig {
+  int cx, cy;
   int screenrows;
   int screencols;
   struct termios orig_termios;
@@ -92,7 +100,29 @@ editorReadKey()
       die("read");
     }
   }
-  return c;
+
+  if (c == '\x1b') {
+    char seq[3];
+
+    if (read(STDIN_FILENO, &seq[0], 1) != 1) {
+      return '\x1b';
+    }
+    if (read(STDIN_FILENO, &seq[1], 1) != 1) {
+      return '\x1b';
+    }
+
+    if (seq[0] == '[') {
+      switch (seq[1]) {
+      case 'A': return ARROW_UP;
+      case 'B': return ARROW_DOWN;
+      case 'C': return ARROW_RIGHT;
+      case 'D': return ARROW_LEFT;
+      }
+    }
+    return '\x1b';
+  } else {
+    return c;
+  }
 }
 
 int
@@ -211,7 +241,10 @@ editorRefreshScreen()
 
   editorDrawRows(&ab);
 
-  abAppend(&ab, "\x1b[H", 3);
+  char buf[32];
+  snprintf(buf, sizeof(buf), "\x1b[%d;%dH", E.cy + 1, E.cx + 1);
+  abAppend(&ab, buf, strlen(buf));
+
   abAppend(&ab, "\x1b[?25h", 6);
 
   write(STDOUT_FILENO, ab.b, ab.len);
@@ -219,6 +252,25 @@ editorRefreshScreen()
 }
 
 /*** input ***/
+
+void
+editorMoveCursor(char key)
+{
+  switch (key) {
+  case CTRL_KEY('b'):
+    E.cx--;
+    break;
+  case CTRL_KEY('f'):
+    E.cx++;
+    break;
+  case CTRL_KEY('p'):
+    E.cy--;
+    break;
+  case CTRL_KEY('n'):
+    E.cy++;
+    break;
+  }
+}
 
 void
 editorProcessKeypress()
@@ -231,6 +283,12 @@ editorProcessKeypress()
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
+  case CTRL_KEY('p'):
+  case CTRL_KEY('n'):
+  case CTRL_KEY('b'):
+  case CTRL_KEY('f'):
+    editorMoveCursor(c);
+    break;
   }
 }
 
@@ -239,6 +297,9 @@ editorProcessKeypress()
 void
 initEditor()
 {
+  E.cx = 0;
+  E.cy = 0;
+
   if (getWindowSize(&E.screenrows, &E.screencols) == -1) {
     die("getWindowSize");
   }
