@@ -1,5 +1,5 @@
 /**
- * ze - zwick's editor
+ * ze - zwick's editor of choice
  *
  * Copyright 2018 zach wick <zach@zachwick.com>
  *
@@ -80,6 +80,9 @@ struct editorConfig {
 
 struct editorConfig E;
 
+/*** prototypes ***/
+
+void editorSetStatusMessage(const char *fmt, ...);
 /*** terminal ***/
 
 void
@@ -372,10 +375,19 @@ editorSave()
   char *buf = editorRowsToString(&len);
 
   int fd = open(E.filename, O_RDWR | O_CREAT, 0644);
-  ftruncate(fd, len);
-  write(fd, buf, len);
-  close(fd);
+  if (fd != -1) {
+    if (ftruncate(fd, len) != -1) {
+      if (write(fd, buf, len) == len) {
+	close(fd);
+	free(buf);
+	editorSetStatusMessage("%d bytes written to disk", len);
+	return;
+      }
+    }
+    close(fd);
+  }
   free(buf);
+  editorSetStatusMessage("Can't save! I/O error: %s", strerror(errno));
 }
 
 /** append buffer ***/
@@ -680,7 +692,7 @@ main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: C-q = quit");
+  editorSetStatusMessage("HELP: C-s = save | C-q = quit");
 
   while (1) {
     editorRefreshScreen();
