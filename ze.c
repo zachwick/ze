@@ -257,16 +257,16 @@ void
 editorMoveCursor(char key)
 {
   switch (key) {
-  case CTRL_KEY('b'):
+  case ARROW_LEFT:
     E.cx--;
     break;
-  case CTRL_KEY('f'):
+  case ARROW_RIGHT:
     E.cx++;
     break;
-  case CTRL_KEY('p'):
+  case ARROW_UP:
     E.cy--;
     break;
-  case CTRL_KEY('n'):
+  case ARROW_DOWN:
     E.cy++;
     break;
   }
@@ -283,10 +283,10 @@ editorProcessKeypress()
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
-  case CTRL_KEY('p'):
-  case CTRL_KEY('n'):
-  case CTRL_KEY('b'):
-  case CTRL_KEY('f'):
+  case ARROW_UP:
+  case ARROW_DOWN:
+  case ARROW_LEFT:
+  case ARROW_RIGHT:
     editorMoveCursor(c);
     break;
   }
