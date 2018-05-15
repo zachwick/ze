@@ -39,6 +39,7 @@
 
 #define ZE_VERSION "0.0.1"
 #define ZE_TAB_STOP 4
+#define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 enum editorKey {
@@ -607,6 +608,7 @@ editorMoveCursor(char key)
 void
 editorProcessKeypress()
 {
+  static int quit_times = ZE_QUIT_TIMES;
   char c = editorReadKey();
 
   switch (c) {
@@ -614,6 +616,12 @@ editorProcessKeypress()
     /* TODO */
     break;
   case CTRL_KEY('q'):
+    if (E.dirty && quit_times > 0) {
+      editorSetStatusMessage("WARNING!! File has unsaved changes. "
+			     "Press C-q %d more time to quit.", quit_times);
+      quit_times--;
+      return;
+    }
     write(STDOUT_FILENO, "\x1b[2J", 4);
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
@@ -665,6 +673,7 @@ editorProcessKeypress()
     editorInsertChar(c);
     break;
   }
+  quit_times = ZE_QUIT_TIMES;
 }
 
 /*** init ***/
