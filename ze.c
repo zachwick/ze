@@ -114,6 +114,7 @@ struct editorConfig E;
 char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
 char *Python_HL_extensions[] = {".py", NULL};
 char *Ruby_HL_extensions[] = {".rb", ".erb", NULL};
+char *PHP_HL_extensions[] = {".php", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -138,6 +139,20 @@ char *Ruby_HL_keywords[] = {
 
   "__ENCODING__|", "__LINE__|", "__FILE__|", "BEGIN|", "END|", NULL
 };
+char *PHP_HL_keywords[] = {
+  "__halt_compiler", "abstract", "and", "array", "as", "break", "callable",
+  "case", "catch", "class", "clone", "const", "continue", "declare", "default",
+  "die", "do", "echo", "else", "elseif", "empty", "enddeclare", "endfor",
+  "endforeach", "endif", "endswitch", "endwhile", "eval", "exit", "extends",
+  "final", "for", "foreach", "function", "global", "goto", "if", "implements",
+  "include", "include_once", "instanceof", "insteadof", "interface", "isset",
+  "list", "namespace", "new", "or", "print", "private", "protected", "public",
+  "require", "require_once", "return", "static", "switch", "throw", "trait",
+  "try", "unset", "use", "var", "while", "xor",
+
+  "__CLASS__|", "__DIR__|", "__FILE__|", "__FUNCTION__|", "__LINE__|",
+  "__METHOD__|", "__NAMESPACE__|", "__TRAIT__|", NULL
+};
 
 struct editorSyntax HLDB[] = {
   {
@@ -159,6 +174,13 @@ struct editorSyntax HLDB[] = {
 	Ruby_HL_extensions,
 	Ruby_HL_keywords,
 	"#", "=begin", "=end",
+	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+  	"PHP",
+	PHP_HL_extensions,
+	PHP_HL_keywords,
+	"//", "/*", "*/",
 	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
