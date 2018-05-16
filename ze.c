@@ -112,12 +112,22 @@ struct editorConfig E;
 /*** filetypes ***/
 
 char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
+char *Python_HL_extensions[] = {".py", NULL};
+
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
   "struct", "union", "typedef", "static", "enum", "class", "case", "NULL",
 
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|",
   "void|", "#define|", "#include|", NULL
+};
+char *Python_HL_keywords[] = {
+  "and", "as", "assert", "break", "class", "continue", "def", "del", "elif",
+  "else", "except", "finally", "for", "from", "global", "if", "import", "in",
+  "is", "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try",
+  "while", "with", "yield",
+
+  "False|", "None|", "True|", NULL
 };
 
 struct editorSyntax HLDB[] = {
@@ -127,6 +137,13 @@ struct editorSyntax HLDB[] = {
     C_HL_keywords,
     "//", "/*", "*/",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+	"python",
+	Python_HL_extensions,
+	Python_HL_keywords,
+	"#","'''","'''",
+	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
 
