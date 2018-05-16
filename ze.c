@@ -674,7 +674,7 @@ editorDrawMessageBar(struct abuf *ab) {
   if (msglen > E.screencols) {
     msglen = E.screencols;
   }
-  if (msglen && time(NULL) - E.statusmsg_time < 5) {
+  if (msglen && time(NULL) - E.statusmsg_time < 1) {
     abAppend(ab, E.statusmsg, msglen);
   }
 }
@@ -822,7 +822,7 @@ editorProcessKeypress()
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
-  case CTRL_KEY('s'):
+  case CTRL_KEY('w'):
     editorSave();
     break;
   case HOME_KEY:
@@ -833,7 +833,7 @@ editorProcessKeypress()
       E.cx = E.row[E.cy].size;
     }
     break;
-  case CTRL_KEY('w'):
+  case CTRL_KEY('s'):
     editorFind();
     break;
   case BACKSPACE:
@@ -910,7 +910,7 @@ main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: C-s = save | C-q = quit | C-w = search");
+  editorSetStatusMessage("HELP: C-w = write to disk | C-s = search | C-q = quit");
 
   while (1) {
     editorRefreshScreen();
