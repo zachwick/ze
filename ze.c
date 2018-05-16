@@ -555,7 +555,7 @@ editorFindCallback(char *query, int key)
     return;
   } else if (key == ARROW_RIGHT || key == ARROW_DOWN) {
     direction = 1;
-  } else if (key == ARROW_LEFT || ARROW_DOWN) {
+  } else if (key == ARROW_LEFT || key == ARROW_UP) {
     direction = -1;
   } else {
     last_match = -1;
