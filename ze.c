@@ -113,6 +113,7 @@ struct editorConfig E;
 
 char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
 char *Python_HL_extensions[] = {".py", NULL};
+char *Ruby_HL_extensions[] = {".rb", ".erb", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -129,6 +130,14 @@ char *Python_HL_keywords[] = {
 
   "False|", "None|", "True|", NULL
 };
+char *Ruby_HL_keywords[] = {
+  "alias", "and", "begin", "break", "case", "class", "def", "defined?", "do",
+  "else", "elsif", "end", "ensure", "false", "for", "if", "in", "module", "next",
+  "nil", "not", "or", "redo", "rescue", "retry", "return", "self", "super", "then",
+  "true", "undef", "unless", "until", "when", "while", "yield",
+
+  "__ENCODING__|", "__LINE__|", "__FILE__|", "BEGIN|", "END|", NULL
+};
 
 struct editorSyntax HLDB[] = {
   {
@@ -143,6 +152,13 @@ struct editorSyntax HLDB[] = {
 	Python_HL_extensions,
 	Python_HL_keywords,
 	"#","'''","'''",
+	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+	"ruby",
+	Ruby_HL_extensions,
+	Ruby_HL_keywords,
+	"#", "=begin", "=end",
 	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
