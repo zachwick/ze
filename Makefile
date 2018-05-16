@@ -8,9 +8,9 @@ ze: ze.c
 test: build
 	valgrind --leak-check=full --show-leak-kinds=all ./ze ze.c
 
-install:
+install: build
 	rm -f $(INSTALL_LOC)/ze
-	cp pwd $(INSTALL_LOC)/ze
+	cp ze $(INSTALL_LOC)/ze
 
 clean:
 	rm ze
