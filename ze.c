@@ -250,6 +250,8 @@ struct editorSyntax HLDB[] = {
 void editorSetStatusMessage(const char *fmt, ...);
 void editorRefreshScreen();
 char *editorPrompt(char *prompt, void (*callback)(char *, int));
+void initEditor();
+
 /*** terminal ***/
 
 void
@@ -829,7 +831,14 @@ editorRowsToString(int *buflen)
 
 void
 editorOpen(char *filename) {
-  free(E.filename);
+  if (filename == NULL) {
+    filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
+    initEditor();
+    editorOpen(filename);
+  } else {
+    free(E.filename);
+  }
+
   E.filename = strdup(filename);
 
   editorSelectSyntaxHighlight();
@@ -1271,6 +1280,9 @@ editorProcessKeypress()
     write(STDOUT_FILENO, "\x1b[2J", 4);
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
+    break;
+  case CTRL_KEY('o'):
+    editorOpen(NULL);
     break;
   case CTRL_KEY('w'):
     editorSave();
