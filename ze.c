@@ -1212,6 +1212,9 @@ editorProcessKeypress()
   case CTRL_KEY('s'):
     editorFind();
     break;
+  case CTRL_KEY('d'):
+	editorDelRow(E.cy);
+	break;
   case BACKSPACE:
   case CTRL_KEY('h'):
     /*case DEL_KEY:*/
