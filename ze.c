@@ -47,7 +47,7 @@ enum editorKey {
   ARROW_RIGHT = CTRL_KEY('f'),
   ARROW_UP = CTRL_KEY('p'),
   ARROW_DOWN = CTRL_KEY('n'),
-  PAGE_UP = CTRL_KEY('k'),
+  PAGE_UP = CTRL_KEY('g'),
   PAGE_DOWN = CTRL_KEY('v'),
   HOME_KEY = CTRL_KEY('a'),
   END_KEY = CTRL_KEY('e'),
