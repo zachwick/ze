@@ -38,7 +38,7 @@
 /*** defines ***/
 
 #define ZE_VERSION "0.0.1"
-#define ZE_TAB_STOP 4
+#define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
 
@@ -163,25 +163,25 @@ struct editorSyntax HLDB[] = {
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
   {
-	"python",
-	Python_HL_extensions,
-	Python_HL_keywords,
-	"#","'''","'''",
-	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+    "python",
+    Python_HL_extensions,
+    Python_HL_keywords,
+    "#","'''","'''",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
   {
-	"ruby",
-	Ruby_HL_extensions,
-	Ruby_HL_keywords,
-	"#", "=begin", "=end",
-	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+    "ruby",
+    Ruby_HL_extensions,
+    Ruby_HL_keywords,
+    "#", "=begin", "=end",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
   {
-  	"PHP",
-	PHP_HL_extensions,
-	PHP_HL_keywords,
-	"//", "/*", "*/",
-	HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+    "PHP",
+    PHP_HL_extensions,
+    PHP_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
 
@@ -675,6 +675,22 @@ editorRowDelChar(erow *row, int at)
   }
   memmove(&row->chars[at], &row->chars[at + 1], row->size - at);
   row->size--;
+  editorUpdateRow(row);
+  E.dirty++;
+}
+
+void
+editorDelRowAtChar(erow *row, int at)
+{
+  if (at < 0 || at >= row->size) {
+    return;
+  }
+  int len_diff = row->size - at - 1;
+  for (int i = at - 1; i < len_diff; i++)
+    {
+      editorRowDelChar(row, i);
+    }
+  row->size = at;
   editorUpdateRow(row);
   E.dirty++;
 }
@@ -1213,13 +1229,16 @@ editorProcessKeypress()
     editorFind();
     break;
   case CTRL_KEY('d'):
-	editorDelRow(E.cy);
-	break;
+    editorDelRow(E.cy);
+    break;
+  case CTRL_KEY('k'):
+    editorDelRowAtChar(&E.row[E.cy], E.cx);
+    break;
   case BACKSPACE:
   case CTRL_KEY('h'):
     /*case DEL_KEY:*/
     /*if (c == DEL_KEY) {
-        editorMoveCursor(ARROW_RIGHT);
+      editorMoveCursor(ARROW_RIGHT);
       }*/
     editorDelChar();
     break;
@@ -1234,7 +1253,6 @@ editorProcessKeypress()
 	  E.cy = E.numrows;
 	}
       }
-
       int times = E.screenrows;
       while (times --) {
 	editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
