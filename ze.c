@@ -115,6 +115,7 @@ char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
 char *Python_HL_extensions[] = {".py", NULL};
 char *Ruby_HL_extensions[] = {".rb", ".erb", NULL};
 char *PHP_HL_extensions[] = {".php", NULL};
+char *Rust_HL_extensions[] = {".rs", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -153,6 +154,17 @@ char *PHP_HL_keywords[] = {
   "__CLASS__|", "__DIR__|", "__FILE__|", "__FUNCTION__|", "__LINE__|",
   "__METHOD__|", "__NAMESPACE__|", "__TRAIT__|", NULL
 };
+char *Rust_HL_keywords[] = {
+  "_", "abstract", "alignof", "as", "become", "box", "break", "const", "continue",
+  "crate", "do", "else", "enum", "extern", "false", "final", "fn", "for", "if",
+  "impl", "in", "let", "loop", "macro", "match", "mod", "move", "mut", "offset",
+  "override", "priv", "proc", "pub", "pure", "ref", "return", "Self", "self",
+  "sizeof", "static", "struct", "super", "trait", "true", "type", "typeof", "unsafe",
+  "unsized", "use", "virtual", "where", "while", "yield",
+
+  "derive|", "println!|", "Some|", "unwrap()|", "value_of()|", "next()|", "to_string()|", NULL
+
+};
 
 struct editorSyntax HLDB[] = {
   {
@@ -180,6 +192,13 @@ struct editorSyntax HLDB[] = {
     "PHP",
     PHP_HL_extensions,
     PHP_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "Rust",
+    Rust_HL_extensions,
+    Rust_HL_keywords,
     "//", "/*", "*/",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
