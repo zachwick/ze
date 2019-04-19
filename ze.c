@@ -116,6 +116,7 @@ char *Python_HL_extensions[] = {".py", NULL};
 char *Ruby_HL_extensions[] = {".rb", ".erb", NULL};
 char *PHP_HL_extensions[] = {".php", NULL};
 char *Rust_HL_extensions[] = {".rs", NULL};
+char *APL_HL_extensions[] = {".apl", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -165,6 +166,12 @@ char *Rust_HL_keywords[] = {
   "derive|", "println!|", "Some|", "unwrap()|", "value_of()|", "next()|", "to_string()|", NULL
 
 };
+char *APL_HL_keywords[] = {
+  "Public", "Shared",
+
+  ":Class|", ":Access|", ":For|", ":In|", ":EndFor|", ":If|", ":AndIf|", ":EndIf|",
+  ":EndClass|"
+};
 
 struct editorSyntax HLDB[] = {
   {
@@ -200,6 +207,13 @@ struct editorSyntax HLDB[] = {
     Rust_HL_extensions,
     Rust_HL_keywords,
     "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "APL",
+    APL_HL_extensions,
+    APL_HL_keywords,
+    "⍝", "⍝", "⍝",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
