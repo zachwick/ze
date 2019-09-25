@@ -117,6 +117,7 @@ char *Ruby_HL_extensions[] = {".rb", ".erb", NULL};
 char *PHP_HL_extensions[] = {".php", NULL};
 char *Rust_HL_extensions[] = {".rs", NULL};
 char *APL_HL_extensions[] = {".apl", NULL};
+char *Swift_HL_extensions[] = {".swift", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -170,7 +171,24 @@ char *APL_HL_keywords[] = {
   "Public", "Shared",
 
   ":Class|", ":Access|", ":For|", ":In|", ":EndFor|", ":If|", ":AndIf|", ":EndIf|",
-  ":EndClass|"
+  ":EndClass|", NULL
+};
+
+char *Swift_HL_keywords[] = {
+  "associatedtype", "class", "deinit", "enum", "extension", "fileprivate", "func", "import",
+  "init", "inout", "internal", "let", "open", "operator", "private", "protocol", "public",
+  "static", "struct", "subscript", "typealias", "var","break", "case", "continue", "default",
+  "defer", "do", "else", "fallthrough", "for", "guard", "if", "in", "repeat", "return",
+  "switch", "where", "while,as", "Any", "catch", "false", "is", "nil", "rethrows", "super",
+  "self", "Self", "throw", "throws", "true", "try",
+
+  "#available|", "#colorLiteral|", "#column|", "#else|", "#elseif|", "#endif|", "#file|",
+  "#fileLiteral|", "#function|", "#if|", "#imageLiteral|", "#line|", "#selector|",
+  "#sourceLocation|", "associativity|", "convenience|", "dynamic|", "didSet|", "final|",
+  "get|", "infix|", "indirect|", "lazy|", "left|", "mutating|", "none|", "nonmutating|",
+  "optional|", "override|", "postfix|", "precedence|", "prefix|", "Protocol|", "required|",
+  "right|", "set|", "Type|", "unowned|", "weak|", "willSet|", NULL
+
 };
 
 struct editorSyntax HLDB[] = {
@@ -214,6 +232,13 @@ struct editorSyntax HLDB[] = {
     APL_HL_extensions,
     APL_HL_keywords,
     "⍝", "⍝", "⍝",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "Swift",
+    Swift_HL_extensions,
+    Swift_HL_keywords,
+    "//", "/*", "*/",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
 };
