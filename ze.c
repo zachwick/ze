@@ -41,6 +41,8 @@
 #define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
+#define NOTES_TEMPLATE_FILE "/Users/zwick/.ze/notes"
+#define README_TEMPLATE_FILE "/Users/zwick/.ze/readme"
 
 enum editorKey {
   ARROW_LEFT = CTRL_KEY('b'),
@@ -101,7 +103,7 @@ struct editorConfig {
   erow *row;
   int dirty;
   char *filename;
-  char statusmsg[80];
+  char statusmsg[100];
   time_t statusmsg_time;
   struct editorSyntax *syntax;
   struct termios orig_termios;
@@ -830,6 +832,41 @@ editorRowsToString(int *buflen)
 }
 
 void
+editorCloneTemplate() {
+  FILE *templateFile = NULL;
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme ", NULL);
+
+  if (strcasecmp(template, "n") == 0) {
+    editorSetStatusMessage("Load Notes template");
+    templateFile = fopen(NOTES_TEMPLATE_FILE, "r");
+  } else if (strcasecmp(template, "r") == 0) {
+    editorSetStatusMessage("Load README template");
+    templateFile = fopen(README_TEMPLATE_FILE, "r");
+  } else {
+    editorSetStatusMessage("Template not found");
+    return;
+  }
+
+  if (!templateFile) {
+    editorSetStatusMessage("Error opening template");
+    return;
+  }
+
+  char *line = NULL;
+  size_t linecap = 0;
+  ssize_t linelen;
+  while ((linelen = getline(&line, &linecap, templateFile)) != -1) {
+    while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
+      linelen--;
+    }
+    editorInsertRow(E.numrows, line, linelen);
+  }
+  free(line);
+  fclose(templateFile);
+  E.dirty = 0;
+}
+
+void
 editorOpen(char *filename) {
   if (filename == NULL) {
     filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
@@ -1284,6 +1321,9 @@ editorProcessKeypress()
   case CTRL_KEY('o'):
     editorOpen(NULL);
     break;
+  case CTRL_KEY('t'):
+    editorCloneTemplate();
+    break;
   case CTRL_KEY('w'):
     editorSave();
     break;
@@ -1378,7 +1418,7 @@ main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: C-o = open a file | C-w = write to disk | C-s = search | C-q = quit");
+  editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
 
   while (1) {
     editorRefreshScreen();
