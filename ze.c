@@ -250,6 +250,8 @@ struct editorSyntax HLDB[] = {
 void editorSetStatusMessage(const char *fmt, ...);
 void editorRefreshScreen();
 char *editorPrompt(char *prompt, void (*callback)(char *, int));
+void initEditor();
+
 /*** terminal ***/
 
 void
@@ -829,14 +831,21 @@ editorRowsToString(int *buflen)
 
 void
 editorOpen(char *filename) {
-  free(E.filename);
+  if (filename == NULL) {
+    filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
+    initEditor();
+  } else if (E.filename != NULL) {
+    free(E.filename);
+  }
+
   E.filename = strdup(filename);
 
   editorSelectSyntaxHighlight();
 
   FILE *fp = fopen(filename, "r");
   if (!fp) {
-    die("fopen");
+    editorSetStatusMessage("Error opening specified file");
+    return;
   }
 
   char *line = NULL;
@@ -1272,6 +1281,9 @@ editorProcessKeypress()
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
+  case CTRL_KEY('o'):
+    editorOpen(NULL);
+    break;
   case CTRL_KEY('w'):
     editorSave();
     break;
@@ -1366,7 +1378,7 @@ main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: C-w = write to disk | C-s = search | C-q = quit");
+  editorSetStatusMessage("HELP: C-o = open a file | C-w = write to disk | C-s = search | C-q = quit");
 
   while (1) {
     editorRefreshScreen();
