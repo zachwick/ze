@@ -41,6 +41,8 @@
 #define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
+#define NOTES_TEMPLATE_FILE "/Users/zwick/.ze/notes"
+#define README_TEMPLATE_FILE "/Users/zwick/.ze/readme"
 
 enum editorKey {
   ARROW_LEFT = CTRL_KEY('b'),
@@ -836,11 +838,32 @@ editorCloneTemplate() {
 
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
+    templateFile = fopen(NOTES_TEMPLATE_FILE, "r");
   } else if (strcasecmp(template, "r") == 0) {
     editorSetStatusMessage("Load README template");
+    templateFile = fopen(README_TEMPLATE_FILE, "r");
   } else {
     editorSetStatusMessage("Template not found");
+    return;
   }
+
+  if (!templateFile) {
+    editorSetStatusMessage("Error opening template");
+    return;
+  }
+
+  char *line = NULL;
+  size_t linecap = 0;
+  ssize_t linelen;
+  while ((linelen = getline(&line, &linecap, templateFile)) != -1) {
+    while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
+      linelen--;
+    }
+    editorInsertRow(E.numrows, line, linelen);
+  }
+  free(line);
+  fclose(templateFile);
+  E.dirty = 0;
 }
 
 void
