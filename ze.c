@@ -830,6 +830,20 @@ editorRowsToString(int *buflen)
 }
 
 void
+editorCloneTemplate() {
+  FILE *templateFile = NULL;
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme ", NULL);
+
+  if (strcasecmp(template, "n") == 0) {
+    editorSetStatusMessage("Load Notes template");
+  } else if (strcasecmp(template, "r") == 0) {
+    editorSetStatusMessage("Load README template");
+  } else {
+    editorSetStatusMessage("Template not found");
+  }
+}
+
+void
 editorOpen(char *filename) {
   if (filename == NULL) {
     filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
@@ -1283,6 +1297,9 @@ editorProcessKeypress()
     break;
   case CTRL_KEY('o'):
     editorOpen(NULL);
+    break;
+  case CTRL_KEY('t'):
+    editorCloneTemplate();
     break;
   case CTRL_KEY('w'):
     editorSave();
