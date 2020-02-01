@@ -770,6 +770,23 @@ editorInsertChar(int c)
 }
 
 void
+editorInsertTimestamp()
+{
+  time_t timer;
+  char buffer[26];
+  struct tm* tm_info;
+
+  timer = time(NULL);
+  tm_info = localtime(&timer);
+  strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info);
+  int len = strlen(buffer);
+
+  for (int i = 0; i < len; i++) {
+    editorInsertChar(buffer[i]);
+  }
+}
+
+void
 editorInsertNewline()
 {
   if (E.cx == 0) {
@@ -1324,6 +1341,9 @@ editorProcessKeypress()
   case CTRL_KEY('t'):
     editorCloneTemplate();
     break;
+	case CTRL_KEY('i'):
+		editorInsertTimestamp();
+		break;
   case CTRL_KEY('w'):
     editorSave();
     break;
@@ -1379,7 +1399,7 @@ editorProcessKeypress()
   case '\x1b':
     break;
   default:
-    editorInsertChar(c);
+		editorInsertChar(c);
     break;
   }
   quit_times = ZE_QUIT_TIMES;
