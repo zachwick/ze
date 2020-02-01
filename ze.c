@@ -1,7 +1,7 @@
 /**
  * ze - zwick's editor of choice
  *
- * Copyright 2018 zach wick <zach@zachwick.com>
+ * Copyright 2018, 2019, 2020 zach wick <zach@zachwick.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,9 +31,11 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
+#include <dirent.h>
 
 /*** defines ***/
 
@@ -70,6 +72,16 @@ enum editorHighlight {
 
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
 #define HL_HIGHLIGHT_STRINGS (1<<1)
+
+static int
+_true (const struct dirent *empty) {
+	// In order to fix a compiler warning, we need to make sure that the
+	// signature of our _true function matches what the scandir function
+	// expects. Therefore, we have to accept an argument that we don't use.
+  (void)empty;
+	return 1;
+}
+
 /*** data ***/
 
 struct editorSyntax {
@@ -893,24 +905,62 @@ editorOpen(char *filename) {
   }
 
   E.filename = strdup(filename);
-
   editorSelectSyntaxHighlight();
 
-  FILE *fp = fopen(filename, "r");
-  if (!fp) {
-    editorSetStatusMessage("Error opening specified file");
-    return;
-  }
-
+  FILE *fp = NULL;
   char *line = NULL;
   size_t linecap = 0;
   ssize_t linelen;
-  while ((linelen = getline(&line, &linecap, fp)) != -1) {
-    while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
-      linelen--;
+  struct stat s;
+
+  if( stat(E.filename,&s) == 0 ) {
+    if( s.st_mode & S_IFDIR ) {
+      // Call the scandir function.
+      // The 3rd param is a filter/selctor function; we want all children of the
+      // directory, so we use our `_true` function to accept all children.
+      // The 4th param is a sort function. We are using alphasort, which is
+      // provided by the GNU stdlib
+      struct dirent **dits;
+      int num_files = 0;
+      num_files = scandir (E.filename, &dits, _true, alphasort);
+      if (num_files >= 0) {
+        int count;
+        for (count = 0; count < num_files; ++count) {
+          editorInsertRow(count, dits[count]->d_name, strlen(dits[count]->d_name));
+        }
+        // Clean up the memory allocatted by scandir
+        for (count = 0; count < num_files; ++count) {
+          // Free each dirent before freeing dits as a whole
+          free(dits[count]);
+        }
+      free(dits);
+      } else {
+        perror ("Error opening directory");
+      }
+      return;
     }
-    editorInsertRow(E.numrows, line, linelen);
+    else if( s.st_mode & S_IFREG ) {
+      fp = fopen(filename, "r");
+      if (!fp) {
+        editorSetStatusMessage("Error opening specified file");
+        return;
+      }
+      while ((linelen = getline(&line, &linecap, fp)) != -1) {
+        while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
+          linelen--;
+        }
+        editorInsertRow(E.numrows, line, linelen);
+      }
+    }
+    else {
+        editorSetStatusMessage("Unknown object at filepath");
+        return;
+    }
+  } else {
+    editorSetStatusMessage("Error determining type of object at filepath");
+    return;
   }
+
   free(line);
   fclose(fp);
   E.dirty = 0;
