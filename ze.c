@@ -35,6 +35,7 @@
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
+#include <dirent.h>
 
 /*** defines ***/
 
@@ -71,6 +72,15 @@ enum editorHighlight {
 
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
 #define HL_HIGHLIGHT_STRINGS (1<<1)
+
+static int
+_true (const struct dirent *empty) {
+	// In order to fix a compiler warning, we need to make sure that the
+	// signature of our _true function matches what the scandir function
+	// expects. Therefore, we have to accept an argument that we don't use.
+	return 1;
+}
+
 /*** data ***/
 
 struct editorSyntax {
@@ -894,19 +904,38 @@ editorOpen(char *filename) {
   }
 
   E.filename = strdup(filename);
-
   editorSelectSyntaxHighlight();
 
-  // 1. stat() E.filename
-  // 2. If it is a non-directory, attempt to open it into the buffer
-  // 3. if it is a directory, then read its contents
-  // 4. print each contained filepath as a new line in the buffer
-
   FILE *fp = NULL;
+  char *line = NULL;
+  size_t linecap = 0;
+  ssize_t linelen;
   struct stat s;
+
   if( stat(E.filename,&s) == 0 ) {
     if( s.st_mode & S_IFDIR ) {
-      editorSetStatusMessage("Cannot open directory");
+      // Call the scandir function.
+      // The 3rd param is a filter/selctor function; we want all children of the
+      // directory, so we use our `_true` function to accept all children.
+      // The 4th param is a sort function. We are using alphasort, which is
+      // provided by the GNU stdlib
+      struct dirent **dits;
+      int num_files = 0;
+      num_files = scandir (E.filename, &dits, _true, alphasort);
+      if (num_files >= 0) {
+        int count;
+        for (count = 0; count < num_files; ++count) {
+          editorInsertRow(count, dits[count]->d_name, strlen(dits[count]->d_name));
+        }
+        // Clean up the memory allocatted by scandir
+        for (count = 0; count < num_files; ++count) {
+          // Free each dirent before freeing dits as a whole
+          free(dits[count]);
+        }
+      free(dits);
+      } else {
+        perror ("Error opening directory");
+      }
       return;
     }
     else if( s.st_mode & S_IFREG ) {
@@ -914,6 +943,12 @@ editorOpen(char *filename) {
       if (!fp) {
         editorSetStatusMessage("Error opening specified file");
         return;
+      }
+      while ((linelen = getline(&line, &linecap, fp)) != -1) {
+        while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
+          linelen--;
+        }
+        editorInsertRow(E.numrows, line, linelen);
       }
     }
     else {
@@ -925,15 +960,6 @@ editorOpen(char *filename) {
     return;
   }
 
-  char *line = NULL;
-  size_t linecap = 0;
-  ssize_t linelen;
-  while ((linelen = getline(&line, &linecap, fp)) != -1) {
-    while (linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r')) {
-      linelen--;
-    }
-    editorInsertRow(E.numrows, line, linelen);
-  }
   free(line);
   fclose(fp);
   E.dirty = 0;
