@@ -10,7 +10,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -319,33 +319,33 @@ editorReadKey()
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
 	      if (read(STDIN_FILENO, &seq[2], 1) != 1) {
-	        return '\x1b';
+		return '\x1b';
 	      }
 	      if (seq[2] == '~') {
-	        switch (seq[1]) {
-	          case '1': return HOME_KEY;
-	          /*case '3': return DEL_KEY;*/
-            case '4': return END_KEY;
-	          case '5': return PAGE_UP;
-	          case '6': return PAGE_DOWN;
-	          case '7': return HOME_KEY;
-	          case '8': return END_KEY;
-	        }
+		switch (seq[1]) {
+		  case '1': return HOME_KEY;
+		  /*case '3': return DEL_KEY;*/
+	    case '4': return END_KEY;
+		  case '5': return PAGE_UP;
+		  case '6': return PAGE_DOWN;
+		  case '7': return HOME_KEY;
+		  case '8': return END_KEY;
+		}
 	      }
       } else {
 	      switch (seq[1]) {
-	        case 'A': return ARROW_UP;
-	        case 'B': return ARROW_DOWN;
-	        case 'C': return ARROW_RIGHT;
-	        case 'D': return ARROW_LEFT;
-	        case 'H': return HOME_KEY;
-	        case 'F': return END_KEY;
+		case 'A': return ARROW_UP;
+		case 'B': return ARROW_DOWN;
+		case 'C': return ARROW_RIGHT;
+		case 'D': return ARROW_LEFT;
+		case 'H': return HOME_KEY;
+		case 'F': return END_KEY;
 	      }
       }
     } else if (seq[0] == '0') {
       switch (seq[1]) {
-        case 'H': return HOME_KEY;
-        case 'F': return END_KEY;
+	case 'H': return HOME_KEY;
+	case 'F': return END_KEY;
       }
     }
     return '\x1b';
@@ -445,14 +445,14 @@ editorUpdateSyntax(erow *row)
       if (in_comment) {
 	      row->hl[i] = HL_MLCOMMENT;
 	      if (!strncmp(&row->render[i], mce, mce_len)) {
-	        memset(&row->hl[i], HL_MLCOMMENT, mce_len);
-	        i += mce_len;
-	        in_comment = 0;
-	        prev_sep = 1;
-	        continue;
+		memset(&row->hl[i], HL_MLCOMMENT, mce_len);
+		i += mce_len;
+		in_comment = 0;
+		prev_sep = 1;
+		continue;
 	      } else {
-	        i++;
-	        continue;
+		i++;
+		continue;
 	      }
       } else if (!strncmp(&row->render[i], mcs, mcs_len)) {
 	      memset(&row->hl[i], HL_MLCOMMENT, mcs_len);
@@ -466,22 +466,22 @@ editorUpdateSyntax(erow *row)
       if (in_string) {
 	      row->hl[i] = HL_STRING;
 	      if (c == '\\' && i + 1 < row->rsize) {
-	        row->hl[i + 1] = HL_STRING;
-	        i += 2;
-	        continue;
+		row->hl[i + 1] = HL_STRING;
+		i += 2;
+		continue;
 	      }
 	      if (c == in_string) {
-	        in_string = 0;
+		in_string = 0;
 	      }
 	      i++;
 	      prev_sep = 1;
 	      continue;
       } else {
 	      if (c == '"' || c == '\'') {
-	        in_string = c;
-	        row->hl[i] = HL_STRING;
-	        i++;
-	        continue;
+		in_string = c;
+		row->hl[i] = HL_STRING;
+		i++;
+		continue;
 	      }
       }
     }
@@ -501,14 +501,14 @@ editorUpdateSyntax(erow *row)
 	      int klen = strlen(keywords[j]);
 	      int kw2 = keywords[j][klen - 1] == '|';
 	      if (kw2) {
-	        klen--;
+		klen--;
 	      }
 
 	      if (!strncmp(&row->render[i], keywords[j], klen) && is_separator(row->render[i + klen])) {
-	        memset(&row->hl[i], kw2 ? HL_KEYWORD2 : HL_KEYWORD1, klen);
-	        i += klen;
-	        break;
-    	  }
+		memset(&row->hl[i], kw2 ? HL_KEYWORD2 : HL_KEYWORD1, klen);
+		i += klen;
+		break;
+	  }
       }
       if (keywords[j] != NULL) {
 	      prev_sep = 0;
@@ -569,7 +569,7 @@ editorSelectSyntaxHighlight()
 
 	      int filerow;
 	      for (filerow = 0; filerow < E.numrows; filerow++) {
-	        editorUpdateSyntax(&E.row[filerow]);
+		editorUpdateSyntax(&E.row[filerow]);
 	      }
 
 	      return;
@@ -1087,15 +1087,15 @@ editorDrawRows(struct abuf *ab)
 	      char welcome[80];
 	      int welcomelen = snprintf(welcome, sizeof(welcome), "ze -- version %s", ZE_VERSION);
 	      if (welcomelen > E.screencols) {
-	        welcomelen = E.screencols;
+		welcomelen = E.screencols;
 	      }
 	      int padding = (E.screencols - welcomelen) / 2;
 	      if (padding) {
-	        abAppend(ab, "~", 1);
-	        padding--;
+		abAppend(ab, "~", 1);
+		padding--;
 	      }
 	      while (padding--) {
-	        abAppend(ab, " ", 1);
+		abAppend(ab, " ", 1);
 	      }
 	      abAppend(ab, welcome, welcomelen);
       } else {
@@ -1115,30 +1115,30 @@ editorDrawRows(struct abuf *ab)
       int j;
       for (j = 0; j < len; j++) {
 	      if (iscntrl(c[j])) {
-	        char sym = (c[j] <= 26) ? '@' + c[j] : '?';
-	        abAppend(ab, "\x1b[7m", 4);
-	        abAppend(ab, &sym, 1);
-	        abAppend(ab, "\x1b[m", 3);
-	        if (current_color != -1) {
-	          char buf[16];
-	          int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
-	          abAppend(ab, buf, clen);
-	        }
+		char sym = (c[j] <= 26) ? '@' + c[j] : '?';
+		abAppend(ab, "\x1b[7m", 4);
+		abAppend(ab, &sym, 1);
+		abAppend(ab, "\x1b[m", 3);
+		if (current_color != -1) {
+		  char buf[16];
+		  int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
+		  abAppend(ab, buf, clen);
+		}
 	      } else if (hl[j] == HL_NORMAL) {
-	        if (current_color != -1) {
-	          abAppend(ab, "\x1b[39m", 5);
-	          current_color = -1;
-	        }
-	        abAppend(ab, &c[j], 1);
+		if (current_color != -1) {
+		  abAppend(ab, "\x1b[39m", 5);
+		  current_color = -1;
+		}
+		abAppend(ab, &c[j], 1);
 	      } else {
-	        int color = editorSyntaxToColor(hl[j]);
-	        if (color != current_color) {
-	          current_color = color;
-	          char buf[16];
-	          int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
-	          abAppend(ab, buf, clen);
-	        }
-	        abAppend(ab, &c[j], 1);
+		int color = editorSyntaxToColor(hl[j]);
+		if (color != current_color) {
+		  current_color = color;
+		  char buf[16];
+		  int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
+		  abAppend(ab, buf, clen);
+		}
+		abAppend(ab, &c[j], 1);
 	      }
       }
       abAppend(ab, "\x1b[39m", 5);
@@ -1252,7 +1252,7 @@ editorPrompt(char *prompt, void (*callback)(char *, int))
       if (buflen != 0) {
 	      editorSetStatusMessage("");
 	      if (callback) {
-	        callback(buf, c);
+		callback(buf, c);
 	      }
 	      return buf;
       }
@@ -1367,16 +1367,16 @@ editorProcessKeypress()
   case PAGE_DOWN:
     {
       if (c == PAGE_UP) {
-        E.cy = E.rowoff;
+	E.cy = E.rowoff;
       } else if (c == PAGE_DOWN) {
-        E.cy = E.rowoff + E.screenrows - 1;
-        if (E.cy > E.numrows) {
-          E.cy = E.numrows;
-        }
+	E.cy = E.rowoff + E.screenrows - 1;
+	if (E.cy > E.numrows) {
+	  E.cy = E.numrows;
+	}
       }
       int times = E.screenrows;
       while (times --) {
-        editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
+	editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
     }
     break;
