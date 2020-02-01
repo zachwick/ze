@@ -318,34 +318,34 @@ editorReadKey()
 
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
-	if (read(STDIN_FILENO, &seq[2], 1) != 1) {
-	  return '\x1b';
-	}
-	if (seq[2] == '~') {
-	  switch (seq[1]) {
-	  case '1': return HOME_KEY;
-	    /*case '3': return DEL_KEY;*/
-	  case '4': return END_KEY;
-	  case '5': return PAGE_UP;
-	  case '6': return PAGE_DOWN;
-	  case '7': return HOME_KEY;
-	  case '8': return END_KEY;
-	  }
-	}
+	      if (read(STDIN_FILENO, &seq[2], 1) != 1) {
+	        return '\x1b';
+	      }
+	      if (seq[2] == '~') {
+	        switch (seq[1]) {
+	          case '1': return HOME_KEY;
+	          /*case '3': return DEL_KEY;*/
+            case '4': return END_KEY;
+	          case '5': return PAGE_UP;
+	          case '6': return PAGE_DOWN;
+	          case '7': return HOME_KEY;
+	          case '8': return END_KEY;
+	        }
+	      }
       } else {
-	switch (seq[1]) {
-	case 'A': return ARROW_UP;
-	case 'B': return ARROW_DOWN;
-	case 'C': return ARROW_RIGHT;
-	case 'D': return ARROW_LEFT;
-	case 'H': return HOME_KEY;
-	case 'F': return END_KEY;
-	}
+	      switch (seq[1]) {
+	        case 'A': return ARROW_UP;
+	        case 'B': return ARROW_DOWN;
+	        case 'C': return ARROW_RIGHT;
+	        case 'D': return ARROW_LEFT;
+	        case 'H': return HOME_KEY;
+	        case 'F': return END_KEY;
+	      }
       }
     } else if (seq[0] == '0') {
       switch (seq[1]) {
-      case 'H': return HOME_KEY;
-      case 'F': return END_KEY;
+        case 'H': return HOME_KEY;
+        case 'F': return END_KEY;
       }
     }
     return '\x1b';
@@ -436,85 +436,83 @@ editorUpdateSyntax(erow *row)
 
     if (scs_len && !in_string && !in_comment) {
       if (!strncmp(&row->render[i], scs, scs_len)) {
-	memset(&row->hl[i], HL_COMMENT, row->rsize - i);
-	break;
+	      memset(&row->hl[i], HL_COMMENT, row->rsize - i);
+	      break;
       }
     }
 
     if (mcs_len && mce_len && !in_string) {
       if (in_comment) {
-	row->hl[i] = HL_MLCOMMENT;
-	if (!strncmp(&row->render[i], mce, mce_len)) {
-	  memset(&row->hl[i], HL_MLCOMMENT, mce_len);
-	  i += mce_len;
-	  in_comment = 0;
-	  prev_sep = 1;
-	  continue;
-	} else {
-	  i++;
-	  continue;
-	}
+	      row->hl[i] = HL_MLCOMMENT;
+	      if (!strncmp(&row->render[i], mce, mce_len)) {
+	        memset(&row->hl[i], HL_MLCOMMENT, mce_len);
+	        i += mce_len;
+	        in_comment = 0;
+	        prev_sep = 1;
+	        continue;
+	      } else {
+	        i++;
+	        continue;
+	      }
       } else if (!strncmp(&row->render[i], mcs, mcs_len)) {
-	memset(&row->hl[i], HL_MLCOMMENT, mcs_len);
-	i += mcs_len;
-	in_comment = 1;
-	continue;
+	      memset(&row->hl[i], HL_MLCOMMENT, mcs_len);
+	      i += mcs_len;
+	      in_comment = 1;
+	      continue;
       }
     }
 
     if (E.syntax->flags & HL_HIGHLIGHT_STRINGS) {
       if (in_string) {
-	row->hl[i] = HL_STRING;
-	if (c == '\\' && i + 1 < row->rsize) {
-	  row->hl[i + 1] = HL_STRING;
-	  i += 2;
-	  continue;
-	}
-	if (c == in_string) {
-	  in_string = 0;
-	}
-	i++;
-	prev_sep = 1;
-	continue;
+	      row->hl[i] = HL_STRING;
+	      if (c == '\\' && i + 1 < row->rsize) {
+	        row->hl[i + 1] = HL_STRING;
+	        i += 2;
+	        continue;
+	      }
+	      if (c == in_string) {
+	        in_string = 0;
+	      }
+	      i++;
+	      prev_sep = 1;
+	      continue;
       } else {
-	if (c == '"' || c == '\'') {
-	  in_string = c;
-	  row->hl[i] = HL_STRING;
-	  i++;
-	  continue;
-	}
+	      if (c == '"' || c == '\'') {
+	        in_string = c;
+	        row->hl[i] = HL_STRING;
+	        i++;
+	        continue;
+	      }
       }
     }
 
     if (E.syntax->flags & HL_HIGHLIGHT_NUMBERS) {
-      if ((isdigit(c) && (prev_sep || prev_hl == HL_NUMBER)) ||
-	  (c == '.' && prev_hl == HL_NUMBER)) {
-	row->hl[i] = HL_NUMBER;
-	i++;
-	prev_sep = 0;
-	continue;
+      if ((isdigit(c) && (prev_sep || prev_hl == HL_NUMBER)) || (c == '.' && prev_hl == HL_NUMBER)) {
+	      row->hl[i] = HL_NUMBER;
+	      i++;
+	      prev_sep = 0;
+	      continue;
       }
     }
 
     if (prev_sep) {
       int j;
       for (j = 0; keywords[j]; j++) {
-	int klen = strlen(keywords[j]);
-	int kw2 = keywords[j][klen - 1] == '|';
-	if (kw2) {
-	  klen--;
-	}
+	      int klen = strlen(keywords[j]);
+	      int kw2 = keywords[j][klen - 1] == '|';
+	      if (kw2) {
+	        klen--;
+	      }
 
-	if (!strncmp(&row->render[i], keywords[j], klen) &&
-	    is_separator(row->render[i + klen])) {
-	  memset(&row->hl[i], kw2 ? HL_KEYWORD2 : HL_KEYWORD1, klen);
-	  i += klen;
-	  break;
-	}
+	      if (!strncmp(&row->render[i], keywords[j], klen) && is_separator(row->render[i + klen])) {
+	        memset(&row->hl[i], kw2 ? HL_KEYWORD2 : HL_KEYWORD1, klen);
+	        i += klen;
+	        break;
+    	  }
       }
       if (keywords[j] != NULL) {
-	prev_sep = 0;
-	continue;
+	      prev_sep = 0;
+	      continue;
       }
     }
 
@@ -566,16 +564,15 @@ editorSelectSyntaxHighlight()
     unsigned int i = 0;
     while (s->filematch[i]) {
       int is_ext = (s->filematch[i][0] == '.');
-      if ((is_ext && ext && !strcmp(ext, s->filematch[i])) ||
-	  (!is_ext && strstr(E.filename, s->filematch[i]))) {
-	E.syntax = s;
+      if ((is_ext && ext && !strcmp(ext, s->filematch[i])) || (!is_ext && strstr(E.filename, s->filematch[i]))) {
+	      E.syntax = s;
 
-	int filerow;
-	for (filerow = 0; filerow < E.numrows; filerow++) {
-	  editorUpdateSyntax(&E.row[filerow]);
-	}
+	      int filerow;
+	      for (filerow = 0; filerow < E.numrows; filerow++) {
+	        editorUpdateSyntax(&E.row[filerow]);
+	      }
 
-	return;
+	      return;
       }
       i++;
     }
@@ -639,7 +636,7 @@ editorUpdateRow(erow *row)
     if (row->chars[j] == '\t') {
       row->render[idx++] = ' ';
       while (idx % ZE_TAB_STOP != 0) {
-	row->render[idx++] = ' ';
+	      row->render[idx++] = ' ';
       }
     } else {
       row->render[idx++] = row->chars[j];
@@ -935,11 +932,11 @@ editorSave()
   if (fd != -1) {
     if (ftruncate(fd, len) != -1) {
       if (write(fd, buf, len) == len) {
-	close(fd);
-	free(buf);
-	E.dirty = 0;
-	editorSetStatusMessage("%d bytes written to disk", len);
-	return;
+	      close(fd);
+	      free(buf);
+	      E.dirty = 0;
+	      editorSetStatusMessage("%d bytes written to disk", len);
+	      return;
       }
     }
     close(fd);
@@ -1087,67 +1084,65 @@ editorDrawRows(struct abuf *ab)
     int filerow = y + E.rowoff;
     if (filerow >= E.numrows) {
       if (E.numrows == 0 && y == E.screenrows / 3) {
-	char welcome[80];
-	int welcomelen = snprintf(welcome, sizeof(welcome),
-				  "ze -- version %s", ZE_VERSION);
-	if (welcomelen > E.screencols) {
-	  welcomelen = E.screencols;
-	}
-	int padding = (E.screencols - welcomelen) / 2;
-	if (padding) {
-	  abAppend(ab, "~", 1);
-	  padding--;
-	}
-	while (padding--) {
-	  abAppend(ab, " ", 1);
-	}
-	abAppend(ab, welcome, welcomelen);
+	      char welcome[80];
+	      int welcomelen = snprintf(welcome, sizeof(welcome), "ze -- version %s", ZE_VERSION);
+	      if (welcomelen > E.screencols) {
+	        welcomelen = E.screencols;
+	      }
+	      int padding = (E.screencols - welcomelen) / 2;
+	      if (padding) {
+	        abAppend(ab, "~", 1);
+	        padding--;
+	      }
+	      while (padding--) {
+	        abAppend(ab, " ", 1);
+	      }
+	      abAppend(ab, welcome, welcomelen);
       } else {
-	abAppend(ab, "~", 1);
+	      abAppend(ab, "~", 1);
       }
     } else {
       int len = E.row[filerow].rsize - E.coloff;
       if (len < 0) {
-	len = 0;
+	      len = 0;
       }
       if (len > E.screencols) {
-	len = E.screencols;
+	      len = E.screencols;
       }
       char *c = &E.row[filerow].render[E.coloff];
       unsigned char *hl = &E.row[filerow].hl[E.coloff];
       int current_color = -1;
       int j;
       for (j = 0; j < len; j++) {
-	if (iscntrl(c[j])) {
-	  char sym = (c[j] <= 26) ? '@' + c[j] : '?';
-	  abAppend(ab, "\x1b[7m", 4);
-	  abAppend(ab, &sym, 1);
-	  abAppend(ab, "\x1b[m", 3);
-	  if (current_color != -1) {
-	    char buf[16];
-	    int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
-	    abAppend(ab, buf, clen);
-	  }
-	} else if (hl[j] == HL_NORMAL) {
-	  if (current_color != -1) {
-	    abAppend(ab, "\x1b[39m", 5);
-	    current_color = -1;
-	  }
-	  abAppend(ab, &c[j], 1);
-	} else {
-	  int color = editorSyntaxToColor(hl[j]);
-	  if (color != current_color) {
-	    current_color = color;
-	    char buf[16];
-	    int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
-	    abAppend(ab, buf, clen);
-	  }
-	  abAppend(ab, &c[j], 1);
-	}
+	      if (iscntrl(c[j])) {
+	        char sym = (c[j] <= 26) ? '@' + c[j] : '?';
+	        abAppend(ab, "\x1b[7m", 4);
+	        abAppend(ab, &sym, 1);
+	        abAppend(ab, "\x1b[m", 3);
+	        if (current_color != -1) {
+	          char buf[16];
+	          int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
+	          abAppend(ab, buf, clen);
+	        }
+	      } else if (hl[j] == HL_NORMAL) {
+	        if (current_color != -1) {
+	          abAppend(ab, "\x1b[39m", 5);
+	          current_color = -1;
+	        }
+	        abAppend(ab, &c[j], 1);
+	      } else {
+	        int color = editorSyntaxToColor(hl[j]);
+	        if (color != current_color) {
+	          current_color = color;
+	          char buf[16];
+	          int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
+	          abAppend(ab, buf, clen);
+	        }
+	        abAppend(ab, &c[j], 1);
+	      }
       }
       abAppend(ab, "\x1b[39m", 5);
     }
-
     abAppend(ab, "\x1b[K", 3);
     abAppend(ab, "\r\n", 2);
   }
@@ -1244,27 +1239,27 @@ editorPrompt(char *prompt, void (*callback)(char *, int))
     int c = editorReadKey();
     if (/*c == DEL_KEY ||*/ c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) {
-	buf[--buflen] = '\0';
+	      buf[--buflen] = '\0';
       }
     } else if (c == '\x1b') {
       editorSetStatusMessage("");
       if (callback) {
-	callback(buf, c);
+	      callback(buf, c);
       }
       free(buf);
       return NULL;
     } else if (c == '\r') {
       if (buflen != 0) {
-	editorSetStatusMessage("");
-	if (callback) {
-	  callback(buf, c);
-	}
-	return buf;
+	      editorSetStatusMessage("");
+	      if (callback) {
+	        callback(buf, c);
+	      }
+	      return buf;
       }
     } else if (!iscntrl(c) && c < 128) {
       if (buflen == bufsize - 1) {
-	bufsize *= 2;
-	buf = realloc(buf, bufsize);
+	      bufsize *= 2;
+	      buf = realloc(buf, bufsize);
       }
       buf[buflen++] = c;
       buf[buflen] = '\0';
@@ -1341,9 +1336,9 @@ editorProcessKeypress()
   case CTRL_KEY('t'):
     editorCloneTemplate();
     break;
-	case CTRL_KEY('i'):
-		editorInsertTimestamp();
-		break;
+  case CTRL_KEY('i'):
+    editorInsertTimestamp();
+    break;
   case CTRL_KEY('w'):
     editorSave();
     break;
@@ -1366,26 +1361,22 @@ editorProcessKeypress()
     break;
   case BACKSPACE:
   case CTRL_KEY('h'):
-    /*case DEL_KEY:*/
-    /*if (c == DEL_KEY) {
-      editorMoveCursor(ARROW_RIGHT);
-      }*/
     editorDelChar();
     break;
   case PAGE_UP:
   case PAGE_DOWN:
     {
       if (c == PAGE_UP) {
-	E.cy = E.rowoff;
+        E.cy = E.rowoff;
       } else if (c == PAGE_DOWN) {
-	E.cy = E.rowoff + E.screenrows - 1;
-	if (E.cy > E.numrows) {
-	  E.cy = E.numrows;
-	}
+        E.cy = E.rowoff + E.screenrows - 1;
+        if (E.cy > E.numrows) {
+          E.cy = E.numrows;
+        }
       }
       int times = E.screenrows;
       while (times --) {
-	editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
+        editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
     }
     break;
@@ -1399,7 +1390,7 @@ editorProcessKeypress()
   case '\x1b':
     break;
   default:
-		editorInsertChar(c);
+    editorInsertChar(c);
     break;
   }
   quit_times = ZE_QUIT_TIMES;
