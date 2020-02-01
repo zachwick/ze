@@ -78,6 +78,7 @@ _true (const struct dirent *empty) {
 	// In order to fix a compiler warning, we need to make sure that the
 	// signature of our _true function matches what the scandir function
 	// expects. Therefore, we have to accept an argument that we don't use.
+  (void)empty;
 	return 1;
 }
 
