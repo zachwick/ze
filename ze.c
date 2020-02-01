@@ -1,7 +1,7 @@
 /**
  * ze - zwick's editor of choice
  *
- * Copyright 2018 zach wick <zach@zachwick.com>
+ * Copyright 2018, 2019, 2020 zach wick <zach@zachwick.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
@@ -896,9 +897,31 @@ editorOpen(char *filename) {
 
   editorSelectSyntaxHighlight();
 
-  FILE *fp = fopen(filename, "r");
-  if (!fp) {
-    editorSetStatusMessage("Error opening specified file");
+  // 1. stat() E.filename
+  // 2. If it is a non-directory, attempt to open it into the buffer
+  // 3. if it is a directory, then read its contents
+  // 4. print each contained filepath as a new line in the buffer
+
+  FILE *fp = NULL;
+  struct stat s;
+  if( stat(E.filename,&s) == 0 ) {
+    if( s.st_mode & S_IFDIR ) {
+      editorSetStatusMessage("Cannot open directory");
+      return;
+    }
+    else if( s.st_mode & S_IFREG ) {
+      fp = fopen(filename, "r");
+      if (!fp) {
+        editorSetStatusMessage("Error opening specified file");
+        return;
+      }
+    }
+    else {
+        editorSetStatusMessage("Unknown object at filepath");
+        return;
+    }
+  } else {
+    editorSetStatusMessage("Error determining type of object at filepath");
     return;
   }
 
