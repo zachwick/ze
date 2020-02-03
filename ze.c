@@ -972,8 +972,10 @@ void editorPreSaveHook() {
   SCM preSaveHook;
   SCM results_scm;
   char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
   preSaveHook = scm_variable_ref(scm_c_lookup("preSaveHook"));
-  results_scm = scm_call_0(preSaveHook);
+  results_scm = scm_call_1(preSaveHook, scm_from_locale_string(contents));
   results = scm_to_locale_string(results_scm);
   editorSetStatusMessage(results);
   return;
@@ -983,8 +985,10 @@ void editorPostSaveHook() {
   SCM postSaveHook;
   SCM results_scm;
   char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
   postSaveHook = scm_variable_ref(scm_c_lookup("postSaveHook"));
-  results_scm = scm_call_0(postSaveHook);
+  results_scm = scm_call_1(postSaveHook, scm_from_locale_string(contents));
   results = scm_to_locale_string(results_scm);
   editorSetStatusMessage(results);
   return;
