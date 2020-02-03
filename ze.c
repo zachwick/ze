@@ -935,6 +935,15 @@ preFileOpenHook() {
 
 void
 postFileOpenHook() {
+  SCM postFileOpenHook;
+  SCM results_scm;
+  char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
+  postFileOpenHook = scm_variable_ref(scm_c_lookup("postFileOpenHook"));
+  results_scm = scm_call_1(postFileOpenHook, scm_from_locale_string(contents));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
   return;
 }
 
