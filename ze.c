@@ -968,6 +968,28 @@ editorOpen(char *filename) {
   E.dirty = 0;
 }
 
+void editorPreSaveHook() {
+  SCM preSaveHook;
+  SCM results_scm;
+  char* results;
+  preSaveHook = scm_variable_ref(scm_c_lookup("preSaveHook"));
+  results_scm = scm_call_0(preSaveHook);
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void editorPostSaveHook() {
+  SCM postSaveHook;
+  SCM results_scm;
+  char* results;
+  postSaveHook = scm_variable_ref(scm_c_lookup("postSaveHook"));
+  results_scm = scm_call_0(postSaveHook);
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
 void
 editorSave()
 {
@@ -980,6 +1002,7 @@ editorSave()
     editorSelectSyntaxHighlight();
   }
 
+  editorPreSaveHook();
   int len;
   char *buf = editorRowsToString(&len);
 
@@ -987,11 +1010,12 @@ editorSave()
   if (fd != -1) {
     if (ftruncate(fd, len) != -1) {
       if (write(fd, buf, len) == len) {
-	close(fd);
-	free(buf);
-	E.dirty = 0;
-	editorSetStatusMessage("%d bytes written to disk", len);
-	return;
+        close(fd);
+        free(buf);
+        E.dirty = 0;
+        editorSetStatusMessage("%d bytes written to disk", len);
+        editorPostSaveHook();
+        return;
       }
     }
     close(fd);
