@@ -36,6 +36,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <libguile.h>
 
 /*** defines ***/
 
@@ -43,8 +44,6 @@
 #define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
-#define NOTES_TEMPLATE_FILE "/Users/zwick/.ze/notes"
-#define README_TEMPLATE_FILE "/Users/zwick/.ze/readme"
 
 enum editorKey {
   ARROW_LEFT = CTRL_KEY('b'),
@@ -83,6 +82,9 @@ _true (const struct dirent *empty) {
 }
 
 /*** data ***/
+
+char* notes_template = "";
+char* readme_template = "";
 
 struct editorSyntax {
   char *filetype;
@@ -867,10 +869,10 @@ editorCloneTemplate() {
 
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
-    templateFile = fopen(NOTES_TEMPLATE_FILE, "r");
+    templateFile = fopen(notes_template, "r");
   } else if (strcasecmp(template, "r") == 0) {
     editorSetStatusMessage("Load README template");
-    templateFile = fopen(README_TEMPLATE_FILE, "r");
+    templateFile = fopen(readme_template, "r");
   } else {
     editorSetStatusMessage("Template not found");
     return;
@@ -893,6 +895,56 @@ editorCloneTemplate() {
   free(line);
   fclose(templateFile);
   E.dirty = 0;
+}
+
+void
+preDirOpenHook() {
+  SCM preDirOpenHook;
+  SCM results_scm;
+  char* results;
+  preDirOpenHook = scm_variable_ref(scm_c_lookup("preDirOpenHook"));
+  results_scm = scm_call_1(preDirOpenHook, scm_from_locale_string(E.filename));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
+postDirOpenHook(int num_files) {
+  SCM postDirOpenHook;
+  SCM results_scm;
+  char *results;
+  postDirOpenHook = scm_variable_ref(scm_c_lookup("postDirOpenHook"));
+  results_scm = scm_call_1(postDirOpenHook, scm_from_int(num_files));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
+preFileOpenHook() {
+  SCM preFileOpenHook;
+  SCM results_scm;
+  char *results;
+  preFileOpenHook = scm_variable_ref(scm_c_lookup("preFileOpenHook"));
+  results_scm = scm_call_1(preFileOpenHook, scm_from_locale_string(E.filename));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
+postFileOpenHook() {
+  SCM postFileOpenHook;
+  SCM results_scm;
+  char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
+  postFileOpenHook = scm_variable_ref(scm_c_lookup("postFileOpenHook"));
+  results_scm = scm_call_1(postFileOpenHook, scm_from_locale_string(contents));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
 }
 
 void
@@ -920,6 +972,7 @@ editorOpen(char *filename) {
       // directory, so we use our `_true` function to accept all children.
       // The 4th param is a sort function. We are using alphasort, which is
       // provided by the GNU stdlib
+      preDirOpenHook();
       struct dirent **dits;
       int num_files = 0;
       num_files = scandir (E.filename, &dits, _true, alphasort);
@@ -937,9 +990,11 @@ editorOpen(char *filename) {
       } else {
         perror ("Error opening directory");
       }
+      postDirOpenHook(num_files);
       return;
     }
     else if( s.st_mode & S_IFREG ) {
+      preFileOpenHook();
       fp = fopen(filename, "r");
       if (!fp) {
         editorSetStatusMessage("Error opening specified file");
@@ -951,6 +1006,7 @@ editorOpen(char *filename) {
         }
         editorInsertRow(E.numrows, line, linelen);
       }
+      postFileOpenHook();
     }
     else {
         editorSetStatusMessage("Unknown object at filepath");
@@ -967,6 +1023,34 @@ editorOpen(char *filename) {
 }
 
 void
+editorPreSaveHook() {
+  SCM preSaveHook;
+  SCM results_scm;
+  char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
+  preSaveHook = scm_variable_ref(scm_c_lookup("preSaveHook"));
+  results_scm = scm_call_1(preSaveHook, scm_from_locale_string(contents));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
+editorPostSaveHook() {
+  SCM postSaveHook;
+  SCM results_scm;
+  char* results;
+  int len;
+  char *contents = editorRowsToString(&len);
+  postSaveHook = scm_variable_ref(scm_c_lookup("postSaveHook"));
+  results_scm = scm_call_1(postSaveHook, scm_from_locale_string(contents));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
 editorSave()
 {
   if (E.filename == NULL) {
@@ -978,6 +1062,7 @@ editorSave()
     editorSelectSyntaxHighlight();
   }
 
+  editorPreSaveHook();
   int len;
   char *buf = editorRowsToString(&len);
 
@@ -985,11 +1070,12 @@ editorSave()
   if (fd != -1) {
     if (ftruncate(fd, len) != -1) {
       if (write(fd, buf, len) == len) {
-	close(fd);
-	free(buf);
-	E.dirty = 0;
-	editorSetStatusMessage("%d bytes written to disk", len);
-	return;
+        close(fd);
+        free(buf);
+        E.dirty = 0;
+        editorSetStatusMessage("%d bytes written to disk", len);
+        editorPostSaveHook();
+        return;
       }
     }
     close(fd);
@@ -1490,9 +1576,26 @@ main(int argc, char *argv[])
 
   editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
 
+  // Initialize Guile
+  scm_init_guile();
+
+  // Load configuration script file
+  SCM init_func;
+  SCM notes_template_scm;
+  SCM readme_template_scm;
+
+  scm_c_primitive_load("/Users/zwick/.ze/zerc.scm");
+  init_func = scm_variable_ref(scm_c_lookup("ze_config"));
+  scm_call_0(init_func);
+
+  notes_template_scm = scm_variable_ref(scm_c_lookup("notes_template"));
+  notes_template = scm_to_locale_string(notes_template_scm);
+  readme_template_scm = scm_variable_ref(scm_c_lookup("readme_template"));
+  readme_template = scm_to_locale_string(readme_template_scm);  
+
   while (1) {
     editorRefreshScreen();
     editorProcessKeypress();
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
