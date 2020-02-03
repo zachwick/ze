@@ -36,6 +36,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <libguile.h>
 
 /*** defines ***/
 
@@ -43,8 +44,6 @@
 #define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
-#define NOTES_TEMPLATE_FILE "/Users/zwick/.ze/notes"
-#define README_TEMPLATE_FILE "/Users/zwick/.ze/readme"
 
 enum editorKey {
   ARROW_LEFT = CTRL_KEY('b'),
@@ -83,6 +82,9 @@ _true (const struct dirent *empty) {
 }
 
 /*** data ***/
+
+char* notes_template = "";
+char* readme_template = "";
 
 struct editorSyntax {
   char *filetype;
@@ -867,10 +869,10 @@ editorCloneTemplate() {
 
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
-    templateFile = fopen(NOTES_TEMPLATE_FILE, "r");
+    templateFile = fopen(notes_template, "r");
   } else if (strcasecmp(template, "r") == 0) {
     editorSetStatusMessage("Load README template");
-    templateFile = fopen(README_TEMPLATE_FILE, "r");
+    templateFile = fopen(readme_template, "r");
   } else {
     editorSetStatusMessage("Template not found");
     return;
@@ -1490,9 +1492,26 @@ main(int argc, char *argv[])
 
   editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
 
+  // Initialize Guile
+  scm_init_guile();
+
+  // Load configuration script file
+  SCM init_func;
+  SCM notes_template_scm;
+  SCM readme_template_scm;
+
+  scm_c_primitive_load("/Users/zwick/.ze/zerc.scm");
+  init_func = scm_variable_ref(scm_c_lookup("ze_config"));
+  scm_call_0(init_func);
+
+  notes_template_scm = scm_variable_ref(scm_c_lookup("notes_template"));
+  notes_template = scm_to_locale_string(notes_template_scm);
+  readme_template_scm = scm_variable_ref(scm_c_lookup("readme_template"));
+  readme_template = scm_to_locale_string(readme_template_scm);  
+
   while (1) {
     editorRefreshScreen();
     editorProcessKeypress();
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
