@@ -923,6 +923,13 @@ postDirOpenHook(int num_files) {
 
 void
 preFileOpenHook() {
+  SCM preFileOpenHook;
+  SCM results_scm;
+  char *results;
+  preFileOpenHook = scm_variable_ref(scm_c_lookup("preFileOpenHook"));
+  results_scm = scm_call_1(preFileOpenHook, scm_from_locale_string(E.filename));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
   return;
 }
 
@@ -1006,7 +1013,8 @@ editorOpen(char *filename) {
   E.dirty = 0;
 }
 
-void editorPreSaveHook() {
+void
+editorPreSaveHook() {
   SCM preSaveHook;
   SCM results_scm;
   char* results;
@@ -1019,7 +1027,8 @@ void editorPreSaveHook() {
   return;
 }
 
-void editorPostSaveHook() {
+void
+editorPostSaveHook() {
   SCM postSaveHook;
   SCM results_scm;
   char* results;
