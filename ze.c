@@ -898,6 +898,33 @@ editorCloneTemplate() {
 }
 
 void
+preDirOpenHook() {
+  SCM preDirOpenHook;
+  SCM results_scm;
+  char* results;
+  preDirOpenHook = scm_variable_ref(scm_c_lookup("preDirOpenHook"));
+  results_scm = scm_call_1(preDirOpenHook, scm_from_locale_string(E.filename));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
+  return;
+}
+
+void
+postDirOpenHook() {
+  return;
+}
+
+void
+preFileOpenHook() {
+  return;
+}
+
+void
+postFileOpenHook() {
+  return;
+}
+
+void
 editorOpen(char *filename) {
   if (filename == NULL) {
     filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
@@ -922,6 +949,7 @@ editorOpen(char *filename) {
       // directory, so we use our `_true` function to accept all children.
       // The 4th param is a sort function. We are using alphasort, which is
       // provided by the GNU stdlib
+      preDirOpenHook();
       struct dirent **dits;
       int num_files = 0;
       num_files = scandir (E.filename, &dits, _true, alphasort);
@@ -939,9 +967,11 @@ editorOpen(char *filename) {
       } else {
         perror ("Error opening directory");
       }
+      postDirOpenHook();
       return;
     }
     else if( s.st_mode & S_IFREG ) {
+      preFileOpenHook();
       fp = fopen(filename, "r");
       if (!fp) {
         editorSetStatusMessage("Error opening specified file");
@@ -953,6 +983,7 @@ editorOpen(char *filename) {
         }
         editorInsertRow(E.numrows, line, linelen);
       }
+      postFileOpenHook();
     }
     else {
         editorSetStatusMessage("Unknown object at filepath");
