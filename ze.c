@@ -910,7 +910,14 @@ preDirOpenHook() {
 }
 
 void
-postDirOpenHook() {
+postDirOpenHook(int num_files) {
+  SCM postDirOpenHook;
+  SCM results_scm;
+  char *results;
+  postDirOpenHook = scm_variable_ref(scm_c_lookup("postDirOpenHook"));
+  results_scm = scm_call_1(postDirOpenHook, scm_from_int(num_files));
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);
   return;
 }
 
@@ -967,7 +974,7 @@ editorOpen(char *filename) {
       } else {
         perror ("Error opening directory");
       }
-      postDirOpenHook();
+      postDirOpenHook(num_files);
       return;
     }
     else if( s.st_mode & S_IFREG ) {
