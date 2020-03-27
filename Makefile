@@ -13,9 +13,18 @@ ze.o: ze.c
 test: build
 	valgrind --leak-check=full --show-leak-kinds=all ./ze ze.c
 
+debug: debug.o
+	$(CC) $< -o $@ -Wall $(LIBS) -g
+
+debug.o: ze.c
+	$(CC) -std=c99 -c $< -o $@  -Wall -Wextra -pedantic $(CFLAGS) -g
+
 install: build
 	rm -f $(INSTALL_LOC)/ze
 	cp ze $(INSTALL_LOC)/ze
 
 clean:
 	rm ze
+	rm ze.o
+	rm debug
+	rm debug.o

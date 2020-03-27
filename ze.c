@@ -952,10 +952,13 @@ editorOpen(char *filename) {
   if (filename == NULL) {
     filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
     initEditor();
-  } else if (E.filename != NULL) {
+  }
+  if (E.filename != NULL) {
     free(E.filename);
   }
-
+  
+  // When invoking ze with a file to open (`ze file`), strdup is causing
+  // a segfault
   E.filename = strdup(filename);
   editorSelectSyntaxHighlight();
 
