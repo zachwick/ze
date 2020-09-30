@@ -65,7 +65,61 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 
 ## Advanced Usage
 
+### Guile Hooks
+
 Put something about the various guile hooks and how to use them here.
+
+### Templates
+
+To add a new template, you must make changes in three places in `ze.c` and one place in your `zerc.scm` configuration file.
+
+First, in `ze.c`, you must define a global variable of type char* that is initialized to an empty string. This variable should probably have a name like "my_new_template" or something similarly self-documenting. If we're adding an email template for instance, I'd add the following around line 90 in `ze.c` (where `notes_template` and `readme_template` are defined)
+
+```c
+char* email_template = "";
+```
+
+Next, you must also add your new template as an option in the `editorCloneTemplate` method in `ze.c`. You should do this by adding your new template as an option in the prompt, and by adding a new "else if" block to the large if/elseif/else block in that method. Continuing the example of adding an email template, I'd replace the line around line 871 that currently reads
+
+```c
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme ", NULL);
+```
+with a new prompt that includes the new email template:
+
+```c
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme | (E)mail", NULL);
+```
+
+The "else if" block that needs to be added after the last "else if" but before the final "else" blockk would then look like the following:
+
+```c
+ else if (strcasecmp(template, "e") == 0) {
+    editorSetStatusMessage("Load Email template");
+    templateFile = fopen(email_template, "r");
+  }
+```
+
+Note that `email_template` here should match whatever you named your global varible in the first step.
+
+The actual filepath to your new template file is defined in your `zerc.scm` configuration file. You'll need to define a Guile variable that is a string of the path of your template file. To do this, you need to add a line like the following to youz `zerc.scm` file and ensure that the stringified path is correct.
+
+```
+(define email_template '"/Users/zwick/.ze/templates/email")
+```
+
+Finally, the last edit to make will be in the `main` method defined in `ze.c`. You'll need to write the three lines of C code that read in the Guile variable that you defined in your `zerc.scm` configuration file which contains the filepath of your new template. To do this, you'll first need to define a new variable of type `SCM` to hold Guile variable read from your `zerc.scm` configuration file.
+
+```c
+SCM email_template_scm;
+```
+
+You'll then need to write the two lines of C code that can read the Guile code and convert it into the correct C type.
+
+```c
+email_template_scm = scm_variable_ref(scm_c_lookup("email_template"));email_template = scm_to_locale_string(email_template_scm);  
+```
+
+After you've made these four changes, you can simply invoke `make install` to build and install your new version of ze that contains your new template.
 
 ## License
 

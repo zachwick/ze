@@ -83,6 +83,9 @@ _true (const struct dirent *empty) {
 
 /*** data ***/
 
+// If you are adding additional templates, make sure to define a new variable
+// here, and load the relevant Guile variable from your zerc.scm config file
+// by adding the needed two lines in the `main` method.
 char* notes_template = "";
 char* readme_template = "";
 
@@ -1585,6 +1588,10 @@ main(int argc, char *argv[])
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
 
+  // If you want to add additional templates, you'll want to make sure to add
+  // the appropriate lines here, and add your new template to the selection
+  // list in the editorCloneTemplate method and define a global variable of
+  // type char* similar to how notes_template and readme_template are defined.
   notes_template_scm = scm_variable_ref(scm_c_lookup("notes_template"));
   notes_template = scm_to_locale_string(notes_template_scm);
   readme_template_scm = scm_variable_ref(scm_c_lookup("readme_template"));
