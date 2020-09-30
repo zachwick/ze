@@ -1570,9 +1570,6 @@ main(int argc, char *argv[])
 {
   enableRawMode();
   initEditor();
-  if (argc >= 2) {
-    editorOpen(argv[1]);
-  }
 
   editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
 
@@ -1592,6 +1589,10 @@ main(int argc, char *argv[])
   notes_template = scm_to_locale_string(notes_template_scm);
   readme_template_scm = scm_variable_ref(scm_c_lookup("readme_template"));
   readme_template = scm_to_locale_string(readme_template_scm);  
+
+  if (argc >= 2) {
+    editorOpen(argv[1]);
+  }
 
   while (1) {
     editorRefreshScreen();
