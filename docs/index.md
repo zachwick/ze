@@ -29,6 +29,7 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 | CTRL-h | delete character | Deletes the character at the cursor's position. |
 
 ### Moving the cursor
+
 | chord | name | description |
 | -- | -- | -- |
 | CTRL-p | move cursor up | Moves the cursor up one line and either in the same column or the right-most column if the previous line does not contain a character in the original column. |
