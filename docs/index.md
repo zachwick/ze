@@ -2,14 +2,38 @@
 
 ze - a simple extensible text editor
 
+ze is a very simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift. 
+
 ## Installation
 
-(This section needs fleshed out, but at a high level, the steps are:)
-- Install dependencies (guile)
-- clone the repo
-- edit zerc.scm path
-- copy zerc.scm to ~/.ze
-- make install
+First, you must install GNU Guile (and its related libraries) on your system. You can follow the [official installation instructions](https://www.gnu.org/software/guile/download/) or by simply doing 
+
+```
+brew install guile
+```
+
+if you are using macOS.
+
+Next, you must clone the repo. This is usually done by something like
+
+```
+git clone git@github.com:zachwick/ze
+```
+
+Once you have a local clone of the repo, you must edit the path supplied to `scm_c_primitive_load` in the `main` method to match wherever your local `zerc.scm` configuration file is located. A common practice is to copy the example configuration file from the repo into a `.ze` directory in your home directory. You can do this by the following:
+
+```
+mkdir ~/.ze
+cp path/to/local/clone/zerc.scm ~/.ze/
+```
+
+You should also copy the example file templates into this newly created `~/.ze` directory, and ensure that the paths for those templates in your `zerc.scm` match wherever you put the template files.
+
+```
+cp -R templates ~/.ze/templates
+```
+
+Finally, simply invoke `make install` to build ze and put the resulting binary in your PATH.
 
 ## CLI Usage
 
