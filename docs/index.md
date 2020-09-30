@@ -67,7 +67,14 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 
 ### Guile Hooks
 
-Put something about the various guile hooks and how to use them here.
+| guile function |  returns | description |
+| -- | -- | -- |
+| preSaveHook | string | called prior to writing buffer to file. |
+| postSaveHook | string | called after writing buffer to file. |
+| preDirOpenHook | string | called prior to opening a directory in ze. |
+| postDirOpenHook | string | called after opening a directory in ze. |
+| preFileOpenHook | string | called prior to opening a file into a buffer. |
+| postFileOpenHook | string | called after opening a file into a buffer. |
 
 ### Templates
 
