@@ -869,7 +869,7 @@ editorRowsToString(int *buflen)
 void
 editorCloneTemplate() {
   FILE *templateFile = NULL;
-  char *template = editorPrompt("Select Template: (N)otes | (R)eadme ", NULL);
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme %s", NULL);
 
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
@@ -954,7 +954,7 @@ postFileOpenHook() {
 void
 editorOpen(char *filename) {
   if (filename == NULL) {
-    filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
+    filename = editorPrompt("Path to open: (ESC to cancel) %s", NULL);
     initEditor();
   } else if (E.filename != NULL) {
     free(E.filename);
@@ -1058,7 +1058,7 @@ void
 editorSave()
 {
   if (E.filename == NULL) {
-    E.filename = editorPrompt("Save as: %s (ESC to cancel)", NULL);
+    E.filename = editorPrompt("Save as: (ESC to cancel) %s", NULL);
     if (E.filename == NULL) {
       editorSetStatusMessage("Save aborted");
       return;
@@ -1155,7 +1155,7 @@ editorFind()
   int saved_coloff = E.coloff;
   int saved_rowoff = E.rowoff;
 
-  char *query = editorPrompt("Search: %s (use ESC/Arrows/Enter)", editorFindCallback);
+  char *query = editorPrompt("Search: %s", editorFindCallback);
   if (query) {
     free(query);
   } else {
@@ -1394,27 +1394,27 @@ editorPrompt(char *prompt, void (*callback)(char *, int))
     int c = editorReadKey();
     if (/*c == DEL_KEY ||*/ c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) {
-	buf[--buflen] = '\0';
+	      buf[--buflen] = '\0';
       }
     } else if (c == '\x1b') {
       editorSetStatusMessage("");
       if (callback) {
-	callback(buf, c);
+	      callback(buf, c);
       }
       free(buf);
       return NULL;
     } else if (c == '\r') {
       if (buflen != 0) {
-	editorSetStatusMessage("");
-	if (callback) {
-	  callback(buf, c);
-	}
-	return buf;
+	      editorSetStatusMessage("");
+	      if (callback) {
+	        callback(buf, c);
+	      }
+	      return buf;
       }
     } else if (!iscntrl(c) && c < 128) {
       if (buflen == bufsize - 1) {
-	bufsize *= 2;
-	buf = realloc(buf, bufsize);
+	       bufsize *= 2;
+	       buf = realloc(buf, bufsize);
       }
       buf[buflen++] = c;
       buf[buflen] = '\0';
