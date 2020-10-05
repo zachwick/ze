@@ -120,7 +120,7 @@ struct editorConfig {
   erow *row;
   int dirty;
   char *filename;
-  char statusmsg[100];
+  char statusmsg[150];
   time_t statusmsg_time;
   struct editorSyntax *syntax;
   struct termios orig_termios;
@@ -267,6 +267,7 @@ struct editorSyntax HLDB[] = {
 /*** prototypes ***/
 
 void editorSetStatusMessage(const char *fmt, ...);
+SCM scmEditorSetStatusMessage(SCM message);
 void editorRefreshScreen();
 char *editorPrompt(char *prompt, void (*callback)(char *, int));
 void initEditor();
@@ -868,7 +869,7 @@ editorRowsToString(int *buflen)
 void
 editorCloneTemplate() {
   FILE *templateFile = NULL;
-  char *template = editorPrompt("Select Template: (N)otes | (R)eadme ", NULL);
+  char *template = editorPrompt("Select Template: (N)otes | (R)eadme %s", NULL);
 
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
@@ -953,7 +954,7 @@ postFileOpenHook() {
 void
 editorOpen(char *filename) {
   if (filename == NULL) {
-    filename = editorPrompt("Path to open: %s (ESC to cancel)", NULL);
+    filename = editorPrompt("Path to open: (ESC to cancel) %s", NULL);
     initEditor();
   } else if (E.filename != NULL) {
     free(E.filename);
@@ -1057,7 +1058,7 @@ void
 editorSave()
 {
   if (E.filename == NULL) {
-    E.filename = editorPrompt("Save as: %s (ESC to cancel)", NULL);
+    E.filename = editorPrompt("Save as: (ESC to cancel) %s", NULL);
     if (E.filename == NULL) {
       editorSetStatusMessage("Save aborted");
       return;
@@ -1085,6 +1086,18 @@ editorSave()
   }
   free(buf);
   editorSetStatusMessage("Can't save! I/O error: %s", strerror(errno));
+}
+
+void editorExec()
+{
+  char *command;
+  SCM results_scm;
+  char *results;
+
+  command = editorPrompt("scheme@(guile-user)> %s", NULL);
+  results_scm = scm_c_eval_string(command);
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);  
 }
 
 /*** find ***/
@@ -1154,7 +1167,7 @@ editorFind()
   int saved_coloff = E.coloff;
   int saved_rowoff = E.rowoff;
 
-  char *query = editorPrompt("Search: %s (use ESC/Arrows/Enter)", editorFindCallback);
+  char *query = editorPrompt("Search: %s", editorFindCallback);
   if (query) {
     free(query);
   } else {
@@ -1365,6 +1378,16 @@ editorSetStatusMessage(const char *fmt, ...)
   E.statusmsg_time = time(NULL);
 }
 
+SCM
+scmEditorSetStatusMessage(SCM message)
+{
+  va_list ap;
+  char *fmt = scm_to_locale_string(message);
+  vsnprintf(E.statusmsg, sizeof(E.statusmsg), fmt, ap);
+  va_end(ap);
+  E.statusmsg_time = time(NULL);
+}
+
 /*** input ***/
 
 char*
@@ -1383,27 +1406,27 @@ editorPrompt(char *prompt, void (*callback)(char *, int))
     int c = editorReadKey();
     if (/*c == DEL_KEY ||*/ c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) {
-	buf[--buflen] = '\0';
+	      buf[--buflen] = '\0';
       }
     } else if (c == '\x1b') {
       editorSetStatusMessage("");
       if (callback) {
-	callback(buf, c);
+	      callback(buf, c);
       }
       free(buf);
       return NULL;
     } else if (c == '\r') {
       if (buflen != 0) {
-	editorSetStatusMessage("");
-	if (callback) {
-	  callback(buf, c);
-	}
-	return buf;
+	      editorSetStatusMessage("");
+	      if (callback) {
+	        callback(buf, c);
+	      }
+	      return buf;
       }
     } else if (!iscntrl(c) && c < 128) {
       if (buflen == bufsize - 1) {
-	bufsize *= 2;
-	buf = realloc(buf, bufsize);
+	       bufsize *= 2;
+	       buf = realloc(buf, bufsize);
       }
       buf[buflen++] = c;
       buf[buflen] = '\0';
@@ -1485,6 +1508,9 @@ editorProcessKeypress()
 		break;
   case CTRL_KEY('w'):
     editorSave();
+    break;
+  case CTRL_KEY('x'):
+    editorExec();
     break;
   case HOME_KEY:
     E.cx = 0;
@@ -1574,7 +1600,7 @@ main(int argc, char *argv[])
   enableRawMode();
   initEditor();
 
-  editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
+  editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-x guile | C-q = quit");
 
   // Initialize Guile
   scm_init_guile();
@@ -1587,6 +1613,7 @@ main(int argc, char *argv[])
   scm_c_primitive_load("/Users/zwick/.ze/zerc.scm");
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
+  scm_c_define_gsubr("set-editor-status", 1, 0, 0, &scmEditorSetStatusMessage);
 
   // If you want to add additional templates, you'll want to make sure to add
   // the appropriate lines here, and add your new template to the selection
