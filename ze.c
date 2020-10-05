@@ -120,7 +120,7 @@ struct editorConfig {
   erow *row;
   int dirty;
   char *filename;
-  char statusmsg[100];
+  char statusmsg[150];
   time_t statusmsg_time;
   struct editorSyntax *syntax;
   struct termios orig_termios;
@@ -1088,6 +1088,18 @@ editorSave()
   editorSetStatusMessage("Can't save! I/O error: %s", strerror(errno));
 }
 
+void editorExec()
+{
+  char *command;
+  SCM results_scm;
+  char *results;
+
+  command = editorPrompt("scheme@(guile-user)> %s", NULL);
+  results_scm = scm_c_eval_string(command);
+  results = scm_to_locale_string(results_scm);
+  editorSetStatusMessage(results);  
+}
+
 /*** find ***/
 
 void
@@ -1497,6 +1509,9 @@ editorProcessKeypress()
   case CTRL_KEY('w'):
     editorSave();
     break;
+  case CTRL_KEY('x'):
+    editorExec();
+    break;
   case HOME_KEY:
     E.cx = 0;
     break;
@@ -1585,7 +1600,7 @@ main(int argc, char *argv[])
   enableRawMode();
   initEditor();
 
-  editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-q = quit");
+  editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-x guile | C-q = quit");
 
   // Initialize Guile
   scm_init_guile();
