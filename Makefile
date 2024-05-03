@@ -21,3 +21,4 @@ install: build
 
 clean:
 	rm ze
+	rm ze.o
