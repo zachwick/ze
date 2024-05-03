@@ -1,6 +1,8 @@
 INSTALL_LOC = /usr/local/bin
-CFLAGS = `guile-config compile`
-LIBS = `guile-config link`
+CFLAGS = `pkg-config --cflags guile-3.0`
+LIBS = `pkg-config --libs guile-3.0`
+
+all: ze
 
 build: ze
 

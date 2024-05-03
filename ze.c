@@ -128,6 +128,12 @@ struct editorConfig {
 
 struct editorConfig E;
 
+struct abuf {
+    char *b;
+    int len;
+};
+
+#define ABUF_INIT {NULL, 0}
 /*** filetypes ***/
 
 char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
@@ -267,10 +273,55 @@ struct editorSyntax HLDB[] = {
 /*** prototypes ***/
 
 void editorSetStatusMessage(const char *fmt, ...);
-SCM scmEditorSetStatusMessage(SCM message);
-void editorRefreshScreen();
+void scmEditorSetStatusMessage(SCM message);
+void editorRefreshScreen(void);
 char *editorPrompt(char *prompt, void (*callback)(char *, int));
-void initEditor();
+void initEditor(void);
+void die(const char *s);
+void disableRawMode(void);
+void enableRawMode(void);
+char editorReadKey(void);
+int getCursorPosition(int *rows, int *cols);
+int getWindowSize(int *rows, int *cols);
+int is_separator(int c);
+void editorUpdateSyntax(erow *row);
+int editorSyntaxToColor(int hl);
+void editorSelectSyntaxHighlight(void);
+int editorRowCxToRx(erow *row, int cx);
+int editorRowRxToCx(erow *row, int rx);
+void editorUpdateRow(erow *row);
+void editorInsertRow(int at, char *s, size_t len);
+void editorFreeRow(erow *row);
+void editorDelRow(int at);
+void editorRowInsertChar(erow *row, int at, int c);
+void editorRowAppendString(erow *row, char *s, size_t len);
+void editorRowDelChar(erow *row, int at);
+void editorDelRowAtChar(erow *row, int at);
+void editorInsertChar(int c);
+void editorInsertTimestamp(void);
+void editorInsertNewline(void);
+void editorDelChar(void);
+char* editorRowsToString(int *buflen);
+void editorCloneTemplate(void);
+void preDirOpenHook(void);
+void postDirOpenHook(int num_files);
+void preFileOpenHook(void);
+void editorOpen(char *filename);
+void postFileOpenHook(void);
+void editorPreSaveHook(void);
+void editorPostSaveHook(void);
+void editorSave(void);
+void editorExec(void);
+void editorFindCallback(char *query, int key);
+void editorFind(void);
+void abAppend(struct abuf *ab, const char *s, int len);
+void abFree(struct abuf *ab);
+void editorScroll(void);
+void editorDrawRows(struct abuf *ab);
+void editorDrawStatusBar(struct abuf *ab);
+void editorDrawMessageBar(struct abuf *ab);
+void editorMoveCursor(char key);
+void editorProcessKeypress(void);
 
 /*** terminal ***/
 
@@ -285,7 +336,7 @@ die(const char *s)
 }
 
 void
-disableRawMode()
+disableRawMode(void)
 {
   if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &E.orig_termios) == -1) {
     die("tcsetattr");
@@ -293,7 +344,7 @@ disableRawMode()
 }
 
 void
-enableRawMode()
+enableRawMode(void)
 {
   if (tcgetattr(STDIN_FILENO, &E.orig_termios) == -1) {
     die("tcgetattr");
@@ -314,7 +365,7 @@ enableRawMode()
 }
 
 char
-editorReadKey()
+editorReadKey(void)
 {
   int nread;
   char c;
@@ -570,7 +621,7 @@ editorSyntaxToColor(int hl)
 }
 
 void
-editorSelectSyntaxHighlight()
+editorSelectSyntaxHighlight(void)
 {
   E.syntax = NULL;
   if (E.filename == NULL) {
@@ -788,7 +839,7 @@ editorInsertChar(int c)
 }
 
 void
-editorInsertTimestamp()
+editorInsertTimestamp(void)
 {
   time_t timer;
   char buffer[26];
@@ -805,7 +856,7 @@ editorInsertTimestamp()
 }
 
 void
-editorInsertNewline()
+editorInsertNewline(void)
 {
   if (E.cx == 0) {
     editorInsertRow(E.cy, "", 0);
@@ -822,7 +873,7 @@ editorInsertNewline()
 }
 
 void
-editorDelChar()
+editorDelChar(void)
 {
   if (E.cy == E.numrows) {
     return;
@@ -867,7 +918,7 @@ editorRowsToString(int *buflen)
 }
 
 void
-editorCloneTemplate() {
+editorCloneTemplate(void) {
   FILE *templateFile = NULL;
   char *template = editorPrompt("Select Template: (N)otes | (R)eadme %s", NULL);
 
@@ -902,7 +953,7 @@ editorCloneTemplate() {
 }
 
 void
-preDirOpenHook() {
+preDirOpenHook(void) {
   SCM preDirOpenHook;
   SCM results_scm;
   char* results;
@@ -922,11 +973,10 @@ postDirOpenHook(int num_files) {
   results_scm = scm_call_1(postDirOpenHook, scm_from_int(num_files));
   results = scm_to_locale_string(results_scm);
   editorSetStatusMessage(results);
-  return;
 }
 
 void
-preFileOpenHook() {
+preFileOpenHook(void) {
   SCM preFileOpenHook;
   SCM results_scm;
   char *results;
@@ -934,11 +984,10 @@ preFileOpenHook() {
   results_scm = scm_call_1(preFileOpenHook, scm_from_locale_string(E.filename));
   results = scm_to_locale_string(results_scm);
   editorSetStatusMessage(results);
-  return;
 }
 
 void
-postFileOpenHook() {
+postFileOpenHook(void) {
   SCM postFileOpenHook;
   SCM results_scm;
   char* results;
@@ -1027,7 +1076,7 @@ editorOpen(char *filename) {
 }
 
 void
-editorPreSaveHook() {
+editorPreSaveHook(void) {
   SCM preSaveHook;
   SCM results_scm;
   char* results;
@@ -1041,7 +1090,7 @@ editorPreSaveHook() {
 }
 
 void
-editorPostSaveHook() {
+editorPostSaveHook(void) {
   SCM postSaveHook;
   SCM results_scm;
   char* results;
@@ -1055,7 +1104,7 @@ editorPostSaveHook() {
 }
 
 void
-editorSave()
+editorSave(void)
 {
   if (E.filename == NULL) {
     E.filename = editorPrompt("Save as: (ESC to cancel) %s", NULL);
@@ -1088,7 +1137,8 @@ editorSave()
   editorSetStatusMessage("Can't save! I/O error: %s", strerror(errno));
 }
 
-void editorExec()
+void
+editorExec(void)
 {
   char *command;
   SCM results_scm;
@@ -1160,7 +1210,7 @@ editorFindCallback(char *query, int key)
 }
 
 void
-editorFind()
+editorFind(void)
 {
   int saved_cx = E.cx;
   int saved_cy = E.cy;
@@ -1179,13 +1229,6 @@ editorFind()
 }
 
 /** append buffer ***/
-
-struct abuf {
-  char *b;
-  int len;
-};
-
-#define ABUF_INIT {NULL, 0}
 
 void
 abAppend(struct abuf *ab, const char *s, int len)
@@ -1210,7 +1253,7 @@ abFree(struct abuf *ab)
 /*** output ***/
 
 void
-editorScroll()
+editorScroll(void)
 {
   E.rx = 0;
   if (E.cy < E.numrows) {
@@ -1345,7 +1388,7 @@ editorDrawMessageBar(struct abuf *ab) {
 }
 
 void
-editorRefreshScreen()
+editorRefreshScreen(void)
 {
   editorScroll();
 
@@ -1378,7 +1421,7 @@ editorSetStatusMessage(const char *fmt, ...)
   E.statusmsg_time = time(NULL);
 }
 
-SCM
+void
 scmEditorSetStatusMessage(SCM message)
 {
   va_list ap;
@@ -1477,7 +1520,7 @@ editorMoveCursor(char key)
 }
 
 void
-editorProcessKeypress()
+editorProcessKeypress(void)
 {
   static int quit_times = ZE_QUIT_TIMES;
   char c = editorReadKey();
@@ -1573,7 +1616,7 @@ editorProcessKeypress()
 /*** init ***/
 
 void
-initEditor()
+initEditor(void)
 {
   E.cx = 0;
   E.cy = 0;
@@ -1610,7 +1653,7 @@ main(int argc, char *argv[])
   SCM notes_template_scm;
   SCM readme_template_scm;
 
-  scm_c_primitive_load("/Users/zwick/.ze/zerc.scm");
+  scm_c_primitive_load("/Users/zach/.ze/zerc.scm");
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
   scm_c_define_gsubr("set-editor-status", 1, 0, 0, &scmEditorSetStatusMessage);
