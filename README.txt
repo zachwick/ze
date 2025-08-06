@@ -1,1 +1,0 @@
-ze - zwick's editor
