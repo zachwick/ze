@@ -10,7 +10,7 @@ ze: ze.o
 	$(CC) $< -o $@ -Wall $(LIBS)
 
 ze.o: ze.c
-	$(CC) -std=c99 -c $< -o $@  -Wall -Wextra -pedantic $(CFLAGS)
+	$(CC) -std=c11 -c $< -o $@  -Wall -Wextra -pedantic $(CFLAGS)
 
 test: build
 	valgrind --leak-check=full --show-leak-kinds=all ./ze ze.c

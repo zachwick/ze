@@ -1424,10 +1424,10 @@ editorSetStatusMessage(const char *fmt, ...)
 void
 scmEditorSetStatusMessage(SCM message)
 {
-  va_list ap;
   char *fmt = scm_to_locale_string(message);
-  vsnprintf(E.statusmsg, sizeof(E.statusmsg), fmt, ap);
-  va_end(ap);
+  strncpy(E.statusmsg, fmt, sizeof(E.statusmsg) - 1);
+  E.statusmsg[sizeof(E.statusmsg) - 1] = '\0';
+  free(fmt);
   E.statusmsg_time = time(NULL);
 }
 
@@ -1656,7 +1656,7 @@ main(int argc, char *argv[])
   scm_c_primitive_load("/Users/zach/.ze/zerc.scm");
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
-  scm_c_define_gsubr("set-editor-status", 1, 0, 0, &scmEditorSetStatusMessage);
+  scm_c_define_gsubr("set-editor-status", 1, 0, 0, (scm_t_subr)&scmEditorSetStatusMessage);
 
   // If you want to add additional templates, you'll want to make sure to add
   // the appropriate lines here, and add your new template to the selection
