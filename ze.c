@@ -945,6 +945,11 @@ editorCloneTemplate(void) {
   FILE *templateFile = NULL;
   char *template = editorPrompt("Select Template: (N)otes | (R)eadme %s", NULL);
 
+  if (template == NULL) {
+    editorSetStatusMessage("Template selection cancelled");
+    return;
+  }
+
   if (strcasecmp(template, "n") == 0) {
     editorSetStatusMessage("Load Notes template");
     templateFile = fopen(notes_template, "r");
@@ -1027,6 +1032,10 @@ void
 editorOpen(char *filename) {
   if (filename == NULL) {
     filename = editorPrompt("Path to open: (ESC to cancel) %s", NULL);
+    if (filename == NULL) {
+      editorSetStatusMessage("Open cancelled");
+      return;
+    }
     initEditor();
   } else if (E.filename != NULL) {
     free(E.filename);
@@ -1168,9 +1177,13 @@ editorExec(void)
   char *results;
 
   command = editorPrompt("scheme@(guile-user)> %s", NULL);
+  if (command == NULL) {
+    editorSetStatusMessage("Command cancelled");
+    return;
+  }
   results_scm = scm_c_eval_string(command);
   results = scm_to_locale_string(results_scm);
-  editorSetStatusMessage(results);  
+  editorSetStatusMessage(results);
 }
 
 /*** find ***/
