@@ -143,6 +143,7 @@ char *PHP_HL_extensions[] = {".php", NULL};
 char *Rust_HL_extensions[] = {".rs", NULL};
 char *APL_HL_extensions[] = {".apl", NULL};
 char *Swift_HL_extensions[] = {".swift", NULL};
+char *TypeScript_HL_extensions[] = {".ts", ".tsx", NULL};
 
 char *C_HL_keywords[] = {
   "switch", "if", "while", "for", "break", "continue", "return", "else",
@@ -216,6 +217,21 @@ char *Swift_HL_keywords[] = {
 
 };
 
+char *TypeScript_HL_keywords[] = {
+  "abstract", "any", "as", "async", "await", "boolean", "break", "case", "catch", "class",
+  "const", "constructor", "continue", "debugger", "declare", "default", "delete", "do",
+  "else", "enum", "export", "extends", "false", "finally", "for", "from", "function",
+  "get", "if", "implements", "import", "in", "instanceof", "interface", "let", "module",
+  "namespace", "new", "null", "number", "of", "package", "private", "protected", "public",
+  "return", "set", "static", "string", "super", "switch", "symbol", "this", "throw",
+  "true", "try", "type", "typeof", "undefined", "var", "void", "while", "with", "yield",
+
+  "Array|", "Boolean|", "Date|", "Error|", "Function|", "JSON|", "Math|", "Number|",
+  "Object|", "Promise|", "Proxy|", "RegExp|", "Set|", "String|", "Symbol|", "TypeError|",
+  "URIError|", "WeakMap|", "WeakSet|", "console|", "document|", "window|", "global|",
+  "process|", "require|", "module|", "exports|", "__dirname|", "__filename|", NULL
+};
+
 struct editorSyntax HLDB[] = {
   {
     "c",
@@ -263,6 +279,13 @@ struct editorSyntax HLDB[] = {
     "Swift",
     Swift_HL_extensions,
     Swift_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "TypeScript",
+    TypeScript_HL_extensions,
+    TypeScript_HL_keywords,
     "//", "/*", "*/",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
