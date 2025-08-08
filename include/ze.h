@@ -9,7 +9,7 @@
 #include <time.h>
 #include <termios.h>
 
-#define ZE_VERSION "0.0.1"
+#define ZE_VERSION "1.0.0"
 #define ZE_TAB_STOP 2
 #define ZE_QUIT_TIMES 1
 #define CTRL_KEY(k) ((k) & 0x1f)
