@@ -1,5 +1,5 @@
-(define notes_template '"/Users/zwick/.ze/templates/notes")
-(define readme_template '"/Users/zwick/.ze/templates/readme")
+(define notes_template '"/Users/zach/.ze/templates/notes")
+(define readme_template '"/Users/zach/.ze/templates/readme")
 
 (define ze_config
   (lambda ()
