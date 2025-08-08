@@ -20,7 +20,8 @@
                       (begin (set-line! i trimmed) (loop (+ i 1) (+ chg 1)))
                       (loop (+ i 1) chg)))))))
     (when (> changes 0)
-      (save-file!))
+      (save-file!)
+      (refresh-screen!))
     (string-append "Formatted lines: " (number->string changes))) )
 
 
