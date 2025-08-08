@@ -79,6 +79,9 @@ $(function() {
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Program entry point and runtime initialization.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;libguile.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -97,32 +100,32 @@ Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c__incl.png" border="0" usemap="#asrc_2main_8c" alt=""/></div>
 <map name="asrc_2main_8c" id="asrc_2main_8c">
-<area shape="rect" title=" " alt="" coords="479,5,568,31"/>
+<area shape="rect" title="Program entry point and runtime initialization." alt="" coords="479,5,568,31"/>
 <area shape="rect" title=" " alt="" coords="24,152,106,177"/>
 <area shape="poly" title=" " alt="" coords="479,24,360,30,213,42,81,58,37,69,14,80,8,95,13,111,24,127,40,141,36,145,20,130,8,113,3,95,10,77,35,64,81,53,212,36,360,25,479,19"/>
 <area shape="rect" title=" " alt="" coords="776,79,842,104"/>
 <area shape="poly" title=" " alt="" coords="569,28,763,76,762,81,568,33"/>
 <area shape="rect" title=" " alt="" coords="867,79,938,104"/>
 <area shape="poly" title=" " alt="" coords="569,24,854,76,853,81,568,29"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="350,152,399,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="350,152,399,177"/>
 <area shape="poly" title=" " alt="" coords="479,25,448,30,416,40,386,57,362,80,356,94,356,109,364,139,359,140,350,109,351,92,358,77,383,52,414,35,447,25,478,19"/>
-<area shape="rect" href="terminal_8h.html" title=" " alt="" coords="371,79,460,104"/>
+<area shape="rect" href="terminal_8h.html" title="Raw terminal mode, key reading, and screen size utilities." alt="" coords="371,79,460,104"/>
 <area shape="poly" title=" " alt="" coords="508,33,446,73,443,69,505,28"/>
-<area shape="rect" href="status_8h.html" title=" " alt="" coords="130,79,205,104"/>
+<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="130,79,205,104"/>
 <area shape="poly" title=" " alt="" coords="479,30,219,81,218,76,478,25"/>
-<area shape="rect" href="render_8h.html" title=" " alt="" coords="677,79,752,104"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="677,79,752,104"/>
 <area shape="poly" title=" " alt="" coords="555,28,671,71,669,76,553,33"/>
-<area shape="rect" href="plugins_8h.html" title=" " alt="" coords="24,79,106,104"/>
+<area shape="rect" href="plugins_8h.html" title="Guile/Scheme plugin API and keybinding integration." alt="" coords="24,79,106,104"/>
 <area shape="poly" title=" " alt="" coords="479,28,324,49,120,81,119,76,323,43,478,22"/>
-<area shape="rect" href="search_8h.html" title=" " alt="" coords="485,79,562,104"/>
+<area shape="rect" href="search_8h.html" title="Incremental and interactive search utilities." alt="" coords="485,79,562,104"/>
 <area shape="poly" title=" " alt="" coords="526,31,526,65,521,65,521,31"/>
-<area shape="rect" href="fileio_8h.html" title=" " alt="" coords="586,79,653,104"/>
+<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="586,79,653,104"/>
 <area shape="poly" title=" " alt="" coords="541,29,594,68,591,72,538,33"/>
-<area shape="rect" href="init_8h.html" title=" " alt="" coords="962,79,1016,104"/>
+<area shape="rect" href="init_8h.html" title="Initialization of global editor state." alt="" coords="962,79,1016,104"/>
 <area shape="poly" title=" " alt="" coords="569,21,733,40,839,55,949,76,948,81,838,61,732,45,569,26"/>
-<area shape="rect" href="templates_8h.html" title=" " alt="" coords="1040,79,1140,104"/>
+<area shape="rect" href="templates_8h.html" title="External template file paths populated at runtime." alt="" coords="1040,79,1140,104"/>
 <area shape="poly" title=" " alt="" coords="569,21,764,42,1027,76,1027,81,763,47,568,26"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="229,79,296,104"/>
+<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="229,79,296,104"/>
 <area shape="poly" title=" " alt="" coords="482,33,310,80,308,75,481,28"/>
 <area shape="rect" title=" " alt="" coords="244,225,318,251"/>
 <area shape="poly" title=" " alt="" coords="361,179,309,219,306,215,358,175"/>
@@ -134,7 +137,7 @@ Include dependency graph for main.c:</div>
 <area shape="poly" title=" " alt="" coords="153,106,95,146,92,142,150,102"/>
 <area shape="poly" title=" " alt="" coords="202,101,338,148,336,153,200,107"/>
 <area shape="poly" title=" " alt="" coords="677,104,666,107,413,158,412,153,665,101,676,99"/>
-<area shape="rect" href="buffer_8h.html" title=" " alt="" coords="679,152,750,177"/>
+<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="679,152,750,177"/>
 <area shape="poly" title=" " alt="" coords="717,104,717,138,712,138,712,104"/>
 <area shape="poly" title=" " alt="" coords="68,104,68,138,62,138,62,104"/>
 <area shape="poly" title=" " alt="" coords="107,99,337,152,335,157,106,105"/>
@@ -146,39 +149,23 @@ Include dependency graph for main.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a979919615ca983efccb1209f1a39cf5a" id="r_a979919615ca983efccb1209f1a39cf5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a979919615ca983efccb1209f1a39cf5a">initEditor</a> (void)</td></tr>
-<tr class="separator:a979919615ca983efccb1209f1a39cf5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga979919615ca983efccb1209f1a39cf5a" id="r_ga979919615ca983efccb1209f1a39cf5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__init.html#ga979919615ca983efccb1209f1a39cf5a">initEditor</a> (void)</td></tr>
+<tr class="separator:ga979919615ca983efccb1209f1a39cf5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a1693fe4b42ef37f39f212ff968bae8" id="r_a0a1693fe4b42ef37f39f212ff968bae8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0a1693fe4b42ef37f39f212ff968bae8">notes_template</a> = &quot;&quot;</td></tr>
-<tr class="separator:a0a1693fe4b42ef37f39f212ff968bae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a979bee5cd42f1961ef57cc551a09d888" id="r_a979bee5cd42f1961ef57cc551a09d888"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a979bee5cd42f1961ef57cc551a09d888">readme_template</a> = &quot;&quot;</td></tr>
-<tr class="separator:a979bee5cd42f1961ef57cc551a09d888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a1693fe4b42ef37f39f212ff968bae8" id="r_ga0a1693fe4b42ef37f39f212ff968bae8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__templates.html#ga0a1693fe4b42ef37f39f212ff968bae8">notes_template</a> = &quot;&quot;</td></tr>
+<tr class="separator:ga0a1693fe4b42ef37f39f212ff968bae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga979bee5cd42f1961ef57cc551a09d888" id="r_ga979bee5cd42f1961ef57cc551a09d888"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__templates.html#ga979bee5cd42f1961ef57cc551a09d888">readme_template</a> = &quot;&quot;</td></tr>
+<tr class="separator:ga979bee5cd42f1961ef57cc551a09d888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a979919615ca983efccb1209f1a39cf5a" name="a979919615ca983efccb1209f1a39cf5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a979919615ca983efccb1209f1a39cf5a">&#9670;&#160;</a></span>initEditor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void initEditor </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Program entry point and runtime initialization. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
 
@@ -201,49 +188,6 @@ Variables</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0a1693fe4b42ef37f39f212ff968bae8" name="a0a1693fe4b42ef37f39f212ff968bae8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a1693fe4b42ef37f39f212ff968bae8">&#9670;&#160;</a></span>notes_template</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* notes_template = &quot;&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a979bee5cd42f1961ef57cc551a09d888" name="a979bee5cd42f1961ef57cc551a09d888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a979bee5cd42f1961ef57cc551a09d888">&#9670;&#160;</a></span>readme_template</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* readme_template = &quot;&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">

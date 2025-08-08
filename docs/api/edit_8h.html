@@ -78,14 +78,17 @@ $(function() {
   <div class="headertitle"><div class="title">edit.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Editing primitives (insert/delete/newline) operating on the buffer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for edit.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="edit_8h__incl.png" border="0" usemap="#ainclude_2edit_8h" alt=""/></div>
 <map name="ainclude_2edit_8h" id="ainclude_2edit_8h">
-<area shape="rect" title=" " alt="" coords="81,5,191,31"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="111,79,161,104"/>
+<area shape="rect" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="81,5,191,31"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="111,79,161,104"/>
 <area shape="poly" title=" " alt="" coords="139,31,139,65,133,65,133,31"/>
 <area shape="rect" title=" " alt="" coords="5,152,80,177"/>
 <area shape="poly" title=" " alt="" coords="123,106,70,146,67,141,119,102"/>
@@ -100,10 +103,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="edit_8h__dep__incl.png" border="0" usemap="#ainclude_2edit_8hdep" alt=""/></div>
 <map name="ainclude_2edit_8hdep" id="ainclude_2edit_8hdep">
-<area shape="rect" title=" " alt="" coords="55,5,165,31"/>
-<area shape="rect" href="input_8c.html" title=" " alt="" coords="5,79,95,104"/>
+<area shape="rect" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="55,5,165,31"/>
+<area shape="rect" href="input_8c.html" title="Prompt and keypress handling implementations." alt="" coords="5,79,95,104"/>
 <area shape="poly" title=" " alt="" coords="93,43,62,80,58,77,89,40"/>
-<area shape="rect" href="plugins_8c.html" title=" " alt="" coords="119,79,221,104"/>
+<area shape="rect" href="plugins_8c.html" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="119,79,221,104"/>
 <area shape="poly" title=" " alt="" coords="131,40,162,77,158,80,127,43"/>
 </map>
 </div>
@@ -112,89 +115,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa29057a4194fec0158f141b54518444a" id="r_aa29057a4194fec0158f141b54518444a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edit_8h.html#aa29057a4194fec0158f141b54518444a">editorInsertChar</a> (int c)</td></tr>
-<tr class="separator:aa29057a4194fec0158f141b54518444a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a206a32a190e3988f321384546d3a1710" id="r_a206a32a190e3988f321384546d3a1710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edit_8h.html#a206a32a190e3988f321384546d3a1710">editorInsertTimestamp</a> (void)</td></tr>
-<tr class="separator:a206a32a190e3988f321384546d3a1710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f684231e33ad611337fbe52ea910a47" id="r_a5f684231e33ad611337fbe52ea910a47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edit_8h.html#a5f684231e33ad611337fbe52ea910a47">editorInsertNewline</a> (void)</td></tr>
-<tr class="separator:a5f684231e33ad611337fbe52ea910a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa95d51659b9b1309d0778d7a832a8abb" id="r_aa95d51659b9b1309d0778d7a832a8abb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edit_8h.html#aa95d51659b9b1309d0778d7a832a8abb">editorDelChar</a> (void)</td></tr>
-<tr class="separator:aa95d51659b9b1309d0778d7a832a8abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa29057a4194fec0158f141b54518444a" id="r_gaa29057a4194fec0158f141b54518444a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#gaa29057a4194fec0158f141b54518444a">editorInsertChar</a> (int c)</td></tr>
+<tr class="separator:gaa29057a4194fec0158f141b54518444a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga206a32a190e3988f321384546d3a1710" id="r_ga206a32a190e3988f321384546d3a1710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#ga206a32a190e3988f321384546d3a1710">editorInsertTimestamp</a> (void)</td></tr>
+<tr class="separator:ga206a32a190e3988f321384546d3a1710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f684231e33ad611337fbe52ea910a47" id="r_ga5f684231e33ad611337fbe52ea910a47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#ga5f684231e33ad611337fbe52ea910a47">editorInsertNewline</a> (void)</td></tr>
+<tr class="separator:ga5f684231e33ad611337fbe52ea910a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa95d51659b9b1309d0778d7a832a8abb" id="r_gaa95d51659b9b1309d0778d7a832a8abb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#gaa95d51659b9b1309d0778d7a832a8abb">editorDelChar</a> (void)</td></tr>
+<tr class="separator:gaa95d51659b9b1309d0778d7a832a8abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aa95d51659b9b1309d0778d7a832a8abb" name="aa95d51659b9b1309d0778d7a832a8abb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa95d51659b9b1309d0778d7a832a8abb">&#9670;&#160;</a></span>editorDelChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorDelChar </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa29057a4194fec0158f141b54518444a" name="aa29057a4194fec0158f141b54518444a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa29057a4194fec0158f141b54518444a">&#9670;&#160;</a></span>editorInsertChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorInsertChar </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5f684231e33ad611337fbe52ea910a47" name="a5f684231e33ad611337fbe52ea910a47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f684231e33ad611337fbe52ea910a47">&#9670;&#160;</a></span>editorInsertNewline()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorInsertNewline </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a206a32a190e3988f321384546d3a1710" name="a206a32a190e3988f321384546d3a1710"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a206a32a190e3988f321384546d3a1710">&#9670;&#160;</a></span>editorInsertTimestamp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorInsertTimestamp </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Editing primitives (insert/delete/newline) operating on the buffer. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

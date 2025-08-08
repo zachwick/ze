@@ -75,7 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">buffer.c File Reference</div></div>
+  <div class="headertitle"><div class="title">buffer.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__buffer.html">Append buffer</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -89,77 +89,26 @@ Include dependency graph for buffer.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="buffer_8c__incl.png" border="0" usemap="#asrc_2buffer_8c" alt=""/></div>
 <map name="asrc_2buffer_8c" id="asrc_2buffer_8c">
-<area shape="rect" title=" " alt="" coords="89,5,182,31"/>
+<area shape="rect" title="Implementation of the append&#45;only output buffer." alt="" coords="89,5,182,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" title=" " alt="" coords="122,33,69,72,66,68,119,29"/>
 <area shape="rect" title=" " alt="" coords="100,79,171,104"/>
 <area shape="poly" title=" " alt="" coords="138,31,138,65,133,65,133,31"/>
-<area shape="rect" href="buffer_8h.html" title=" " alt="" coords="195,79,265,104"/>
+<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="195,79,265,104"/>
 <area shape="poly" title=" " alt="" coords="152,29,205,68,202,72,149,33"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9dd3715258f4c42aeb40ae92f51422e9" id="r_a9dd3715258f4c42aeb40ae92f51422e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8c.html#a9dd3715258f4c42aeb40ae92f51422e9">abAppend</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab, const char *s, int len)</td></tr>
-<tr class="separator:a9dd3715258f4c42aeb40ae92f51422e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa676d43ad5c715bcf8ec2c3b2df0f4e0" id="r_aa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8c.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0">abFree</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
-<tr class="separator:aa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dd3715258f4c42aeb40ae92f51422e9" id="r_ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#ga9dd3715258f4c42aeb40ae92f51422e9">abAppend</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab, const char *s, int len)</td></tr>
+<tr class="separator:ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa676d43ad5c715bcf8ec2c3b2df0f4e0" id="r_gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0">abFree</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
+<tr class="separator:gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a9dd3715258f4c42aeb40ae92f51422e9" name="a9dd3715258f4c42aeb40ae92f51422e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dd3715258f4c42aeb40ae92f51422e9">&#9670;&#160;</a></span>abAppend()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void abAppend </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structabuf.html">abuf</a> *&#160;</td>
-          <td class="paramname"><em>ab</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa676d43ad5c715bcf8ec2c3b2df0f4e0" name="aa676d43ad5c715bcf8ec2c3b2df0f4e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa676d43ad5c715bcf8ec2c3b2df0f4e0">&#9670;&#160;</a></span>abFree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void abFree </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structabuf.html">abuf</a> *&#160;</td>
-          <td class="paramname"><em>ab</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the append-only output buffer. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

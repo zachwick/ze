@@ -82,6 +82,9 @@ $(function() {
   <div class="headertitle"><div class="title">ze.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Core editor types, macros, and global state.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
 <code>#include &lt;termios.h&gt;</code><br />
@@ -90,7 +93,7 @@ Include dependency graph for ze.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ze_8h__incl.png" border="0" usemap="#ainclude_2ze_8h" alt=""/></div>
 <map name="ainclude_2ze_8h" id="ainclude_2ze_8h">
-<area shape="rect" title=" " alt="" coords="86,5,186,31"/>
+<area shape="rect" title="Core editor types, macros, and global state." alt="" coords="86,5,186,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,80,104"/>
 <area shape="poly" title=" " alt="" coords="123,33,70,72,67,68,119,29"/>
 <area shape="rect" title=" " alt="" coords="104,79,168,104"/>
@@ -104,50 +107,50 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ze_8h__dep__incl.png" border="0" usemap="#ainclude_2ze_8hdep" alt=""/></div>
 <map name="ainclude_2ze_8hdep" id="ainclude_2ze_8hdep">
-<area shape="rect" title=" " alt="" coords="1221,5,1321,31"/>
-<area shape="rect" href="edit_8h.html" title=" " alt="" coords="925,79,1036,104"/>
+<area shape="rect" title="Core editor types, macros, and global state." alt="" coords="1221,5,1321,31"/>
+<area shape="rect" href="edit_8h.html" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="925,79,1036,104"/>
 <area shape="poly" title=" " alt="" coords="1212,37,1028,81,1027,76,1211,31"/>
-<area shape="rect" href="input_8c.html" title=" " alt="" coords="651,152,740,177"/>
+<area shape="rect" href="input_8c.html" title="Prompt and keypress handling implementations." alt="" coords="651,152,740,177"/>
 <area shape="poly" title=" " alt="" coords="1208,25,927,44,793,61,747,70,722,81,710,97,702,116,698,152,692,152,697,115,705,94,719,77,746,65,793,55,926,39,1207,20"/>
-<area shape="rect" href="plugins_8c.html" title=" " alt="" coords="1121,152,1224,177"/>
+<area shape="rect" href="plugins_8c.html" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="1121,152,1224,177"/>
 <area shape="poly" title=" " alt="" coords="1258,44,1183,153,1178,150,1253,41"/>
-<area shape="rect" href="fileio_8h.html" title=" " alt="" coords="733,79,850,104"/>
+<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="733,79,850,104"/>
 <area shape="poly" title=" " alt="" coords="1208,31,851,84,850,79,1207,26"/>
-<area shape="rect" href="hooks_8c.html" title=" " alt="" coords="840,152,935,177"/>
+<area shape="rect" href="hooks_8c.html" title="Scheme hook invocation implementations." alt="" coords="840,152,935,177"/>
 <area shape="poly" title=" " alt="" coords="1208,25,1129,30,1042,41,965,57,935,68,914,81,902,97,895,116,890,152,885,151,890,114,897,94,911,77,933,63,963,52,1042,35,1129,25,1207,19"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="467,152,556,177"/>
+<area shape="rect" href="main_8c.html" title="Program entry point and runtime initialization." alt="" coords="467,152,556,177"/>
 <area shape="poly" title=" " alt="" coords="1208,23,962,29,637,40,348,57,253,69,224,75,210,81,200,94,197,106,198,115,205,124,231,139,272,149,373,160,467,162,466,167,373,165,271,154,229,144,201,128,193,117,191,105,196,92,207,77,222,70,252,63,348,52,637,35,962,24,1208,18"/>
-<area shape="rect" href="hooks_8h.html" title=" " alt="" coords="1456,79,1580,104"/>
+<area shape="rect" href="hooks_8h.html" title="Scheme hook integration points invoked during I/O events." alt="" coords="1456,79,1580,104"/>
 <area shape="poly" title=" " alt="" coords="1325,32,1479,76,1477,81,1323,37"/>
-<area shape="rect" href="fileio_8c.html" title=" " alt="" coords="1423,152,1511,177"/>
+<area shape="rect" href="fileio_8c.html" title="File and directory loading/saving implementation." alt="" coords="1423,152,1511,177"/>
 <area shape="poly" title=" " alt="" coords="1317,34,1356,52,1394,77,1434,115,1461,150,1457,153,1430,118,1391,81,1353,57,1315,39"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="1261,79,1380,104"/>
+<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="1261,79,1380,104"/>
 <area shape="poly" title=" " alt="" coords="1289,41,1315,77,1310,80,1285,44"/>
-<area shape="rect" href="search_8c.html" title=" " alt="" coords="1609,152,1707,177"/>
+<area shape="rect" href="search_8c.html" title="Interactive forward search implementation." alt="" coords="1609,152,1707,177"/>
 <area shape="poly" title=" " alt="" coords="1335,20,1565,40,1670,56,1707,66,1727,77,1733,88,1733,99,1722,120,1702,139,1680,154,1677,150,1698,135,1718,117,1728,98,1728,89,1723,81,1705,71,1669,61,1565,46,1335,26"/>
-<area shape="rect" href="plugins_8h.html" title=" " alt="" coords="221,79,353,104"/>
+<area shape="rect" href="plugins_8h.html" title="Guile/Scheme plugin API and keybinding integration." alt="" coords="221,79,353,104"/>
 <area shape="poly" title=" " alt="" coords="1208,24,849,43,610,59,366,81,354,83,353,77,366,76,609,54,849,38,1207,19"/>
-<area shape="rect" href="render_8h.html" title=" " alt="" coords="531,79,657,104"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="531,79,657,104"/>
 <area shape="poly" title=" " alt="" coords="1208,28,974,49,677,81,658,84,657,78,676,76,974,44,1208,22"/>
-<area shape="rect" href="row_8h.html" title=" " alt="" coords="1604,79,1712,104"/>
+<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="1604,79,1712,104"/>
 <area shape="poly" title=" " alt="" coords="1335,28,1604,77,1603,83,1334,34"/>
-<area shape="rect" href="edit_8c.html" title=" " alt="" coords="1912,152,1993,177"/>
+<area shape="rect" href="edit_8c.html" title="Editing primitives implementation." alt="" coords="1912,152,1993,177"/>
 <area shape="poly" title=" " alt="" coords="1335,17,1493,21,1688,31,1861,48,1920,61,1941,68,1953,77,1963,95,1966,116,1959,152,1954,151,1960,116,1958,97,1949,80,1938,73,1919,66,1860,54,1688,36,1493,27,1335,23"/>
-<area shape="rect" href="render_8c.html" title=" " alt="" coords="1791,152,1888,177"/>
+<area shape="rect" href="render_8c.html" title="Terminal rendering of buffer contents and UI." alt="" coords="1791,152,1888,177"/>
 <area shape="poly" title=" " alt="" coords="1335,18,1489,22,1677,32,1843,49,1900,61,1920,69,1932,77,1939,89,1939,101,1924,122,1897,140,1869,154,1867,150,1895,135,1920,118,1934,99,1934,90,1928,80,1917,73,1899,66,1842,54,1676,37,1489,27,1335,23"/>
-<area shape="rect" href="search_8h.html" title=" " alt="" coords="378,79,506,104"/>
+<area shape="rect" href="search_8h.html" title="Incremental and interactive search utilities." alt="" coords="378,79,506,104"/>
 <area shape="poly" title=" " alt="" coords="1208,26,910,45,715,61,518,81,507,83,506,77,518,76,715,56,909,40,1207,20"/>
-<area shape="rect" href="status_8h.html" title=" " alt="" coords="1061,79,1186,104"/>
+<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="1061,79,1186,104"/>
 <area shape="poly" title=" " alt="" coords="1237,39,1149,81,1146,76,1234,34"/>
-<area shape="rect" href="syntax_8h.html" title=" " alt="" coords="1788,79,1917,104"/>
+<area shape="rect" href="syntax_8h.html" title="Syntax highlighting engine and language selection." alt="" coords="1788,79,1917,104"/>
 <area shape="poly" title=" " alt="" coords="1335,24,1769,76,1788,78,1787,84,1768,81,1334,29"/>
-<area shape="rect" href="row_8c.html" title=" " alt="" coords="2017,152,2096,177"/>
+<area shape="rect" href="row_8c.html" title="Row manipulation and conversion implementations." alt="" coords="2017,152,2096,177"/>
 <area shape="poly" title=" " alt="" coords="1335,16,1483,18,1670,26,1764,34,1850,44,1922,58,1976,76,2001,92,2023,112,2052,150,2047,153,2019,116,1998,96,1974,81,1921,63,1849,49,1763,39,1670,31,1483,24,1335,22"/>
-<area shape="rect" href="terminal_8h.html" title=" " alt="" coords="5,79,145,104"/>
+<area shape="rect" href="terminal_8h.html" title="Raw terminal mode, key reading, and screen size utilities." alt="" coords="5,79,145,104"/>
 <area shape="poly" title=" " alt="" coords="1208,24,771,41,471,58,165,81,146,83,145,78,164,76,470,53,771,36,1207,18"/>
-<area shape="rect" href="status_8c.html" title=" " alt="" coords="2094,79,2190,104"/>
+<area shape="rect" href="status_8c.html" title="Status bar message helpers." alt="" coords="2094,79,2190,104"/>
 <area shape="poly" title=" " alt="" coords="1335,19,1654,37,1863,54,2076,76,2094,79,2093,84,2075,81,1863,59,1653,43,1335,25"/>
-<area shape="rect" href="syntax_8c.html" title=" " alt="" coords="2215,79,2315,104"/>
+<area shape="rect" href="syntax_8c.html" title="Syntax highlighting engine implementation." alt="" coords="2215,79,2315,104"/>
 <area shape="poly" title=" " alt="" coords="1335,18,1703,34,1951,51,2202,76,2215,78,2214,83,2202,81,1951,56,1703,39,1335,24"/>
 <area shape="poly" title=" " alt="" coords="922,110,741,155,739,150,921,105"/>
 <area shape="poly" title=" " alt="" coords="1025,106,1142,149,1140,154,1024,111"/>
@@ -184,7 +187,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="1899,106,2025,149,2023,154,1897,111"/>
 <area shape="poly" title=" " alt="" coords="159,100,651,156,650,161,159,105"/>
 <area shape="poly" title=" " alt="" coords="159,104,467,153,466,159,159,109"/>
-<area shape="rect" href="terminal_8c.html" title=" " alt="" coords="20,152,131,177"/>
+<area shape="rect" href="terminal_8c.html" title="Raw terminal mode helpers and key decoding." alt="" coords="20,152,131,177"/>
 <area shape="poly" title=" " alt="" coords="78,118,78,152,73,152,73,118"/>
 </map>
 </div>
@@ -202,286 +205,69 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a8fb447618db946a9e2a596d9ea18763f" id="r_a8fb447618db946a9e2a596d9ea18763f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a8fb447618db946a9e2a596d9ea18763f">_DEFAULT_SOURCE</a></td></tr>
-<tr class="separator:a8fb447618db946a9e2a596d9ea18763f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3d8a3bd0c0b677acef144f2c2ef6d73" id="r_ad3d8a3bd0c0b677acef144f2c2ef6d73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#ad3d8a3bd0c0b677acef144f2c2ef6d73">_BSD_SOURCE</a></td></tr>
-<tr class="separator:ad3d8a3bd0c0b677acef144f2c2ef6d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a369266c24eacffb87046522897a570d5" id="r_a369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a369266c24eacffb87046522897a570d5">_GNU_SOURCE</a></td></tr>
-<tr class="separator:a369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab9f398d3779bdd51ccf5ebb89f18039" id="r_aab9f398d3779bdd51ccf5ebb89f18039"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#aab9f398d3779bdd51ccf5ebb89f18039">ZE_VERSION</a>&#160;&#160;&#160;&quot;1.0.0&quot;</td></tr>
-<tr class="separator:aab9f398d3779bdd51ccf5ebb89f18039"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad22aadf3eb055f36d0d19c482c66966d" id="r_ad22aadf3eb055f36d0d19c482c66966d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#ad22aadf3eb055f36d0d19c482c66966d">ZE_TAB_STOP</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ad22aadf3eb055f36d0d19c482c66966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacc0ba0408b614aed441527f029ed27c" id="r_aacc0ba0408b614aed441527f029ed27c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#aacc0ba0408b614aed441527f029ed27c">ZE_QUIT_TIMES</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:aacc0ba0408b614aed441527f029ed27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ad38d024c3548be5f50d7fc0679664a" id="r_a6ad38d024c3548be5f50d7fc0679664a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a6ad38d024c3548be5f50d7fc0679664a">CTRL_KEY</a>(k)&#160;&#160;&#160;((k) &amp; 0x1f)</td></tr>
-<tr class="separator:a6ad38d024c3548be5f50d7fc0679664a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4c528a8ea0afe3198c84d13dfb41ab" id="r_a8f4c528a8ea0afe3198c84d13dfb41ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a8f4c528a8ea0afe3198c84d13dfb41ab">HL_HIGHLIGHT_NUMBERS</a>&#160;&#160;&#160;(1&lt;&lt;0)</td></tr>
-<tr class="separator:a8f4c528a8ea0afe3198c84d13dfb41ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad153e738bdfb1a7e4406bb630231e894" id="r_ad153e738bdfb1a7e4406bb630231e894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#ad153e738bdfb1a7e4406bb630231e894">HL_HIGHLIGHT_STRINGS</a>&#160;&#160;&#160;(1&lt;&lt;1)</td></tr>
-<tr class="separator:ad153e738bdfb1a7e4406bb630231e894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fb447618db946a9e2a596d9ea18763f" id="r_ga8fb447618db946a9e2a596d9ea18763f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga8fb447618db946a9e2a596d9ea18763f">_DEFAULT_SOURCE</a></td></tr>
+<tr class="separator:ga8fb447618db946a9e2a596d9ea18763f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3d8a3bd0c0b677acef144f2c2ef6d73" id="r_gad3d8a3bd0c0b677acef144f2c2ef6d73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gad3d8a3bd0c0b677acef144f2c2ef6d73">_BSD_SOURCE</a></td></tr>
+<tr class="separator:gad3d8a3bd0c0b677acef144f2c2ef6d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga369266c24eacffb87046522897a570d5" id="r_ga369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga369266c24eacffb87046522897a570d5">_GNU_SOURCE</a></td></tr>
+<tr class="separator:ga369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab9f398d3779bdd51ccf5ebb89f18039" id="r_gaab9f398d3779bdd51ccf5ebb89f18039"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gaab9f398d3779bdd51ccf5ebb89f18039">ZE_VERSION</a>&#160;&#160;&#160;&quot;1.0.0&quot;</td></tr>
+<tr class="separator:gaab9f398d3779bdd51ccf5ebb89f18039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad22aadf3eb055f36d0d19c482c66966d" id="r_gad22aadf3eb055f36d0d19c482c66966d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gad22aadf3eb055f36d0d19c482c66966d">ZE_TAB_STOP</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:gad22aadf3eb055f36d0d19c482c66966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaacc0ba0408b614aed441527f029ed27c" id="r_gaacc0ba0408b614aed441527f029ed27c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gaacc0ba0408b614aed441527f029ed27c">ZE_QUIT_TIMES</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gaacc0ba0408b614aed441527f029ed27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ad38d024c3548be5f50d7fc0679664a" id="r_ga6ad38d024c3548be5f50d7fc0679664a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga6ad38d024c3548be5f50d7fc0679664a">CTRL_KEY</a>(k)&#160;&#160;&#160;((k) &amp; 0x1f)</td></tr>
+<tr class="separator:ga6ad38d024c3548be5f50d7fc0679664a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f4c528a8ea0afe3198c84d13dfb41ab" id="r_ga8f4c528a8ea0afe3198c84d13dfb41ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga8f4c528a8ea0afe3198c84d13dfb41ab">HL_HIGHLIGHT_NUMBERS</a>&#160;&#160;&#160;(1&lt;&lt;0)</td></tr>
+<tr class="separator:ga8f4c528a8ea0afe3198c84d13dfb41ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad153e738bdfb1a7e4406bb630231e894" id="r_gad153e738bdfb1a7e4406bb630231e894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gad153e738bdfb1a7e4406bb630231e894">HL_HIGHLIGHT_STRINGS</a>&#160;&#160;&#160;(1&lt;&lt;1)</td></tr>
+<tr class="separator:gad153e738bdfb1a7e4406bb630231e894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a765f8cddf51602819c46ec01a4b5a963" id="r_a765f8cddf51602819c46ec01a4b5a963"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structerow.html">erow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a765f8cddf51602819c46ec01a4b5a963">erow</a></td></tr>
-<tr class="separator:a765f8cddf51602819c46ec01a4b5a963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga765f8cddf51602819c46ec01a4b5a963" id="r_ga765f8cddf51602819c46ec01a4b5a963"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structerow.html">erow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga765f8cddf51602819c46ec01a4b5a963">erow</a></td></tr>
+<tr class="separator:ga765f8cddf51602819c46ec01a4b5a963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:afc98e1836253d54640dce00e325aa284" id="r_afc98e1836253d54640dce00e325aa284"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284">editorKey</a> { <br />
-&#160;&#160;<a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284ab313b64675c3e4a36ac01132126d3c01">ARROW_LEFT</a> = CTRL_KEY('b')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284a6a5a02b3e54e60d47280bf250e2186bc">ARROW_RIGHT</a> = CTRL_KEY('f')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284ab47be4e7317d7a539adaebd5eeeef427">ARROW_UP</a> = CTRL_KEY('p')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284a351bb4dabfe58b550f1a5a1c8bb58e46">ARROW_DOWN</a> = CTRL_KEY('n')
+<tr class="memitem:gafc98e1836253d54640dce00e325aa284" id="r_gafc98e1836253d54640dce00e325aa284"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gafc98e1836253d54640dce00e325aa284">editorKey</a> { <br />
+&#160;&#160;<a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284ab313b64675c3e4a36ac01132126d3c01">ARROW_LEFT</a> = CTRL_KEY('b')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284a6a5a02b3e54e60d47280bf250e2186bc">ARROW_RIGHT</a> = CTRL_KEY('f')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284ab47be4e7317d7a539adaebd5eeeef427">ARROW_UP</a> = CTRL_KEY('p')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284a351bb4dabfe58b550f1a5a1c8bb58e46">ARROW_DOWN</a> = CTRL_KEY('n')
 , <br />
-&#160;&#160;<a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284a0442824c041b9618cd7c512205e7e6dc">PAGE_UP</a> = CTRL_KEY('g')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284a714c5d27586a8bcbab274d9176da1539">PAGE_DOWN</a> = CTRL_KEY('v')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284adbfee56bbc71c97e2ed80ba44706581b">HOME_KEY</a> = CTRL_KEY('a')
-, <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284aad81a36193ad805db56f8d06c6210d2c">END_KEY</a> = CTRL_KEY('e')
+&#160;&#160;<a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284a0442824c041b9618cd7c512205e7e6dc">PAGE_UP</a> = CTRL_KEY('g')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284a714c5d27586a8bcbab274d9176da1539">PAGE_DOWN</a> = CTRL_KEY('v')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284adbfee56bbc71c97e2ed80ba44706581b">HOME_KEY</a> = CTRL_KEY('a')
+, <a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284aad81a36193ad805db56f8d06c6210d2c">END_KEY</a> = CTRL_KEY('e')
 , <br />
-&#160;&#160;<a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284ad2534cebcf6f430484b7c931dd657ddc">BACKSPACE</a> = 127
+&#160;&#160;<a class="el" href="group__core.html#ggafc98e1836253d54640dce00e325aa284ad2534cebcf6f430484b7c931dd657ddc">BACKSPACE</a> = 127
 <br />
  }</td></tr>
-<tr class="separator:afc98e1836253d54640dce00e325aa284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5583f4e615b0b91c806512b59423a7f" id="r_ab5583f4e615b0b91c806512b59423a7f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7f">editorHighlight</a> { <br />
-&#160;&#160;<a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fae160620891107e3e1d3537e48213a04c">HL_NORMAL</a> = 0
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa129787a5ad1ec97dd8abd025d808d333">HL_COMMENT</a>
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa75053e8913cc0d955fc7c172af21c965">HL_MLCOMMENT</a>
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa3ed0d876506626b4e68b1596d4eb7e04">HL_KEYWORD1</a>
+<tr class="separator:gafc98e1836253d54640dce00e325aa284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab5583f4e615b0b91c806512b59423a7f" id="r_gab5583f4e615b0b91c806512b59423a7f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gab5583f4e615b0b91c806512b59423a7f">editorHighlight</a> { <br />
+&#160;&#160;<a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fae160620891107e3e1d3537e48213a04c">HL_NORMAL</a> = 0
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa129787a5ad1ec97dd8abd025d808d333">HL_COMMENT</a>
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa75053e8913cc0d955fc7c172af21c965">HL_MLCOMMENT</a>
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa3ed0d876506626b4e68b1596d4eb7e04">HL_KEYWORD1</a>
 , <br />
-&#160;&#160;<a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fad11fc9103676b7e2776f70b0eaeac30e">HL_KEYWORD2</a>
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa5056fda00bfe4af644df9735486ff41b">HL_STRING</a>
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa7601c8b381ac249ffa52351976d96554">HL_NUMBER</a>
-, <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7fa3d132a91a68ed18a2e17a901ee969793">HL_MATCH</a>
+&#160;&#160;<a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fad11fc9103676b7e2776f70b0eaeac30e">HL_KEYWORD2</a>
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa5056fda00bfe4af644df9735486ff41b">HL_STRING</a>
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa7601c8b381ac249ffa52351976d96554">HL_NUMBER</a>
+, <a class="el" href="group__core.html#ggab5583f4e615b0b91c806512b59423a7fa3d132a91a68ed18a2e17a901ee969793">HL_MATCH</a>
 <br />
  }</td></tr>
-<tr class="separator:ab5583f4e615b0b91c806512b59423a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gab5583f4e615b0b91c806512b59423a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ze_8h.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad3d8a3bd0c0b677acef144f2c2ef6d73" name="ad3d8a3bd0c0b677acef144f2c2ef6d73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3d8a3bd0c0b677acef144f2c2ef6d73">&#9670;&#160;</a></span>_BSD_SOURCE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _BSD_SOURCE</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8fb447618db946a9e2a596d9ea18763f" name="a8fb447618db946a9e2a596d9ea18763f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fb447618db946a9e2a596d9ea18763f">&#9670;&#160;</a></span>_DEFAULT_SOURCE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _DEFAULT_SOURCE</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a369266c24eacffb87046522897a570d5" name="a369266c24eacffb87046522897a570d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a369266c24eacffb87046522897a570d5">&#9670;&#160;</a></span>_GNU_SOURCE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _GNU_SOURCE</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6ad38d024c3548be5f50d7fc0679664a" name="a6ad38d024c3548be5f50d7fc0679664a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ad38d024c3548be5f50d7fc0679664a">&#9670;&#160;</a></span>CTRL_KEY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CTRL_KEY</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">k</td><td>)</td>
-          <td>&#160;&#160;&#160;((k) &amp; 0x1f)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8f4c528a8ea0afe3198c84d13dfb41ab" name="a8f4c528a8ea0afe3198c84d13dfb41ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f4c528a8ea0afe3198c84d13dfb41ab">&#9670;&#160;</a></span>HL_HIGHLIGHT_NUMBERS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define HL_HIGHLIGHT_NUMBERS&#160;&#160;&#160;(1&lt;&lt;0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad153e738bdfb1a7e4406bb630231e894" name="ad153e738bdfb1a7e4406bb630231e894"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad153e738bdfb1a7e4406bb630231e894">&#9670;&#160;</a></span>HL_HIGHLIGHT_STRINGS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define HL_HIGHLIGHT_STRINGS&#160;&#160;&#160;(1&lt;&lt;1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aacc0ba0408b614aed441527f029ed27c" name="aacc0ba0408b614aed441527f029ed27c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacc0ba0408b614aed441527f029ed27c">&#9670;&#160;</a></span>ZE_QUIT_TIMES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZE_QUIT_TIMES&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad22aadf3eb055f36d0d19c482c66966d" name="ad22aadf3eb055f36d0d19c482c66966d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad22aadf3eb055f36d0d19c482c66966d">&#9670;&#160;</a></span>ZE_TAB_STOP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZE_TAB_STOP&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aab9f398d3779bdd51ccf5ebb89f18039" name="aab9f398d3779bdd51ccf5ebb89f18039"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab9f398d3779bdd51ccf5ebb89f18039">&#9670;&#160;</a></span>ZE_VERSION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZE_VERSION&#160;&#160;&#160;&quot;1.0.0&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a765f8cddf51602819c46ec01a4b5a963" name="a765f8cddf51602819c46ec01a4b5a963"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a765f8cddf51602819c46ec01a4b5a963">&#9670;&#160;</a></span>erow</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structerow.html">erow</a> <a class="el" href="structerow.html">erow</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ab5583f4e615b0b91c806512b59423a7f" name="ab5583f4e615b0b91c806512b59423a7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5583f4e615b0b91c806512b59423a7f">&#9670;&#160;</a></span>editorHighlight</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="ze_8h.html#ab5583f4e615b0b91c806512b59423a7f">editorHighlight</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fae160620891107e3e1d3537e48213a04c" name="ab5583f4e615b0b91c806512b59423a7fae160620891107e3e1d3537e48213a04c"></a>HL_NORMAL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa129787a5ad1ec97dd8abd025d808d333" name="ab5583f4e615b0b91c806512b59423a7fa129787a5ad1ec97dd8abd025d808d333"></a>HL_COMMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa75053e8913cc0d955fc7c172af21c965" name="ab5583f4e615b0b91c806512b59423a7fa75053e8913cc0d955fc7c172af21c965"></a>HL_MLCOMMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa3ed0d876506626b4e68b1596d4eb7e04" name="ab5583f4e615b0b91c806512b59423a7fa3ed0d876506626b4e68b1596d4eb7e04"></a>HL_KEYWORD1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fad11fc9103676b7e2776f70b0eaeac30e" name="ab5583f4e615b0b91c806512b59423a7fad11fc9103676b7e2776f70b0eaeac30e"></a>HL_KEYWORD2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa5056fda00bfe4af644df9735486ff41b" name="ab5583f4e615b0b91c806512b59423a7fa5056fda00bfe4af644df9735486ff41b"></a>HL_STRING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa7601c8b381ac249ffa52351976d96554" name="ab5583f4e615b0b91c806512b59423a7fa7601c8b381ac249ffa52351976d96554"></a>HL_NUMBER&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab5583f4e615b0b91c806512b59423a7fa3d132a91a68ed18a2e17a901ee969793" name="ab5583f4e615b0b91c806512b59423a7fa3d132a91a68ed18a2e17a901ee969793"></a>HL_MATCH&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="afc98e1836253d54640dce00e325aa284" name="afc98e1836253d54640dce00e325aa284"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc98e1836253d54640dce00e325aa284">&#9670;&#160;</a></span>editorKey</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="ze_8h.html#afc98e1836253d54640dce00e325aa284">editorKey</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284ab313b64675c3e4a36ac01132126d3c01" name="afc98e1836253d54640dce00e325aa284ab313b64675c3e4a36ac01132126d3c01"></a>ARROW_LEFT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284a6a5a02b3e54e60d47280bf250e2186bc" name="afc98e1836253d54640dce00e325aa284a6a5a02b3e54e60d47280bf250e2186bc"></a>ARROW_RIGHT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284ab47be4e7317d7a539adaebd5eeeef427" name="afc98e1836253d54640dce00e325aa284ab47be4e7317d7a539adaebd5eeeef427"></a>ARROW_UP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284a351bb4dabfe58b550f1a5a1c8bb58e46" name="afc98e1836253d54640dce00e325aa284a351bb4dabfe58b550f1a5a1c8bb58e46"></a>ARROW_DOWN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284a0442824c041b9618cd7c512205e7e6dc" name="afc98e1836253d54640dce00e325aa284a0442824c041b9618cd7c512205e7e6dc"></a>PAGE_UP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284a714c5d27586a8bcbab274d9176da1539" name="afc98e1836253d54640dce00e325aa284a714c5d27586a8bcbab274d9176da1539"></a>PAGE_DOWN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284adbfee56bbc71c97e2ed80ba44706581b" name="afc98e1836253d54640dce00e325aa284adbfee56bbc71c97e2ed80ba44706581b"></a>HOME_KEY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284aad81a36193ad805db56f8d06c6210d2c" name="afc98e1836253d54640dce00e325aa284aad81a36193ad805db56f8d06c6210d2c"></a>END_KEY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afc98e1836253d54640dce00e325aa284ad2534cebcf6f430484b7c931dd657ddc" name="afc98e1836253d54640dce00e325aa284ad2534cebcf6f430484b7c931dd657ddc"></a>BACKSPACE&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Core editor types, macros, and global state. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

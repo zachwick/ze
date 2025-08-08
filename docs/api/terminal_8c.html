@@ -76,9 +76,12 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">terminal.c File Reference</div></div>
+  <div class="headertitle"><div class="title">terminal.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__terminal.html">Terminal</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Raw terminal mode helpers and key decoding.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;errno.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -91,7 +94,7 @@ Include dependency graph for terminal.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="terminal_8c__incl.png" border="0" usemap="#asrc_2terminal_8c" alt=""/></div>
 <map name="asrc_2terminal_8c" id="asrc_2terminal_8c">
-<area shape="rect" title=" " alt="" coords="264,5,375,31"/>
+<area shape="rect" title="Raw terminal mode helpers and key decoding." alt="" coords="264,5,375,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,73,104"/>
 <area shape="poly" title=" " alt="" coords="275,33,88,81,86,75,274,28"/>
 <area shape="rect" title=" " alt="" coords="98,79,165,104"/>
@@ -104,9 +107,9 @@ Include dependency graph for terminal.c:</div>
 <area shape="poly" title=" " alt="" coords="338,28,396,68,393,73,335,33"/>
 <area shape="rect" title=" " alt="" coords="491,79,566,104"/>
 <area shape="poly" title=" " alt="" coords="354,28,482,72,481,77,352,33"/>
-<area shape="rect" href="terminal_8h.html" title=" " alt="" coords="591,79,680,104"/>
+<area shape="rect" href="terminal_8h.html" title="Raw terminal mode, key reading, and screen size utilities." alt="" coords="591,79,680,104"/>
 <area shape="poly" title=" " alt="" coords="371,28,578,74,576,80,370,33"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="611,152,660,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="611,152,660,177"/>
 <area shape="poly" title=" " alt="" coords="638,104,638,138,633,138,633,104"/>
 <area shape="rect" title=" " alt="" coords="505,225,579,251"/>
 <area shape="poly" title=" " alt="" coords="622,179,570,219,566,215,619,175"/>
@@ -119,177 +122,27 @@ Include dependency graph for terminal.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aefa25608d36aae10af5209451e23e8e2" id="r_aefa25608d36aae10af5209451e23e8e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#aefa25608d36aae10af5209451e23e8e2">die</a> (const char *s)</td></tr>
-<tr class="separator:aefa25608d36aae10af5209451e23e8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af950834ca7c59ac798ad1995a16e6d06" id="r_af950834ca7c59ac798ad1995a16e6d06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#af950834ca7c59ac798ad1995a16e6d06">disableRawMode</a> (void)</td></tr>
-<tr class="separator:af950834ca7c59ac798ad1995a16e6d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37aaa5d8dd5b525007a0645edf49638f" id="r_a37aaa5d8dd5b525007a0645edf49638f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#a37aaa5d8dd5b525007a0645edf49638f">enableRawMode</a> (void)</td></tr>
-<tr class="separator:a37aaa5d8dd5b525007a0645edf49638f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfa040986935a1e03cd7c2052bba2b2d" id="r_abfa040986935a1e03cd7c2052bba2b2d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#abfa040986935a1e03cd7c2052bba2b2d">editorReadKey</a> (void)</td></tr>
-<tr class="separator:abfa040986935a1e03cd7c2052bba2b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a485c870734764c8e5acce9e16e4d70ac" id="r_a485c870734764c8e5acce9e16e4d70ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#a485c870734764c8e5acce9e16e4d70ac">getCursorPosition</a> (int *rows, int *cols)</td></tr>
-<tr class="separator:a485c870734764c8e5acce9e16e4d70ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb7a921b1f250259a639fe7b24166021" id="r_aeb7a921b1f250259a639fe7b24166021"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#aeb7a921b1f250259a639fe7b24166021">getWindowSize</a> (int *rows, int *cols)</td></tr>
-<tr class="separator:aeb7a921b1f250259a639fe7b24166021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefa25608d36aae10af5209451e23e8e2" id="r_gaefa25608d36aae10af5209451e23e8e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaefa25608d36aae10af5209451e23e8e2">die</a> (const char *s)</td></tr>
+<tr class="separator:gaefa25608d36aae10af5209451e23e8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf950834ca7c59ac798ad1995a16e6d06" id="r_gaf950834ca7c59ac798ad1995a16e6d06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaf950834ca7c59ac798ad1995a16e6d06">disableRawMode</a> (void)</td></tr>
+<tr class="separator:gaf950834ca7c59ac798ad1995a16e6d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37aaa5d8dd5b525007a0645edf49638f" id="r_ga37aaa5d8dd5b525007a0645edf49638f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#ga37aaa5d8dd5b525007a0645edf49638f">enableRawMode</a> (void)</td></tr>
+<tr class="separator:ga37aaa5d8dd5b525007a0645edf49638f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfa040986935a1e03cd7c2052bba2b2d" id="r_gabfa040986935a1e03cd7c2052bba2b2d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d">editorReadKey</a> (void)</td></tr>
+<tr class="separator:gabfa040986935a1e03cd7c2052bba2b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga485c870734764c8e5acce9e16e4d70ac" id="r_ga485c870734764c8e5acce9e16e4d70ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#ga485c870734764c8e5acce9e16e4d70ac">getCursorPosition</a> (int *rows, int *cols)</td></tr>
+<tr class="separator:ga485c870734764c8e5acce9e16e4d70ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb7a921b1f250259a639fe7b24166021" id="r_gaeb7a921b1f250259a639fe7b24166021"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaeb7a921b1f250259a639fe7b24166021">getWindowSize</a> (int *rows, int *cols)</td></tr>
+<tr class="separator:gaeb7a921b1f250259a639fe7b24166021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="terminal_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aefa25608d36aae10af5209451e23e8e2" name="aefa25608d36aae10af5209451e23e8e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefa25608d36aae10af5209451e23e8e2">&#9670;&#160;</a></span>die()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void die </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af950834ca7c59ac798ad1995a16e6d06" name="af950834ca7c59ac798ad1995a16e6d06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af950834ca7c59ac798ad1995a16e6d06">&#9670;&#160;</a></span>disableRawMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void disableRawMode </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abfa040986935a1e03cd7c2052bba2b2d" name="abfa040986935a1e03cd7c2052bba2b2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfa040986935a1e03cd7c2052bba2b2d">&#9670;&#160;</a></span>editorReadKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char editorReadKey </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a37aaa5d8dd5b525007a0645edf49638f" name="a37aaa5d8dd5b525007a0645edf49638f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37aaa5d8dd5b525007a0645edf49638f">&#9670;&#160;</a></span>enableRawMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void enableRawMode </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a485c870734764c8e5acce9e16e4d70ac" name="a485c870734764c8e5acce9e16e4d70ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a485c870734764c8e5acce9e16e4d70ac">&#9670;&#160;</a></span>getCursorPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getCursorPosition </td>
-          <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>rows</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>cols</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeb7a921b1f250259a639fe7b24166021" name="aeb7a921b1f250259a639fe7b24166021"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb7a921b1f250259a639fe7b24166021">&#9670;&#160;</a></span>getWindowSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getWindowSize </td>
-          <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>rows</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>cols</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Raw terminal mode helpers and key decoding. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

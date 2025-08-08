@@ -76,9 +76,12 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">row.c File Reference</div></div>
+  <div class="headertitle"><div class="title">row.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__row.html">Rows</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Row manipulation and conversion implementations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
@@ -88,14 +91,14 @@ Include dependency graph for row.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="row_8c__incl.png" border="0" usemap="#asrc_2row_8c" alt=""/></div>
 <map name="asrc_2row_8c" id="asrc_2row_8c">
-<area shape="rect" title=" " alt="" coords="132,5,211,31"/>
+<area shape="rect" title="Row manipulation and conversion implementations." alt="" coords="132,5,211,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" title=" " alt="" coords="152,33,75,74,73,70,149,28"/>
 <area shape="rect" title=" " alt="" coords="100,79,171,104"/>
 <area shape="poly" title=" " alt="" coords="168,32,150,68,145,65,163,30"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="223,152,272,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="223,152,272,177"/>
 <area shape="poly" title=" " alt="" coords="180,30,237,139,233,141,175,32"/>
-<area shape="rect" href="syntax_8h.html" title=" " alt="" coords="247,79,325,104"/>
+<area shape="rect" href="syntax_8h.html" title="Syntax highlighting engine and language selection." alt="" coords="247,79,325,104"/>
 <area shape="poly" title=" " alt="" coords="191,28,257,69,254,74,188,33"/>
 <area shape="rect" title=" " alt="" coords="117,225,191,251"/>
 <area shape="poly" title=" " alt="" coords="234,179,182,219,178,215,231,175"/>
@@ -109,325 +112,35 @@ Include dependency graph for row.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac292db94a14cf6392c830afc31a5f644" id="r_ac292db94a14cf6392c830afc31a5f644"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#ac292db94a14cf6392c830afc31a5f644">editorRowCxToRx</a> (<a class="el" href="structerow.html">erow</a> *row, int cx)</td></tr>
-<tr class="separator:ac292db94a14cf6392c830afc31a5f644"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae94c7e64a0a5c007cef67fed6e295514" id="r_ae94c7e64a0a5c007cef67fed6e295514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#ae94c7e64a0a5c007cef67fed6e295514">editorRowRxToCx</a> (<a class="el" href="structerow.html">erow</a> *row, int rx)</td></tr>
-<tr class="separator:ae94c7e64a0a5c007cef67fed6e295514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82d95ee3b40943bcaa021a89756aafa8" id="r_a82d95ee3b40943bcaa021a89756aafa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a82d95ee3b40943bcaa021a89756aafa8">editorUpdateRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
-<tr class="separator:a82d95ee3b40943bcaa021a89756aafa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a16dc547e91a2400ef2b63bae16860e" id="r_a3a16dc547e91a2400ef2b63bae16860e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a3a16dc547e91a2400ef2b63bae16860e">editorInsertRow</a> (int at, char *s, size_t len)</td></tr>
-<tr class="separator:a3a16dc547e91a2400ef2b63bae16860e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a461e8856decb29eb95e1010b0bbcae43" id="r_a461e8856decb29eb95e1010b0bbcae43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a461e8856decb29eb95e1010b0bbcae43">editorFreeRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
-<tr class="separator:a461e8856decb29eb95e1010b0bbcae43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3554979118d68fa8482814ea8e45ba62" id="r_a3554979118d68fa8482814ea8e45ba62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a3554979118d68fa8482814ea8e45ba62">editorDelRow</a> (int at)</td></tr>
-<tr class="separator:a3554979118d68fa8482814ea8e45ba62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdb757e8ae4057355e181a02396b8c55" id="r_afdb757e8ae4057355e181a02396b8c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#afdb757e8ae4057355e181a02396b8c55">editorRowInsertChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at, int c)</td></tr>
-<tr class="separator:afdb757e8ae4057355e181a02396b8c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e282bcd8f1f442f9c6b1e6e610379dd" id="r_a1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a1e282bcd8f1f442f9c6b1e6e610379dd">editorRowAppendString</a> (<a class="el" href="structerow.html">erow</a> *row, char *s, size_t len)</td></tr>
-<tr class="separator:a1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bc8521084efa00016a83cd7f11334e1" id="r_a4bc8521084efa00016a83cd7f11334e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a4bc8521084efa00016a83cd7f11334e1">editorRowDelChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
-<tr class="separator:a4bc8521084efa00016a83cd7f11334e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0889ad85970b818eedf1f475dceab4d7" id="r_a0889ad85970b818eedf1f475dceab4d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a0889ad85970b818eedf1f475dceab4d7">editorDelRowAtChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
-<tr class="separator:a0889ad85970b818eedf1f475dceab4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac292db94a14cf6392c830afc31a5f644" id="r_gac292db94a14cf6392c830afc31a5f644"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#gac292db94a14cf6392c830afc31a5f644">editorRowCxToRx</a> (<a class="el" href="structerow.html">erow</a> *row, int cx)</td></tr>
+<tr class="separator:gac292db94a14cf6392c830afc31a5f644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae94c7e64a0a5c007cef67fed6e295514" id="r_gae94c7e64a0a5c007cef67fed6e295514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#gae94c7e64a0a5c007cef67fed6e295514">editorRowRxToCx</a> (<a class="el" href="structerow.html">erow</a> *row, int rx)</td></tr>
+<tr class="separator:gae94c7e64a0a5c007cef67fed6e295514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga82d95ee3b40943bcaa021a89756aafa8" id="r_ga82d95ee3b40943bcaa021a89756aafa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8">editorUpdateRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
+<tr class="separator:ga82d95ee3b40943bcaa021a89756aafa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a16dc547e91a2400ef2b63bae16860e" id="r_ga3a16dc547e91a2400ef2b63bae16860e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga3a16dc547e91a2400ef2b63bae16860e">editorInsertRow</a> (int at, char *s, size_t len)</td></tr>
+<tr class="separator:ga3a16dc547e91a2400ef2b63bae16860e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga461e8856decb29eb95e1010b0bbcae43" id="r_ga461e8856decb29eb95e1010b0bbcae43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga461e8856decb29eb95e1010b0bbcae43">editorFreeRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
+<tr class="separator:ga461e8856decb29eb95e1010b0bbcae43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3554979118d68fa8482814ea8e45ba62" id="r_ga3554979118d68fa8482814ea8e45ba62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga3554979118d68fa8482814ea8e45ba62">editorDelRow</a> (int at)</td></tr>
+<tr class="separator:ga3554979118d68fa8482814ea8e45ba62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafdb757e8ae4057355e181a02396b8c55" id="r_gafdb757e8ae4057355e181a02396b8c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55">editorRowInsertChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at, int c)</td></tr>
+<tr class="separator:gafdb757e8ae4057355e181a02396b8c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e282bcd8f1f442f9c6b1e6e610379dd" id="r_ga1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga1e282bcd8f1f442f9c6b1e6e610379dd">editorRowAppendString</a> (<a class="el" href="structerow.html">erow</a> *row, char *s, size_t len)</td></tr>
+<tr class="separator:ga1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bc8521084efa00016a83cd7f11334e1" id="r_ga4bc8521084efa00016a83cd7f11334e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1">editorRowDelChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
+<tr class="separator:ga4bc8521084efa00016a83cd7f11334e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0889ad85970b818eedf1f475dceab4d7" id="r_ga0889ad85970b818eedf1f475dceab4d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga0889ad85970b818eedf1f475dceab4d7">editorDelRowAtChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
+<tr class="separator:ga0889ad85970b818eedf1f475dceab4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="row_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a3554979118d68fa8482814ea8e45ba62" name="a3554979118d68fa8482814ea8e45ba62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3554979118d68fa8482814ea8e45ba62">&#9670;&#160;</a></span>editorDelRow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorDelRow </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>at</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0889ad85970b818eedf1f475dceab4d7" name="a0889ad85970b818eedf1f475dceab4d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0889ad85970b818eedf1f475dceab4d7">&#9670;&#160;</a></span>editorDelRowAtChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorDelRowAtChar </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>at</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a461e8856decb29eb95e1010b0bbcae43" name="a461e8856decb29eb95e1010b0bbcae43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a461e8856decb29eb95e1010b0bbcae43">&#9670;&#160;</a></span>editorFreeRow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorFreeRow </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3a16dc547e91a2400ef2b63bae16860e" name="a3a16dc547e91a2400ef2b63bae16860e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a16dc547e91a2400ef2b63bae16860e">&#9670;&#160;</a></span>editorInsertRow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorInsertRow </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>at</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1e282bcd8f1f442f9c6b1e6e610379dd" name="a1e282bcd8f1f442f9c6b1e6e610379dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e282bcd8f1f442f9c6b1e6e610379dd">&#9670;&#160;</a></span>editorRowAppendString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorRowAppendString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac292db94a14cf6392c830afc31a5f644" name="ac292db94a14cf6392c830afc31a5f644"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac292db94a14cf6392c830afc31a5f644">&#9670;&#160;</a></span>editorRowCxToRx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int editorRowCxToRx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>cx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4bc8521084efa00016a83cd7f11334e1" name="a4bc8521084efa00016a83cd7f11334e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bc8521084efa00016a83cd7f11334e1">&#9670;&#160;</a></span>editorRowDelChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorRowDelChar </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>at</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afdb757e8ae4057355e181a02396b8c55" name="afdb757e8ae4057355e181a02396b8c55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdb757e8ae4057355e181a02396b8c55">&#9670;&#160;</a></span>editorRowInsertChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorRowInsertChar </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>at</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae94c7e64a0a5c007cef67fed6e295514" name="ae94c7e64a0a5c007cef67fed6e295514"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae94c7e64a0a5c007cef67fed6e295514">&#9670;&#160;</a></span>editorRowRxToCx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int editorRowRxToCx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a82d95ee3b40943bcaa021a89756aafa8" name="a82d95ee3b40943bcaa021a89756aafa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82d95ee3b40943bcaa021a89756aafa8">&#9670;&#160;</a></span>editorUpdateRow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorUpdateRow </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structerow.html">erow</a> *&#160;</td>
-          <td class="paramname"><em>row</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Row manipulation and conversion implementations. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

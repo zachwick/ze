@@ -76,9 +76,12 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">input.c File Reference</div></div>
+  <div class="headertitle"><div class="title">input.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__input.html">Input</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Prompt and keypress handling implementations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -97,7 +100,7 @@ Include dependency graph for input.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="input_8c__incl.png" border="0" usemap="#asrc_2input_8c" alt=""/></div>
 <map name="asrc_2input_8c" id="asrc_2input_8c">
-<area shape="rect" title=" " alt="" coords="565,5,655,31"/>
+<area shape="rect" title="Prompt and keypress handling implementations." alt="" coords="565,5,655,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" title=" " alt="" coords="566,25,363,44,229,60,90,81,89,76,228,55,363,38,565,20"/>
 <area shape="rect" title=" " alt="" coords="100,79,171,104"/>
@@ -106,23 +109,23 @@ Include dependency graph for input.c:</div>
 <area shape="poly" title=" " alt="" coords="566,29,279,81,278,76,565,24"/>
 <area shape="rect" title=" " alt="" coords="290,79,365,104"/>
 <area shape="poly" title=" " alt="" coords="566,33,379,80,377,75,565,28"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="735,152,784,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="735,152,784,177"/>
 <area shape="poly" title=" " alt="" coords="624,29,740,141,736,144,620,33"/>
-<area shape="rect" href="status_8h.html" title=" " alt="" coords="1018,79,1093,104"/>
+<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="1018,79,1093,104"/>
 <area shape="poly" title=" " alt="" coords="655,22,806,43,1005,76,1004,81,805,48,654,28"/>
-<area shape="rect" href="terminal_8h.html" title=" " alt="" coords="715,79,804,104"/>
+<area shape="rect" href="terminal_8h.html" title="Raw terminal mode, key reading, and screen size utilities." alt="" coords="715,79,804,104"/>
 <area shape="poly" title=" " alt="" coords="635,28,724,70,721,75,633,33"/>
-<area shape="rect" href="render_8h.html" title=" " alt="" coords="1117,79,1191,104"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="1117,79,1191,104"/>
 <area shape="poly" title=" " alt="" coords="655,20,846,40,1103,76,1103,81,846,45,655,26"/>
-<area shape="rect" href="edit_8h.html" title=" " alt="" coords="829,79,887,104"/>
+<area shape="rect" href="edit_8h.html" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="829,79,887,104"/>
 <area shape="poly" title=" " alt="" coords="651,28,816,75,815,80,649,33"/>
-<area shape="rect" href="fileio_8h.html" title=" " alt="" coords="389,79,455,104"/>
+<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="389,79,455,104"/>
 <area shape="poly" title=" " alt="" coords="581,33,466,76,465,71,579,28"/>
-<area shape="rect" href="search_8h.html" title=" " alt="" coords="479,79,557,104"/>
+<area shape="rect" href="search_8h.html" title="Incremental and interactive search utilities." alt="" coords="479,79,557,104"/>
 <area shape="poly" title=" " alt="" coords="597,33,545,72,542,68,594,29"/>
-<area shape="rect" href="row_8h.html" title=" " alt="" coords="581,79,639,104"/>
+<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="581,79,639,104"/>
 <area shape="poly" title=" " alt="" coords="613,31,613,65,607,65,607,31"/>
-<area shape="rect" href="plugins_8h.html" title=" " alt="" coords="912,79,993,104"/>
+<area shape="rect" href="plugins_8h.html" title="Guile/Scheme plugin API and keybinding integration." alt="" coords="912,79,993,104"/>
 <area shape="poly" title=" " alt="" coords="656,26,899,76,898,81,655,31"/>
 <area shape="rect" title=" " alt="" coords="629,225,703,251"/>
 <area shape="poly" title=" " alt="" coords="746,179,694,219,690,215,743,175"/>
@@ -135,7 +138,7 @@ Include dependency graph for input.c:</div>
 <area shape="poly" title=" " alt="" coords="1049,106,1021,143,1017,140,1044,103"/>
 <area shape="poly" title=" " alt="" coords="762,104,762,138,757,138,757,104"/>
 <area shape="poly" title=" " alt="" coords="1117,104,1105,107,934,138,798,160,797,155,933,133,1104,101,1116,99"/>
-<area shape="rect" href="buffer_8h.html" title=" " alt="" coords="1119,152,1189,177"/>
+<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="1119,152,1189,177"/>
 <area shape="poly" title=" " alt="" coords="1157,104,1157,138,1151,138,1151,104"/>
 <area shape="poly" title=" " alt="" coords="844,106,788,146,785,142,841,102"/>
 <area shape="poly" title=" " alt="" coords="456,99,468,101,722,154,721,159,467,107,455,104"/>
@@ -148,107 +151,21 @@ Include dependency graph for input.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4de965d803aea82e894820b40e0ed097" id="r_a4de965d803aea82e894820b40e0ed097"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a4de965d803aea82e894820b40e0ed097">editorPrompt</a> (char *prompt, void(*callback)(char *, int))</td></tr>
-<tr class="separator:a4de965d803aea82e894820b40e0ed097"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab3adc94034853ddfe37aa537d27ac5f" id="r_aab3adc94034853ddfe37aa537d27ac5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#aab3adc94034853ddfe37aa537d27ac5f">editorMoveCursor</a> (char key)</td></tr>
-<tr class="separator:aab3adc94034853ddfe37aa537d27ac5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a463a314ab1c9c71846a88a71ea8fe8" id="r_a7a463a314ab1c9c71846a88a71ea8fe8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a7a463a314ab1c9c71846a88a71ea8fe8">editorProcessKeypress</a> (void)</td></tr>
-<tr class="separator:a7a463a314ab1c9c71846a88a71ea8fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4de965d803aea82e894820b40e0ed097" id="r_ga4de965d803aea82e894820b40e0ed097"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a> (char *prompt, void(*callback)(char *, int))</td></tr>
+<tr class="separator:ga4de965d803aea82e894820b40e0ed097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab3adc94034853ddfe37aa537d27ac5f" id="r_gaab3adc94034853ddfe37aa537d27ac5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input.html#gaab3adc94034853ddfe37aa537d27ac5f">editorMoveCursor</a> (char key)</td></tr>
+<tr class="separator:gaab3adc94034853ddfe37aa537d27ac5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a463a314ab1c9c71846a88a71ea8fe8" id="r_ga7a463a314ab1c9c71846a88a71ea8fe8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input.html#ga7a463a314ab1c9c71846a88a71ea8fe8">editorProcessKeypress</a> (void)</td></tr>
+<tr class="separator:ga7a463a314ab1c9c71846a88a71ea8fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aab3adc94034853ddfe37aa537d27ac5f" name="aab3adc94034853ddfe37aa537d27ac5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab3adc94034853ddfe37aa537d27ac5f">&#9670;&#160;</a></span>editorMoveCursor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorMoveCursor </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7a463a314ab1c9c71846a88a71ea8fe8" name="a7a463a314ab1c9c71846a88a71ea8fe8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a463a314ab1c9c71846a88a71ea8fe8">&#9670;&#160;</a></span>editorProcessKeypress()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorProcessKeypress </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4de965d803aea82e894820b40e0ed097" name="a4de965d803aea82e894820b40e0ed097"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4de965d803aea82e894820b40e0ed097">&#9670;&#160;</a></span>editorPrompt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * editorPrompt </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>prompt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(char *, int)&#160;</td>
-          <td class="paramname"><em>callback</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Prompt and keypress handling implementations. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
