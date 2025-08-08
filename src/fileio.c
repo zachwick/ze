@@ -76,18 +76,49 @@ static int _true_selector(const struct dirent *empty) {
   return 1;
 }
 
+static char *normalize_path(const char *in) {
+  if (in == NULL) return NULL;
+  // Trim leading/trailing whitespace
+  const char *start = in;
+  while (*start == ' ' || *start == '\t' || *start == '\n' || *start == '\r') start++;
+  const char *end = start + strlen(start);
+  while (end > start && (end[-1] == ' ' || end[-1] == '\t' || end[-1] == '\n' || end[-1] == '\r')) end--;
+  size_t len = (size_t)(end - start);
+  // Expand leading ~
+  if (len > 0 && start[0] == '~') {
+    const char *home = getenv("HOME");
+    if (home && *home) {
+      const char *rest = start + 1;
+      size_t home_len = strlen(home);
+      size_t rest_len = len - 1;
+      char *out = malloc(home_len + rest_len + 1);
+      memcpy(out, home, home_len);
+      memcpy(out + home_len, rest, rest_len);
+      out[home_len + rest_len] = '\0';
+      return out;
+    }
+  }
+  char *out = malloc(len + 1);
+  memcpy(out, start, len);
+  out[len] = '\0';
+  return out;
+}
+
 void editorOpen(char *filename) {
   if (filename == NULL) {
-    filename = editorPrompt("Path to open: (ESC to cancel) %s", NULL);
-    if (filename == NULL) {
+    char *input = editorPrompt("Path to open: (ESC to cancel) %s", NULL);
+    if (input == NULL) {
       editorSetStatusMessage("Open cancelled");
       return;
     }
+    filename = normalize_path(input);
+    free(input);
     initEditor();
   } else if (E.filename != NULL) {
     free(E.filename);
   }
 
+  // Persist normalized path in editor state
   E.filename = strdup(filename);
   editorSelectSyntaxHighlight();
 
@@ -134,7 +165,7 @@ void editorOpen(char *filename) {
       return;
     }
   } else {
-    editorSetStatusMessage("Error determining type of object at filepath");
+    editorSetStatusMessage("Error determining type of object at filepath: %s", strerror(errno));
     return;
   }
 
