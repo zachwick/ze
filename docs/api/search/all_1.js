@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['abappend_0',['abAppend',['../buffer_8h.html#a9dd3715258f4c42aeb40ae92f51422e9',1,'abAppend(struct abuf *ab, const char *s, int len):&#160;buffer.c'],['../buffer_8c.html#a9dd3715258f4c42aeb40ae92f51422e9',1,'abAppend(struct abuf *ab, const char *s, int len):&#160;buffer.c']]],
-  ['abfree_1',['abFree',['../buffer_8h.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0',1,'abFree(struct abuf *ab):&#160;buffer.c'],['../buffer_8c.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0',1,'abFree(struct abuf *ab):&#160;buffer.c']]],
+  ['abappend_0',['abappend',['../buffer_8h.html#a9dd3715258f4c42aeb40ae92f51422e9',1,'abAppend(struct abuf *ab, const char *s, int len):&#160;buffer.c'],['../buffer_8c.html#a9dd3715258f4c42aeb40ae92f51422e9',1,'abAppend(struct abuf *ab, const char *s, int len):&#160;buffer.c']]],
+  ['abfree_1',['abfree',['../buffer_8h.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0',1,'abFree(struct abuf *ab):&#160;buffer.c'],['../buffer_8c.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0',1,'abFree(struct abuf *ab):&#160;buffer.c']]],
   ['abuf_2',['abuf',['../structabuf.html',1,'']]],
   ['abuf_5finit_3',['ABUF_INIT',['../buffer_8h.html#a338375e0d9379e2c297acac89c4049e7',1,'buffer.h']]],
   ['apl_5fhl_5fextensions_4',['APL_HL_extensions',['../syntax_8c.html#af2d0bc6c7790b69c8f00ab3707ca21e6',1,'syntax.c']]],
