@@ -96,6 +96,43 @@ if you are using macOS.
 
 ## Advanced Usage
 
+### Plugin System
+
+ze supports Guile Scheme plugins that are automatically loaded at startup.
+
+- **Location**: Plugins are `.scm` files placed in `~/.ze/plugins`. All non-hidden `.scm` files in that directory are loaded at startup.
+- **Examples**: `make install` creates `~/.ze/plugins` and copies the example plugins from the repo.
+- **API exposed to Scheme**:
+  - `set-editor-status(string)` — set the status line message
+  - `bind-key(key-spec, procedure)` — bind a key to a Scheme procedure
+- **Key specs**: Either a single character (e.g., `"y"`) or Control chords like `"C-y"`.
+- **Input handling**: When a key is pressed, ze checks plugin bindings first. If a bound procedure runs, the built-in handler is skipped for that keypress.
+- **REPL**: Press `Ctrl+x` to open a one-line Scheme prompt inside ze to evaluate expressions in the current environment.
+
+#### Minimal examples
+
+Bind a key and set a status message (`~/.ze/plugins/hello.scm`):
+
+```scheme
+(display "ze: loaded plugin hello.scm") (newline)
+
+(define (ze-hello)
+  (set-editor-status "Hello from ze plugin!"))
+
+(bind-key "C-y" ze-hello)
+```
+
+Override a hook from a plugin (`~/.ze/plugins/hooks.scm`):
+
+```scheme
+(define (postSaveHook contents)
+  (string-append "Post-save plugin says: wrote "
+                 (number->string (string-length contents))
+                 " bytes"))
+```
+
+See the Hooks section below for the list of available hooks and their return values.
+
 ### Guile Hooks
 
 ze supports various Guile hooks for customization:
