@@ -37,6 +37,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <libguile.h>
+#include <limits.h>
 
 /*** defines ***/
 
@@ -345,6 +346,7 @@ void editorDrawStatusBar(struct abuf *ab);
 void editorDrawMessageBar(struct abuf *ab);
 void editorMoveCursor(char key);
 void editorProcessKeypress(void);
+void loadPlugins(void);
 
 /*** terminal ***/
 
@@ -1649,6 +1651,57 @@ editorProcessKeypress(void)
   quit_times = ZE_QUIT_TIMES;
 }
 
+/*** plugins ***/
+
+void
+loadPlugins(void)
+{
+  const char *home_dir = getenv("HOME");
+  if (home_dir == NULL) {
+    return;
+  }
+
+  char plugins_dir[PATH_MAX];
+  snprintf(plugins_dir, sizeof(plugins_dir), "%s/.ze/plugins", home_dir);
+
+  struct stat st;
+  if (stat(plugins_dir, &st) != 0 || !(st.st_mode & S_IFDIR)) {
+    // No plugins directory; nothing to load
+    return;
+  }
+
+  struct dirent **entries;
+  int num_entries = scandir(plugins_dir, &entries, _true, alphasort);
+  if (num_entries < 0) {
+    return;
+  }
+
+  for (int i = 0; i < num_entries; i++) {
+    struct dirent *entry = entries[i];
+    if (!entry) {
+      continue;
+    }
+    const char *name = entry->d_name;
+    // Skip hidden files and parent/current directory entries
+    if (name[0] == '.') {
+      free(entry);
+      continue;
+    }
+    const char *ext = strrchr(name, '.');
+    if (ext == NULL || strcmp(ext, ".scm") != 0) {
+      free(entry);
+      continue;
+    }
+
+    char plugin_path[PATH_MAX];
+    snprintf(plugin_path, sizeof(plugin_path), "%s/%s", plugins_dir, name);
+    scm_c_primitive_load(plugin_path);
+
+    free(entry);
+  }
+  free(entries);
+}
+
 /*** init ***/
 
 void
@@ -1693,6 +1746,9 @@ main(int argc, char *argv[])
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
   scm_c_define_gsubr("set-editor-status", 1, 0, 0, (scm_t_subr)&scmEditorSetStatusMessage);
+
+  // Load Scheme plugins from ~/.ze/plugins (if any)
+  loadPlugins();
 
   // If you want to add additional templates, you'll want to make sure to add
   // the appropriate lines here, and add your new template to the selection
