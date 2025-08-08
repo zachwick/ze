@@ -1,16 +1,34 @@
 INSTALL_LOC ?= $(HOME)/.local/bin
-CFLAGS = `pkg-config --cflags guile-3.0`
+CFLAGS += -std=c11 -Wall -Wextra -pedantic -O2 -Iinclude `pkg-config --cflags guile-3.0`
 LIBS = `pkg-config --libs guile-3.0`
+
+SRC = \
+  src/main.c \
+  src/terminal.c \
+  src/status.c \
+  src/syntax.c \
+  src/row.c \
+  src/edit.c \
+  src/fileio.c \
+  src/search.c \
+  src/buffer.c \
+  src/render.c \
+  src/input.c \
+  src/plugins.c \
+  src/hooks.c \
+  src/util.c
+
+OBJ = $(SRC:.c=.o)
 
 all: ze
 
 build: ze
 
-ze: ze.o
-	$(CC) $< -o $@ -Wall $(LIBS)
+ze: $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LIBS)
 
-ze.o: ze.c
-	$(CC) -std=c11 -c $< -o $@  -Wall -Wextra -pedantic $(CFLAGS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 test: build
 	valgrind --leak-check=full --show-leak-kinds=all ./ze ze.c
@@ -23,5 +41,4 @@ install: build
 	if [ -d plugins ]; then cp -R plugins/* $(HOME)/.ze/plugins/; fi
 
 clean:
-	rm ze
-	rm ze.o
+	rm -f ze $(OBJ)
