@@ -4,4 +4,7 @@
 (define (ze-hello)
   (set-editor-status "Hello from ze plugin!"))
 
+;; Bind Ctrl-y to our hello command
+(bind-key "C-y" ze-hello)
+
 

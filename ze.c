@@ -135,6 +135,48 @@ struct abuf {
 };
 
 #define ABUF_INIT {NULL, 0}
+/*** key bindings (plugins) ***/
+
+static SCM key_bindings[256];
+
+static int
+parse_keyspec(const char *spec, unsigned char *out_code)
+{
+  if (spec == NULL || out_code == NULL) {
+    return 0;
+  }
+  size_t len = strlen(spec);
+  if (len == 3 && (spec[0] == 'C' || spec[0] == 'c') && spec[1] == '-') {
+    unsigned char letter = (unsigned char)spec[2];
+    if (isalpha(letter)) {
+      *out_code = (unsigned char)CTRL_KEY(tolower(letter));
+      return 1;
+    }
+  } else if (len == 1) {
+    *out_code = (unsigned char)spec[0];
+    return 1;
+  }
+  return 0;
+}
+
+static int
+handlePluginKey(unsigned char code)
+{
+  SCM proc = key_bindings[code];
+  if (scm_is_true(proc) && scm_is_true(scm_procedure_p(proc))) {
+    scm_call_0(proc);
+    return 1;
+  }
+  return 0;
+}
+
+static void
+initKeyBindings(void)
+{
+  for (int i = 0; i < 256; i++) {
+    key_bindings[i] = SCM_BOOL_F;
+  }
+}
 /*** filetypes ***/
 
 char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
@@ -347,6 +389,7 @@ void editorDrawMessageBar(struct abuf *ab);
 void editorMoveCursor(char key);
 void editorProcessKeypress(void);
 void loadPlugins(void);
+SCM scmBindKey(SCM keySpec, SCM proc);
 
 /*** terminal ***/
 
@@ -1563,6 +1606,12 @@ editorProcessKeypress(void)
   static int quit_times = ZE_QUIT_TIMES;
   char c = editorReadKey();
 
+  // Give plugins first chance to handle this key
+  if (handlePluginKey((unsigned char)c)) {
+    quit_times = ZE_QUIT_TIMES;
+    return;
+  }
+
   switch (c) {
   case '\r':
     editorInsertNewline();
@@ -1702,6 +1751,23 @@ loadPlugins(void)
   free(entries);
 }
 
+SCM
+scmBindKey(SCM keySpec, SCM proc)
+{
+  char *spec = scm_to_locale_string(keySpec);
+  unsigned char code = 0;
+  if (!parse_keyspec(spec, &code)) {
+    free(spec);
+    return SCM_BOOL_F;
+  }
+  free(spec);
+  if (!scm_is_true(scm_procedure_p(proc))) {
+    return SCM_BOOL_F;
+  }
+  key_bindings[code] = proc;
+  return SCM_BOOL_T;
+}
+
 /*** init ***/
 
 void
@@ -1731,6 +1797,7 @@ main(int argc, char *argv[])
 {
   enableRawMode();
   initEditor();
+  initKeyBindings();
 
   editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-x guile | C-q = quit");
 
@@ -1746,6 +1813,7 @@ main(int argc, char *argv[])
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
   scm_c_define_gsubr("set-editor-status", 1, 0, 0, (scm_t_subr)&scmEditorSetStatusMessage);
+  scm_c_define_gsubr("bind-key", 2, 0, 0, (scm_t_subr)&scmBindKey);
 
   // Load Scheme plugins from ~/.ze/plugins (if any)
   loadPlugins();
