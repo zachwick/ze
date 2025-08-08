@@ -65,7 +65,39 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 
 ## Advanced Usage
 
-### Guile Hooks
+### Plugin System
+
+ze supports Guile Scheme plugins that are automatically loaded at startup.
+
+- **Location**: Place `.scm` files in `~/.ze/plugins`. All non-hidden `.scm` files in that directory are loaded when ze starts.
+- **Examples**: `make install` will create `~/.ze/plugins` and copy the example plugins from this repo into it.
+- **Key bindings**: Use `(bind-key key-spec procedure)` to bind keys from Scheme.
+  - Key specs can be a single character (e.g., `"y"`) or a Control chord like `"C-y"`.
+  - Plugin key bindings are checked before built-in handlers. If a plugin handles a key, ze skips the built-in action for that keypress.
+- **Inline Scheme prompt (REPL)**: Press `CTRL-x` to open a one-line Scheme prompt (`scheme@(guile-user)>`) and evaluate expressions in the current editor environment.
+
+Minimal plugin example (`~/.ze/plugins/hello.scm`):
+
+```scheme
+(display "ze: loaded plugin hello.scm") (newline)
+
+(define (ze-hello)
+  (set-editor-status "Hello from ze plugin!"))
+
+(bind-key "C-y" ze-hello)
+```
+
+#### Example Plugins
+
+- **hello.scm** (`C-y`): Sets a friendly status message to demonstrate key binding.
+- **format.scm** (`C-l`): Trims trailing whitespace from all lines in the buffer and reports how many lines changed.
+- **go-to-line.scm** (`C-g`): Prompts for a line number and moves the cursor there, refreshing the screen.
+- **file-header.scm** (`C-,`): Inserts a simple 3-line header at the top with file name and detected type; moves cursor below header.
+- **save-and-format.scm** (hook): Implements `postSaveHook` to trim trailing whitespace after saving; if changes were made it re-saves and refreshes the screen, returning a summary string.
+
+You can remove or modify these by editing/deleting the corresponding files under `~/.ze/plugins`.
+
+#### Guile Hooks
 
 | guile function |  returns | description |
 | -- | -- | -- |
@@ -75,6 +107,57 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 | postDirOpenHook | string | called after opening a directory in ze. |
 | preFileOpenHook | string | called prior to opening a file into a buffer. |
 | postFileOpenHook | string | called after opening a file into a buffer. |
+
+#### Scheme API (bindings)
+
+The following Scheme procedures are available to plugins. Return values are noted where relevant.
+
+- **Status and key bindings**
+  - `set-editor-status(string)` — set the status line message.
+  - `bind-key(key-spec, procedure)` — bind a key to a Scheme procedure (e.g., `"C-y"`, `"g"`).
+  - `unbind-key(key-spec)` — remove a key binding.
+  - `list-bindings()` — returns a list of `(key . procedure)` pairs.
+
+- **Buffer content**
+  - `buffer->string()` → string of the entire buffer.
+  - `buffer-line-count()` → number of lines.
+  - `get-line(index)` → string at `index` (0-based) or `#f` if out of range.
+  - `set-line!(index, string)` — replace contents of line at `index`.
+  - `insert-line!(index, string)` — insert a new line at `index`.
+  - `append-line!(string)` — append a new line to the end of the buffer.
+  - `delete-line!(index)` — delete the line at `index`.
+  - `insert-text!(string)` — insert text at the cursor (handles `\n`).
+  - `insert-char!(char|string)` — insert a single character at the cursor.
+  - `insert-newline!()` — insert a newline at the cursor.
+  - `delete-char!()` — delete the character at the cursor.
+
+- **Cursor and viewport**
+  - `get-cursor()` → pair `(x y)` of cursor column and line (0-based).
+  - `set-cursor!(x, y)` — move cursor to column `x`, line `y` (clamped to buffer bounds).
+  - `move-cursor!(direction)` — move one step; `direction` is one of `"left"|"right"|"up"|"down"`.
+  - `screen-size()` → pair `(rows cols)` of the current screen.
+  - `refresh-screen!()` — force a screen refresh.
+
+- **File I/O and filenames**
+  - `open-file!(path)` — open file into the current buffer.
+  - `save-file!()` — save current buffer to disk.
+  - `get-filename()` → current filename string or `#f` if unsaved.
+  - `set-filename!(path)` — set (or change) the current buffer filename and select syntax.
+  - `prompt(message)` → read a line of input from the user or `#f` if cancelled.
+
+- **Search**
+  - `search-forward!(query)` → pair `(y x)` of the next match location or `#f` if none.
+
+- **Syntax highlighting**
+  - `select-syntax-for-filename!(path)` — set syntax by pretending the buffer is named `path`.
+  - `get-filetype()` → current filetype string or `#f`.
+
+- **Dirty state**
+  - `buffer-dirty?()` → `#t` if the buffer has unsaved changes.
+  - `set-buffer-dirty!(boolean)` — mark buffer as dirty/clean.
+
+- **Templates**
+  - `clone-template!()` — invoke the template cloning prompt.
 
 ### Templates
 
