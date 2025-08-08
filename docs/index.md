@@ -39,6 +39,10 @@ Finally, simply invoke `make install` to build ze and put the resulting binary i
 
 Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all at once.
 
+### Documentation
+
+- [C API reference](api/)
+
 ## Default Keybindings
 
 | chord | name | description |

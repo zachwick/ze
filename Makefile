@@ -24,6 +24,9 @@ all: ze
 
 build: ze
 
+docs:
+	doxygen Doxyfile
+
 ze: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LIBS)
 
