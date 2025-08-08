@@ -1,3 +1,7 @@
+/**
+ * @file main.c
+ * @brief Program entry point and runtime initialization.
+ */
 #include <libguile.h>
 #include <stdio.h>
 #include <stdlib.h>

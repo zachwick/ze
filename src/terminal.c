@@ -1,3 +1,8 @@
+/**
+ * @file terminal.c
+ * @brief Raw terminal mode helpers and key decoding.
+ * @ingroup terminal
+ */
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>

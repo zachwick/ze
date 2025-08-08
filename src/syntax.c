@@ -1,3 +1,8 @@
+/**
+ * @file syntax.c
+ * @brief Syntax highlighting engine implementation.
+ * @ingroup syntax
+ */
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>

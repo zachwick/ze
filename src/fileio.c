@@ -1,3 +1,8 @@
+/**
+ * @file fileio.c
+ * @brief File and directory loading/saving implementation.
+ * @ingroup fileio
+ */
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>

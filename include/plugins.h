@@ -1,15 +1,27 @@
+/**
+ * @file plugins.h
+ * @brief Guile/Scheme plugin API and keybinding integration.
+ * @defgroup plugins Plugins
+ * @ingroup core
+ * @{
+ */
 #pragma once
 
 #include "ze.h"
 #include <libguile.h>
 
+/** Initialize the in-memory key binding table. */
 void initKeyBindings(void);
+/** Load Scheme plugins from `~/.ze/plugins` (*.scm) if present. */
 void loadPlugins(void);
+/** Bind a key specification (e.g., "C-x" or "a") to a Scheme procedure. */
 SCM scmBindKey(SCM keySpec, SCM proc);
+/** If a binding exists for this key, invoke it and return non-zero. */
 int pluginsHandleKey(unsigned char code);
+/** Read, eval, print a Scheme expression entered via prompt. */
 void editorExec(void);
 
-// Scheme bindings
+/* Scheme bindings exposed to plugin authors */
 SCM scmBufferToString(void);
 SCM scmBufferLineCount(void);
 SCM scmGetLine(SCM idx_scm);
@@ -40,7 +52,9 @@ SCM scmBufferDirty(void);
 SCM scmSetBufferDirty(SCM bool_scm);
 SCM scmCloneTemplate(void);
 
-// Optional hook registry accessors
+/** Optional hook registry accessor by name. */
 SCM pluginsGetHook(const char *name);
+
+/** @} */
 
 

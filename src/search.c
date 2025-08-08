@@ -1,3 +1,8 @@
+/**
+ * @file search.c
+ * @brief Interactive forward search implementation.
+ * @ingroup search
+ */
 #include <stdlib.h>
 #include <string.h>
 
