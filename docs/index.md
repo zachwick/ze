@@ -51,6 +51,7 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 | CTRL-d | delete line | Deletes the entire line that the cursor is currently on. |
 | CTRL-k | delete rest of line | Deletes the line from the cursor's current position to the end of the current line. |
 | CTRL-h | delete character | Deletes the character at the cursor's position. |
+| CTRL-x | open REPL | Opens a Guile Scheme REPL |
 
 ### Moving the cursor
 

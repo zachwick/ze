@@ -120,18 +120,48 @@ SCM scmBindKey(SCM keySpec, SCM proc) {
   return SCM_BOOL_T;
 }
 
+// Utility: convert any Scheme object to a freshly-allocated C string using display semantics
+static char *scm_to_display_c_string(SCM obj) {
+  SCM port = scm_open_output_string();
+  scm_display(obj, port);
+  SCM str = scm_get_output_string(port);
+  char *out = scm_to_locale_string(str);
+  return out; // caller must free
+}
+
+// Catch body for evaluating a Scheme string (data is a char* pointing to the code)
+static SCM eval_body(void *data) {
+  const char *code = (const char *)data;
+  return scm_c_eval_string(code);
+}
+
+// Catch handler to turn exceptions into a human-readable string result
+static SCM eval_handler(void *data, SCM tag, SCM throw_args) {
+  (void)data;
+  (void)tag;
+  SCM port = scm_open_output_string();
+  scm_display(scm_from_locale_string("Error: "), port);
+  scm_display(throw_args, port);
+  return scm_get_output_string(port);
+}
+
 void editorExec(void) {
   char *command;
-  SCM results_scm;
+  SCM result_scm;
   char *results;
   command = editorPrompt("scheme@(guile-user)> %s", NULL);
   if (command == NULL) {
     editorSetStatusMessage("Command cancelled");
     return;
   }
-  results_scm = scm_c_eval_string(command);
-  results = scm_to_locale_string(results_scm);
+  // Evaluate with error handling
+  result_scm = scm_c_catch(SCM_BOOL_T, eval_body, (void *)command,
+                           eval_handler, NULL, NULL, NULL);
+  // Convert result to display string and show it
+  results = scm_to_display_c_string(result_scm);
   editorSetStatusMessage(results);
+  free(results);
+  free(command);
 }
 
 // ===== Buffer inspection and mutation =====
