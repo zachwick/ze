@@ -109,7 +109,11 @@ SCM scmBindKey(SCM keySpec, SCM proc) {
     free(spec);
     return SCM_BOOL_F;
   }
+  if (scm_is_true(key_bindings[code])) {
+    scm_gc_unprotect_object(key_bindings[code]);
+  }
   key_bindings[code] = proc;
+  scm_gc_protect_object(proc);
   if (key_specs[code]) { free(key_specs[code]); }
   key_specs[code] = strdup(spec);
   free(spec);
@@ -360,6 +364,9 @@ SCM scmUnbindKey(SCM keySpec) {
   char *spec = scm_to_locale_string(keySpec);
   unsigned char code = 0;
   if (!parse_keyspec(spec, &code)) { free(spec); return SCM_BOOL_F; }
+  if (scm_is_true(key_bindings[code])) {
+    scm_gc_unprotect_object(key_bindings[code]);
+  }
   key_bindings[code] = SCM_BOOL_F;
   if (key_specs[code]) { free(key_specs[code]); key_specs[code] = NULL; }
   free(spec);

@@ -40,9 +40,9 @@ void initEditor(void) {
 int main(int argc, char *argv[]) {
   enableRawMode();
   initEditor();
-  initKeyBindings();
   editorSetStatusMessage("HELP: C-o = open a file | C-t = clone a template | C-w = write to disk | C-s = search | C-x guile | C-q = quit");
   scm_init_guile();
+  initKeyBindings();
   SCM init_func;
   SCM notes_template_scm;
   SCM readme_template_scm;
