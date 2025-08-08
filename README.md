@@ -60,6 +60,11 @@ if you are using macOS.
 
 ### Default Keybindings
 
+#### Guile Scheme REPL
+| Key | Action | Description |
+|-----|--------|-------------|
+| `Ctrl+x` | Open a REPL | Opens a Guile Scheme REPL |
+
 #### File Operations
 | Key | Action | Description |
 |-----|--------|-------------|
