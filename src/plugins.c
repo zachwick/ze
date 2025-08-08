@@ -6,6 +6,11 @@
 #include <string.h>
 #include <sys/stat.h>
 
+/**
+ * @file plugins.c
+ * @brief Guile/Scheme plugin and keybinding implementation.
+ * @ingroup plugins
+ */
 #include <libguile.h>
 
 #include "ze.h"

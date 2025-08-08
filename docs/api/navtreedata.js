@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "ze", "index.html", [
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -50,8 +51,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"structeditor_syntax.html#a6310768257d27ae917f33dbbe745dad3"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

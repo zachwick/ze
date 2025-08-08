@@ -1,3 +1,8 @@
+/**
+ * @file input.c
+ * @brief Prompt and keypress handling implementations.
+ * @ingroup input
+ */
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>

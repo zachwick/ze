@@ -1,3 +1,8 @@
+/**
+ * @file row.c
+ * @brief Row manipulation and conversion implementations.
+ * @ingroup row
+ */
 #include <stdlib.h>
 #include <string.h>
 

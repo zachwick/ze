@@ -1,3 +1,8 @@
+/**
+ * @file status.c
+ * @brief Status bar message helpers.
+ * @ingroup status
+ */
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>

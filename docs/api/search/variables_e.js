@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['readme_5ftemplate_0',['readme_template',['../templates_8h.html#a979bee5cd42f1961ef57cc551a09d888',1,'readme_template:&#160;main.c'],['../main_8c.html#a979bee5cd42f1961ef57cc551a09d888',1,'readme_template:&#160;main.c']]],
+  ['readme_5ftemplate_0',['readme_template',['../group__templates.html#ga979bee5cd42f1961ef57cc551a09d888',1,'readme_template:&#160;main.c'],['../group__templates.html#ga979bee5cd42f1961ef57cc551a09d888',1,'readme_template:&#160;main.c']]],
   ['render_1',['render',['../structerow.html#a10ba86f063a54e241396b24e5c582599',1,'erow']]],
   ['row_2',['row',['../structeditorConfig.html#a74af43f48685b2371c5c0b753ba92af2',1,'editorConfig']]],
   ['rowoff_3',['rowoff',['../structeditorConfig.html#a87075342beb0cf576703cc493875fce1',1,'editorConfig']]],

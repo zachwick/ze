@@ -1,3 +1,8 @@
+/**
+ * @file render.c
+ * @brief Terminal rendering of buffer contents and UI.
+ * @ingroup render
+ */
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>

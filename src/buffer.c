@@ -1,3 +1,8 @@
+/**
+ * @file buffer.c
+ * @brief Implementation of the append-only output buffer.
+ * @ingroup buffer
+ */
 #include <stdlib.h>
 #include <string.h>
 

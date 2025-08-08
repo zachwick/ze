@@ -1,4 +1,9 @@
-// Core editor types, macros, and global state
+/**
+ * @file ze.h
+ * @brief Core editor types, macros, and global state.
+ * @defgroup core Core types and globals
+ * @{
+ */
 #pragma once
 
 #define _DEFAULT_SOURCE
@@ -9,11 +14,18 @@
 #include <time.h>
 #include <termios.h>
 
+/** Editor version string. */
 #define ZE_VERSION "1.0.0"
+/** Number of spaces used to render a tab character. */
 #define ZE_TAB_STOP 2
+/** Number of confirmations required to quit with unsaved changes. */
 #define ZE_QUIT_TIMES 1
+/** Convert an ASCII character to its Control-key equivalent. */
 #define CTRL_KEY(k) ((k) & 0x1f)
 
+/**
+ * Special key codes interpreted by the editor input loop.
+ */
 enum editorKey {
   ARROW_LEFT = CTRL_KEY('b'),
   ARROW_RIGHT = CTRL_KEY('f'),
@@ -26,6 +38,9 @@ enum editorKey {
   BACKSPACE = 127
 };
 
+/**
+ * Categories of syntax highlighting used to map to terminal colors.
+ */
 enum editorHighlight {
   HL_NORMAL = 0,
   HL_COMMENT,
@@ -37,9 +52,14 @@ enum editorHighlight {
   HL_MATCH
 };
 
+/** Enable number highlighting for a language. */
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
+/** Enable string highlighting for a language. */
 #define HL_HIGHLIGHT_STRINGS (1<<1)
 
+/**
+ * Language-specific syntax highlighting definition.
+ */
 struct editorSyntax {
   char *filetype;
   char **filematch;
@@ -50,6 +70,9 @@ struct editorSyntax {
   int flags;
 };
 
+/**
+ * A single editable row of text and its rendered state.
+ */
 typedef struct erow {
   int idx;
   int size;
@@ -60,6 +83,9 @@ typedef struct erow {
   int hl_open_comment;
 } erow;
 
+/**
+ * Global editor state (cursor position, screen size, buffer, etc.).
+ */
 struct editorConfig {
   int cx, cy;
   int rx;
@@ -77,7 +103,9 @@ struct editorConfig {
   struct termios orig_termios;
 };
 
-// Global state defined in src/main.c
+/** Global editor state defined in `src/main.c`. */
 extern struct editorConfig E;
+
+/** @} */
 
 

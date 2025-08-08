@@ -1,3 +1,8 @@
+/**
+ * @file edit.c
+ * @brief Editing primitives implementation.
+ * @ingroup edit
+ */
 #include <time.h>
 #include <string.h>
 

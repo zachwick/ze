@@ -1,3 +1,8 @@
+/**
+ * @file hooks.c
+ * @brief Scheme hook invocation implementations.
+ * @ingroup hooks
+ */
 #include <libguile.h>
 #include <string.h>
 
