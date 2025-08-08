@@ -1,8 +1,8 @@
 # ze
 
-**ze** - a simple extensible text editor
+**ze** - zach's extensible text editor
 
-ze is a very simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift.
+ze is an extensible text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, Swift, and TypeScript.
 
 See [the docs](https://zachwick.github.io/ze/) for more information.
 
@@ -10,7 +10,7 @@ See [the docs](https://zachwick.github.io/ze/) for more information.
 
 - **Simple and lightweight**: Minimal text editor with essential functionality
 - **Extensible**: Uses GNU Guile for scripting and customization
-- **Syntax highlighting**: Supports C, Python, Ruby, PHP, Rust, APL, and Swift
+- **Syntax highlighting**: Supports C, Python, Ruby, PHP, Rust, APL, Swift, and TypeScript
 - **Hooks system**: Pre- and post- hooks for file operations
 - **Template system**: Clone predefined templates for common file types
 - **Search functionality**: Forward search with navigation
