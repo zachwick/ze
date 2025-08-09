@@ -8,8 +8,7 @@ GENERATE_LATEX         = NO
 
 # Source inputs
 INPUT                  = include src
-USE_MDFILE_AS_MAINPAGE = README.md
-FILE_PATTERNS          = *.h *.c
+FILE_PATTERNS          = *.h *.c *.dox
 RECURSIVE              = YES
 
 # Be generous for projects without full annotations yet

@@ -1,0 +1,81 @@
+/** \mainpage ze — zach's extensible text editor
+
+\tableofcontents
+
+\section intro Overview
+\b ze is a small, extensible text editor that embeds GNU Guile for scripting.
+It supports a lightweight core, ANSI terminal rendering, syntax highlighting,
+template cloning, a forward-search UI, and a simple Scheme-based hooks and
+plugin system for customization.
+
+For the project homepage and published API docs, see the repository README and
+project site.
+
+\section features Features
+- Simple, minimal core written in C
+- Extensible via GNU Guile Scheme (plugins and hooks)
+- Syntax highlighting for C, Python, Ruby, PHP, Rust, APL, Swift, and TypeScript
+- Template system for quickly bootstrapping files
+- Forward search with next/previous navigation
+- Cross-platform on Unix-like systems (macOS, Linux, …)
+
+\section build Build and Install
+\subsection prereq Prerequisites
+- GNU Guile installed on your system (e.g., on macOS: `brew install guile`).
+
+\subsection steps Steps
+\code{.sh}
+git clone git@github.com:zachwick/ze
+cd ze
+mkdir -p ~/.ze
+cp zerc.scm ~/.ze/
+cp -R templates ~/.ze/templates
+make install
+\endcode
+
+You must adjust the path passed to `scm_c_primitive_load` in `main` to point to
+your local `zerc.scm` if it differs from the default.
+
+\section usage Usage
+- Start: `ze`
+- Open a file: `ze <filename>`
+- Press `Ctrl+x` to open a one-line Scheme REPL inside ze
+- Common keys: `Ctrl+o` (open), `Ctrl+w` (write), `Ctrl+t` (clone template),
+  `Ctrl+s` (search), `Ctrl+n`/`Ctrl+b` (next/prev match)
+
+\section plugins Plugins and Hooks
+Place `.scm` files under `~/.ze/plugins`. Non-hidden Scheme files are loaded at
+startup. You can bind keys and set the status line from Scheme. Hooks are
+invoked around editor events such as saving and opening files or directories.
+
+\section layout Code Layout
+- `include/` Public headers
+- `src/` Editor implementation
+- `plugins/` Example Scheme plugins
+- `templates/` Starter file templates
+- `zerc.scm` Example user configuration
+
+\section modules Modules
+Explore the core modules and subsystems:
+- \ref group__core "Core"
+- \ref group__buffer "Buffer"
+- \ref group__edit "Edit"
+- \ref group__fileio "File I/O"
+- \ref group__input "Input"
+- \ref group__render "Render"
+- \ref group__row "Row"
+- \ref group__search "Search"
+- \ref group__status "Status"
+- \ref group__syntax "Syntax"
+- \ref group__templates "Templates"
+- \ref group__terminal "Terminal"
+- \ref group__util "Utilities"
+- \ref group__hooks "Hooks"
+- \ref group__init "Init"
+- \ref group__plugins "Plugins"
+
+\section license License
+ze is licensed under the GNU GPLv3 or later. See `LICENSE.txt` for details.
+*/
+
+
