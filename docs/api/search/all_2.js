@@ -5,5 +5,6 @@ var searchData=
   ['bar_2',['Status bar',['../group__status.html',1,'']]],
   ['buffer_3',['Append buffer',['../group__buffer.html',1,'']]],
   ['buffer_2ec_4',['buffer.c',['../buffer_8c.html',1,'']]],
-  ['buffer_2eh_5',['buffer.h',['../buffer_8h.html',1,'']]]
+  ['buffer_2eh_5',['buffer.h',['../buffer_8h.html',1,'']]],
+  ['build_20and_20install_6',['Build and Install',['../index.html#build',1,'']]]
 ];

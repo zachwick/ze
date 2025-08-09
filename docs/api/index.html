@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ze: Main Page</title>
+<title>ze: ze — zach&#39;s extensible text editor</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,10 +68,98 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">ze Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">ze — zach's extensible text editor </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#intro">Overview</a></li>
+<li class="level1"><a href="#features">Features</a></li>
+<li class="level1"><a href="#build">Build and Install</a><ul><li class="level2"><a href="#prereq">Prerequisites</a></li>
+<li class="level2"><a href="#steps">Steps</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#usage">Usage</a></li>
+<li class="level1"><a href="#plugins">Plugins and Hooks</a></li>
+<li class="level1"><a href="#layout">Code Layout</a></li>
+<li class="level1"><a href="#modules">Modules</a></li>
+<li class="level1"><a href="#license">License</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="intro"></a>
+Overview</h1>
+<p><b>ze</b> is a small, extensible text editor that embeds GNU Guile for scripting. It supports a lightweight core, ANSI terminal rendering, syntax highlighting, template cloning, a forward-search UI, and a simple Scheme-based hooks and plugin system for customization.</p>
+<p>For the project homepage and published API docs, see the repository README and project site.</p>
+<h1><a class="anchor" id="features"></a>
+Features</h1>
+<ul>
+<li>Simple, minimal core written in C</li>
+<li>Extensible via GNU Guile Scheme (plugins and hooks)</li>
+<li>Syntax highlighting for C, Python, Ruby, PHP, Rust, APL, Swift, and TypeScript</li>
+<li>Template system for quickly bootstrapping files</li>
+<li>Forward search with next/previous navigation</li>
+<li>Cross-platform on Unix-like systems (macOS, Linux, …)</li>
+</ul>
+<h1><a class="anchor" id="build"></a>
+Build and Install</h1>
+<h2><a class="anchor" id="prereq"></a>
+Prerequisites</h2>
+<ul>
+<li>GNU Guile installed on your system (e.g., on macOS: <code>brew install guile</code>).</li>
+</ul>
+<h2><a class="anchor" id="steps"></a>
+Steps</h2>
+<div class="fragment"><div class="line">git clone git@github.com:zachwick/ze</div>
+<div class="line">cd ze</div>
+<div class="line">mkdir -p ~/.ze</div>
+<div class="line">cp zerc.scm ~/.ze/</div>
+<div class="line">cp -R templates ~/.ze/templates</div>
+<div class="line">make install</div>
+</div><!-- fragment --><p>You must adjust the path passed to <code>scm_c_primitive_load</code> in <code>main</code> to point to your local <code>zerc.scm</code> if it differs from the default.</p>
+<h1><a class="anchor" id="usage"></a>
+Usage</h1>
+<ul>
+<li>Start: <code>ze</code></li>
+<li>Open a file: <code>ze &lt;filename&gt;</code></li>
+<li>Press <code>Ctrl+x</code> to open a one-line Scheme REPL inside ze</li>
+<li>Common keys: <code>Ctrl+o</code> (open), <code>Ctrl+w</code> (write), <code>Ctrl+t</code> (clone template), <code>Ctrl+s</code> (search), <code>Ctrl+n</code>/<code>Ctrl+b</code> (next/prev match)</li>
+</ul>
+<h1><a class="anchor" id="plugins"></a>
+Plugins and Hooks</h1>
+<p>Place <code>.scm</code> files under <code>~/.ze/plugins</code>. Non-hidden Scheme files are loaded at startup. You can bind keys and set the status line from Scheme. Hooks are invoked around editor events such as saving and opening files or directories.</p>
+<h1><a class="anchor" id="layout"></a>
+Code Layout</h1>
+<ul>
+<li><code>include/</code> Public headers</li>
+<li><code>src/</code> Editor implementation</li>
+<li><code>plugins/</code> Example Scheme plugins</li>
+<li><code>templates/</code> Starter file templates</li>
+<li><code>zerc.scm</code> Example user configuration</li>
+</ul>
+<h1><a class="anchor" id="modules"></a>
+Modules</h1>
+<p>Explore the core modules and subsystems:</p><ul>
+<li>Core</li>
+<li>Buffer</li>
+<li>Edit</li>
+<li>File I/O</li>
+<li>Input</li>
+<li>Render</li>
+<li>Row</li>
+<li>Search</li>
+<li>Status</li>
+<li>Syntax</li>
+<li>Templates</li>
+<li>Terminal</li>
+<li>Utilities</li>
+<li>Hooks</li>
+<li>Init</li>
+<li>Plugins</li>
+</ul>
+<h1><a class="anchor" id="license"></a>
+License</h1>
+<p>ze is licensed under the GNU GPLv3 or later. See <code>LICENSE.txt</code> for details. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

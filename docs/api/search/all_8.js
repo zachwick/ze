@@ -15,7 +15,7 @@ var searchData=
   ['hldb_12',['HLDB',['../syntax_8c.html#a0c876f47e5edee69a4f936864cc96830',1,'syntax.c']]],
   ['hldb_5fentries_13',['HLDB_ENTRIES',['../syntax_8c.html#ac72d068a4180c7a8e9ea0feebc0013ef',1,'syntax.c']]],
   ['home_5fkey_14',['HOME_KEY',['../group__core.html#ggafc98e1836253d54640dce00e325aa284adbfee56bbc71c97e2ed80ba44706581b',1,'ze.h']]],
-  ['hooks_15',['Hooks',['../group__hooks.html',1,'']]],
+  ['hooks_15',['hooks',['../group__hooks.html',1,'Hooks'],['../index.html#plugins',1,'Plugins and Hooks']]],
   ['hooks_2ec_16',['hooks.c',['../hooks_8c.html',1,'']]],
   ['hooks_2eh_17',['hooks.h',['../hooks_8h.html',1,'']]]
 ];
