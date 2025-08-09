@@ -1,18 +1,21 @@
 PROJECT_NAME           = "ze"
 
-# Output HTML into docs/api so GitHub Pages (docs/ source) serves it at /api/
+# Output HTML into docs/ root so GitHub Pages serves Doxygen at site root
 OUTPUT_DIRECTORY       = docs
 GENERATE_HTML          = YES
-HTML_OUTPUT            = api
+HTML_OUTPUT            = .
 GENERATE_LATEX         = NO
 
 # Source inputs
-INPUT                  = include src
-FILE_PATTERNS          = *.h *.c *.dox
+INPUT                  = include src docs/index.md
+FILE_PATTERNS          = *.h *.c *.dox *.md
 RECURSIVE              = YES
 
 # Be generous for projects without full annotations yet
 EXTRACT_ALL            = YES
+
+# Reuse docs/index.md as the Doxygen main page
+USE_MDFILE_AS_MAINPAGE = docs/index.md
 
 # Keep logs quieter in CI
 QUIET                  = YES

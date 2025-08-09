@@ -41,7 +41,9 @@ Use `ze` to start ze, or use `ze <filename>` to start ze and open `filename` all
 
 ### Documentation
 
-- [C API reference](api/)
+- [Modules](modules.html)
+- [Files](files.html)
+- [Classes](annotated.html)
 
 ## Default Keybindings
 
