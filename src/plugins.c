@@ -33,6 +33,16 @@ static SCM hook_postFileOpen = SCM_BOOL_F;
 static SCM hook_preSave = SCM_BOOL_F;
 static SCM hook_postSave = SCM_BOOL_F;
 
+/**
+ * @brief Fetch a registered hook by name.
+ * @ingroup plugins
+ *
+ * Recognized names: "preDirOpenHook", "postDirOpenHook",
+ * "preFileOpenHook", "postFileOpenHook", "preSaveHook", "postSaveHook".
+ *
+ * @param name C string name of the hook.
+ * @return Scheme object for the hook or #SCM_BOOL_F if unset/unknown.
+ */
 SCM pluginsGetHook(const char *name) {
   if (name == NULL) return SCM_BOOL_F;
   if (strcmp(name, "preDirOpenHook") == 0) return hook_preDirOpen;
@@ -60,6 +70,12 @@ static int parse_keyspec(const char *spec, unsigned char *out_code) {
   return 0;
 }
 
+/**
+ * @brief If a Scheme binding exists for the key, invoke it.
+ * @ingroup plugins
+ * @param code Key code.
+ * @return 1 if a binding was invoked, 0 otherwise.
+ */
 int pluginsHandleKey(unsigned char code) {
   SCM proc = key_bindings[code];
   if (scm_is_true(proc) && scm_is_true(scm_procedure_p(proc))) {
@@ -69,6 +85,10 @@ int pluginsHandleKey(unsigned char code) {
   return 0;
 }
 
+/**
+ * @brief Initialize the in-memory key binding table.
+ * @ingroup plugins
+ */
 void initKeyBindings(void) {
   for (int i = 0; i < 256; i++) {
     key_bindings[i] = SCM_BOOL_F;
@@ -76,6 +96,10 @@ void initKeyBindings(void) {
   }
 }
 
+/**
+ * @brief Load Scheme plugins from "$HOME/.ze/plugins" (all .scm files).
+ * @ingroup plugins
+ */
 void loadPlugins(void) {
   const char *home_dir = getenv("HOME");
   if (home_dir == NULL) return;
@@ -103,6 +127,14 @@ void loadPlugins(void) {
   free(entries);
 }
 
+/**
+ * @brief Bind a key specification to a Scheme procedure.
+ * @ingroup plugins
+ * @note Scheme procedure: bind-key key-spec proc
+ * @param keySpec Scheme string like "C-x", "C-s", or "a".
+ * @param proc Scheme procedure to call when the key is pressed.
+ * @return #SCM_BOOL_T on success, #SCM_BOOL_F on failure.
+ */
 SCM scmBindKey(SCM keySpec, SCM proc) {
   char *spec = scm_to_locale_string(keySpec);
   unsigned char code = 0;
@@ -150,6 +182,10 @@ static SCM eval_handler(void *data, SCM tag, SCM throw_args) {
   return scm_get_output_string(port);
 }
 
+/**
+ * @brief Prompt for and evaluate a single Scheme expression (mini-REPL).
+ * @ingroup plugins
+ */
 void editorExec(void) {
   char *command;
   SCM result_scm;
@@ -184,6 +220,12 @@ static void replace_row_text(erow *row, const char *text, size_t len) {
   E.dirty++;
 }
 
+/**
+ * @brief Return the entire buffer as a Scheme string.
+ * @ingroup plugins
+ * @note Scheme procedure: buffer->string
+ * @return Scheme string containing the full buffer contents.
+ */
 SCM scmBufferToString(void) {
   int len = 0;
   char *buf = editorRowsToString(&len);
@@ -193,10 +235,23 @@ SCM scmBufferToString(void) {
   return s;
 }
 
+/**
+ * @brief Get the number of lines in the current buffer.
+ * @ingroup plugins
+ * @note Scheme procedure: buffer-line-count
+ * @return Scheme integer line count.
+ */
 SCM scmBufferLineCount(void) {
   return scm_from_int(E.numrows);
 }
 
+/**
+ * @brief Get the contents of a line by index.
+ * @ingroup plugins
+ * @note Scheme procedure: get-line idx
+ * @param idx_scm Scheme integer line index (0-based).
+ * @return Scheme string for the line, or #SCM_BOOL_F if out of range.
+ */
 SCM scmGetLine(SCM idx_scm) {
   int idx = scm_to_int(idx_scm);
   if (idx < 0 || idx >= E.numrows) return SCM_BOOL_F;
@@ -204,6 +259,14 @@ SCM scmGetLine(SCM idx_scm) {
   return scm_from_locale_stringn(row->chars, (size_t)row->size);
 }
 
+/**
+ * @brief Replace the contents of a line.
+ * @ingroup plugins
+ * @note Scheme procedure: set-line! idx text
+ * @param idx_scm Scheme integer line index (0-based).
+ * @param str_scm Scheme string new contents.
+ * @return #SCM_BOOL_T on success, #SCM_BOOL_F if index is out of range.
+ */
 SCM scmSetLine(SCM idx_scm, SCM str_scm) {
   int idx = scm_to_int(idx_scm);
   if (idx < 0 || idx >= E.numrows) return SCM_BOOL_F;
@@ -213,6 +276,14 @@ SCM scmSetLine(SCM idx_scm, SCM str_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Insert a new line at index.
+ * @ingroup plugins
+ * @note Scheme procedure: insert-line! idx text
+ * @param idx_scm Scheme integer index (clamped to [0, line-count]).
+ * @param str_scm Scheme string new line text (without trailing newline).
+ * @return #SCM_BOOL_T.
+ */
 SCM scmInsertLine(SCM idx_scm, SCM str_scm) {
   int idx = scm_to_int(idx_scm);
   if (idx < 0) idx = 0;
@@ -223,6 +294,13 @@ SCM scmInsertLine(SCM idx_scm, SCM str_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Append a new line at the end of the buffer.
+ * @ingroup plugins
+ * @note Scheme procedure: append-line! text
+ * @param str_scm Scheme string new line text.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmAppendLine(SCM str_scm) {
   char *text = scm_to_locale_string(str_scm);
   editorInsertRow(E.numrows, text, strlen(text));
@@ -230,6 +308,13 @@ SCM scmAppendLine(SCM str_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Delete a line by index.
+ * @ingroup plugins
+ * @note Scheme procedure: delete-line! idx
+ * @param idx_scm Scheme integer line index (0-based).
+ * @return #SCM_BOOL_T on success, #SCM_BOOL_F if out of range.
+ */
 SCM scmDeleteLine(SCM idx_scm) {
   int idx = scm_to_int(idx_scm);
   if (idx < 0 || idx >= E.numrows) return SCM_BOOL_F;
@@ -237,6 +322,13 @@ SCM scmDeleteLine(SCM idx_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Insert text at the cursor position, interpreting newlines.
+ * @ingroup plugins
+ * @note Scheme procedure: insert-text! text
+ * @param str_scm Scheme string text (may contain newlines).
+ * @return #SCM_BOOL_T.
+ */
 SCM scmInsertText(SCM str_scm) {
   char *text = scm_to_locale_string(str_scm);
   for (size_t i = 0; text[i] != '\0'; i++) {
@@ -247,6 +339,13 @@ SCM scmInsertText(SCM str_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Insert a single character at the cursor.
+ * @ingroup plugins
+ * @note Scheme procedure: insert-char! ch
+ * @param ch_scm Either a Scheme integer char code or a one-char string.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmInsertChar(SCM ch_scm) {
   if (scm_is_integer(ch_scm)) {
     int c = scm_to_int(ch_scm);
@@ -259,11 +358,23 @@ SCM scmInsertChar(SCM ch_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Insert a newline at the cursor position.
+ * @ingroup plugins
+ * @note Scheme procedure: insert-newline!
+ * @return #SCM_BOOL_T.
+ */
 SCM scmInsertNewline(void) {
   editorInsertNewline();
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Delete the character to the left of the cursor (backspace).
+ * @ingroup plugins
+ * @note Scheme procedure: delete-char!
+ * @return #SCM_BOOL_T.
+ */
 SCM scmDeleteChar(void) {
   editorDelChar();
   return SCM_BOOL_T;
@@ -271,12 +382,26 @@ SCM scmDeleteChar(void) {
 
 // ===== Cursor and viewport =====
 
+/**
+ * @brief Get current cursor position.
+ * @ingroup plugins
+ * @note Scheme procedure: get-cursor
+ * @return Scheme pair (x . y) in editor column/line coordinates.
+ */
 SCM scmGetCursor(void) {
   SCM x = scm_from_int(E.cx);
   SCM y = scm_from_int(E.cy);
   return scm_list_2(x, y);
 }
 
+/**
+ * @brief Set cursor position, clamped to the current buffer.
+ * @ingroup plugins
+ * @note Scheme procedure: set-cursor! x y
+ * @param x_scm Scheme integer column.
+ * @param y_scm Scheme integer line.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmSetCursor(SCM x_scm, SCM y_scm) {
   int x = scm_to_int(x_scm);
   int y = scm_to_int(y_scm);
@@ -290,6 +415,13 @@ SCM scmSetCursor(SCM x_scm, SCM y_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Move the cursor in a direction.
+ * @ingroup plugins
+ * @note Scheme procedure: move-cursor! dir
+ * @param dir_scm Scheme string: "left", "right", "up", or "down".
+ * @return #SCM_BOOL_T.
+ */
 SCM scmMoveCursor(SCM dir_scm) {
   char *dir = scm_to_locale_string(dir_scm);
   if (strcasecmp(dir, "left") == 0) editorMoveCursor(ARROW_LEFT);
@@ -300,12 +432,25 @@ SCM scmMoveCursor(SCM dir_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Get the editor screen size in rows and columns.
+ * @ingroup plugins
+ * @note Scheme procedure: screen-size
+ * @return Scheme pair (rows . cols).
+ */
 SCM scmScreenSize(void) {
   return scm_list_2(scm_from_int(E.screenrows), scm_from_int(E.screencols));
 }
 
 // ===== File I/O and filenames =====
 
+/**
+ * @brief Open a file into the editor.
+ * @ingroup plugins
+ * @note Scheme procedure: open-file! path
+ * @param path_scm Scheme string path.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmOpenFile(SCM path_scm) {
   char *path = scm_to_locale_string(path_scm);
   editorOpen(path);
@@ -313,16 +458,35 @@ SCM scmOpenFile(SCM path_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Save the current buffer to disk.
+ * @ingroup plugins
+ * @note Scheme procedure: save-file!
+ * @return #SCM_BOOL_T.
+ */
 SCM scmSaveFile(void) {
   editorSave();
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Get the current filename, if any.
+ * @ingroup plugins
+ * @note Scheme procedure: get-filename
+ * @return Scheme string filename, or #SCM_BOOL_F if unnamed.
+ */
 SCM scmGetFilename(void) {
   if (E.filename == NULL) return SCM_BOOL_F;
   return scm_from_locale_string(E.filename);
 }
 
+/**
+ * @brief Set the current filename and reselect syntax highlighting.
+ * @ingroup plugins
+ * @note Scheme procedure: set-filename! path
+ * @param path_scm Scheme string path.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmSetFilename(SCM path_scm) {
   char *path = scm_to_locale_string(path_scm);
   if (E.filename) free(E.filename);
@@ -334,6 +498,13 @@ SCM scmSetFilename(SCM path_scm) {
 
 // ===== Prompts and UI =====
 
+/**
+ * @brief Prompt the user and return their input.
+ * @ingroup plugins
+ * @note Scheme procedure: prompt message
+ * @param msg_scm Scheme string prompt message (printf-style not supported).
+ * @return Scheme string response, or #SCM_BOOL_F on cancel.
+ */
 SCM scmPrompt(SCM msg_scm) {
   char *msg = scm_to_locale_string(msg_scm);
   char *resp = editorPrompt(msg, NULL);
@@ -344,6 +515,12 @@ SCM scmPrompt(SCM msg_scm) {
   return out;
 }
 
+/**
+ * @brief Force a screen refresh.
+ * @ingroup plugins
+ * @note Scheme procedure: refresh-screen!
+ * @return #SCM_BOOL_T.
+ */
 SCM scmRefreshScreen(void) {
   editorRefreshScreen();
   return SCM_BOOL_T;
@@ -351,6 +528,13 @@ SCM scmRefreshScreen(void) {
 
 // ===== Search (non-interactive) =====
 
+/**
+ * @brief Search forward for a substring and jump to the next match.
+ * @ingroup plugins
+ * @note Scheme procedure: search-forward! query
+ * @param query_scm Scheme string to search for.
+ * @return Pair (y . x) of the match position, or #SCM_BOOL_F if not found.
+ */
 SCM scmSearchForward(SCM query_scm) {
   char *query = scm_to_locale_string(query_scm);
   if (!query || query[0] == '\0') { if (query) free(query); return SCM_BOOL_F; }
@@ -377,6 +561,13 @@ SCM scmSearchForward(SCM query_scm) {
 
 // ===== Syntax highlighting =====
 
+/**
+ * @brief Select syntax based on a filename, without opening the file.
+ * @ingroup plugins
+ * @note Scheme procedure: select-syntax-for-filename! path
+ * @param path_scm Scheme string path whose extension drives syntax.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmSelectSyntaxForFilename(SCM path_scm) {
   char *path = scm_to_locale_string(path_scm);
   char *old = E.filename ? strdup(E.filename) : NULL;
@@ -388,6 +579,12 @@ SCM scmSelectSyntaxForFilename(SCM path_scm) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief Get the current filetype name from syntax highlighting.
+ * @ingroup plugins
+ * @note Scheme procedure: get-filetype
+ * @return Scheme string filetype, or #SCM_BOOL_F if none.
+ */
 SCM scmGetFiletype(void) {
   if (E.syntax == NULL || E.syntax->filetype == NULL) return SCM_BOOL_F;
   return scm_from_locale_string(E.syntax->filetype);
@@ -395,6 +592,13 @@ SCM scmGetFiletype(void) {
 
 // ===== Keymap management =====
 
+/**
+ * @brief Remove a key binding.
+ * @ingroup plugins
+ * @note Scheme procedure: unbind-key key-spec
+ * @param keySpec Scheme string key specification (e.g., "C-x", "a").
+ * @return #SCM_BOOL_T.
+ */
 SCM scmUnbindKey(SCM keySpec) {
   char *spec = scm_to_locale_string(keySpec);
   unsigned char code = 0;
@@ -408,6 +612,12 @@ SCM scmUnbindKey(SCM keySpec) {
   return SCM_BOOL_T;
 }
 
+/**
+ * @brief List all key bindings.
+ * @ingroup plugins
+ * @note Scheme procedure: list-bindings
+ * @return Scheme list of pairs (key . procedure).
+ */
 SCM scmListBindings(void) {
   SCM list = SCM_EOL;
   for (int i = 255; i >= 0; i--) {
@@ -422,10 +632,23 @@ SCM scmListBindings(void) {
 
 // ===== Dirty state =====
 
+/**
+ * @brief Check whether the current buffer has unsaved changes.
+ * @ingroup plugins
+ * @note Scheme procedure: buffer-dirty?
+ * @return Scheme boolean.
+ */
 SCM scmBufferDirty(void) {
   return scm_from_bool(E.dirty != 0);
 }
 
+/**
+ * @brief Mark the current buffer dirty/clean.
+ * @ingroup plugins
+ * @note Scheme procedure: set-buffer-dirty! bool
+ * @param bool_scm Scheme boolean.
+ * @return #SCM_BOOL_T.
+ */
 SCM scmSetBufferDirty(SCM bool_scm) {
   E.dirty = scm_is_true(bool_scm) ? 1 : 0;
   return SCM_BOOL_T;
@@ -433,6 +656,12 @@ SCM scmSetBufferDirty(SCM bool_scm) {
 
 // ===== Templates (simple wrapper) =====
 
+/**
+ * @brief Clone a template into the current buffer (interactive selection).
+ * @ingroup plugins
+ * @note Scheme procedure: clone-template!
+ * @return #SCM_BOOL_T.
+ */
 SCM scmCloneTemplate(void) {
   editorCloneTemplate();
   return SCM_BOOL_T;
