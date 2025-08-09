@@ -94,8 +94,10 @@ Files</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga8cf98f19b000d053dbd9ae2cf957d424" id="r_ga8cf98f19b000d053dbd9ae2cf957d424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga8cf98f19b000d053dbd9ae2cf957d424">editorFindCallback</a> (char *query, int key)</td></tr>
+<tr class="memdesc:ga8cf98f19b000d053dbd9ae2cf957d424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Live-search callback to update match highlighting and cursor.  <br /></td></tr>
 <tr class="separator:ga8cf98f19b000d053dbd9ae2cf957d424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga28cfa432286bd17c79730da8bbcedd48" id="r_ga28cfa432286bd17c79730da8bbcedd48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga28cfa432286bd17c79730da8bbcedd48">editorFind</a> (void)</td></tr>
+<tr class="memdesc:ga28cfa432286bd17c79730da8bbcedd48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt for a search query and jump to matches interactively.  <br /></td></tr>
 <tr class="separator:ga28cfa432286bd17c79730da8bbcedd48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -115,7 +117,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Prompt for a query and perform an interactive forward search. </p>
+
+<p>Prompt for a search query and jump to matches interactively. </p>
+<p>Prompt for a query and perform an interactive forward search.</p>
+<p>Prompts the user with "Search: " and uses <a class="el" href="group__search.html#ga8cf98f19b000d053dbd9ae2cf957d424" title="Live-search callback to update match highlighting and cursor.">editorFindCallback()</a> to move to matches as the query changes. Restores the original cursor and viewport if the prompt is cancelled.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>May modify cursor and viewport on success; restores them on cancel. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__input.html#ga4de965d803aea82e894820b40e0ed097" title="Prompt the user for input with a live callback.">editorPrompt()</a>, <a class="el" href="group__search.html#ga8cf98f19b000d053dbd9ae2cf957d424" title="Live-search callback to update match highlighting and cursor.">editorFindCallback()</a> </dd></dl>
 
 </div>
 </div>
@@ -144,7 +151,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Highlight matches and move cursor during interactive search. </p>
+
+<p>Live-search callback to update match highlighting and cursor. </p>
+<p>Highlight matches and move cursor during interactive search.</p>
+<p>Maintains search state across invocations. On arrow keys, changes search direction; on other input, resets state. Highlights the next match in the buffer and moves the cursor there, restoring previous highlight as needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">query</td><td>NUL-terminated search string (may be empty). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Last key pressed to drive search behavior. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Cursor, row highlighting, and scroll offset may change. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__search.html#ga28cfa432286bd17c79730da8bbcedd48" title="Prompt for a search query and jump to matches interactively.">editorFind()</a>, <a class="el" href="group__row.html#gae94c7e64a0a5c007cef67fed6e295514" title="Convert a render index (rx) to a character index (cx).">editorRowRxToCx()</a> </dd></dl>
 
 </div>
 </div>

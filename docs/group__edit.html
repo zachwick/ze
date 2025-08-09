@@ -94,12 +94,16 @@ Files</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaa29057a4194fec0158f141b54518444a" id="r_gaa29057a4194fec0158f141b54518444a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#gaa29057a4194fec0158f141b54518444a">editorInsertChar</a> (int c)</td></tr>
+<tr class="memdesc:gaa29057a4194fec0158f141b54518444a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a character at the current cursor position.  <br /></td></tr>
 <tr class="separator:gaa29057a4194fec0158f141b54518444a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga206a32a190e3988f321384546d3a1710" id="r_ga206a32a190e3988f321384546d3a1710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#ga206a32a190e3988f321384546d3a1710">editorInsertTimestamp</a> (void)</td></tr>
+<tr class="memdesc:ga206a32a190e3988f321384546d3a1710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a timestamp string at the cursor.  <br /></td></tr>
 <tr class="separator:ga206a32a190e3988f321384546d3a1710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5f684231e33ad611337fbe52ea910a47" id="r_ga5f684231e33ad611337fbe52ea910a47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#ga5f684231e33ad611337fbe52ea910a47">editorInsertNewline</a> (void)</td></tr>
+<tr class="memdesc:ga5f684231e33ad611337fbe52ea910a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a newline at the cursor position, splitting the line if needed.  <br /></td></tr>
 <tr class="separator:ga5f684231e33ad611337fbe52ea910a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa95d51659b9b1309d0778d7a832a8abb" id="r_gaa95d51659b9b1309d0778d7a832a8abb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__edit.html#gaa95d51659b9b1309d0778d7a832a8abb">editorDelChar</a> (void)</td></tr>
+<tr class="memdesc:gaa95d51659b9b1309d0778d7a832a8abb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the character to the left of the cursor or join lines.  <br /></td></tr>
 <tr class="separator:gaa95d51659b9b1309d0778d7a832a8abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -119,7 +123,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Delete the character left of the cursor or join with previous row. </p>
+
+<p>Delete the character to the left of the cursor or join lines. </p>
+<p>Delete the character left of the cursor or join with previous row.</p>
+<p>If at the beginning of a line (column 0) and not at the top of the file, joins the current line into the end of the previous line. Otherwise deletes the character before the cursor. Cursor and dirty state are updated.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>Buffer and cursor position are modified. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1" title="Delete a character from a row.">editorRowDelChar()</a>, <a class="el" href="group__row.html#ga1e282bcd8f1f442f9c6b1e6e610379dd" title="Append a byte sequence to the end of a row.">editorRowAppendString()</a>, <a class="el" href="group__row.html#ga3554979118d68fa8482814ea8e45ba62" title="Delete a row from the buffer.">editorDelRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -138,7 +147,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Insert character at the current cursor position. </p>
+
+<p>Insert a character at the current cursor position. </p>
+<p>Insert character at the current cursor position.</p>
+<p>If the cursor is positioned at the end of the buffer (on the phantom line equal to <code>E.numrows</code>), a new empty line is created first. The character is inserted into the current row at column <code>E.cx</code> and the cursor advances by 1. Dirty state and render cache are updated via row helpers.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Character code to insert. Only the low 8 bits are used. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section post"><dt>Postcondition</dt><dd>On return, <code>E.cx</code> may increase, <code>E.numrows</code> may increase on first insert, and the buffer contents are modified. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at a position.">editorRowInsertChar()</a>, <a class="el" href="group__edit.html#ga5f684231e33ad611337fbe52ea910a47" title="Insert a newline at the cursor position, splitting the line if needed.">editorInsertNewline()</a>, <a class="el" href="group__edit.html#gaa95d51659b9b1309d0778d7a832a8abb" title="Delete the character to the left of the cursor or join lines.">editorDelChar()</a> </dd></dl>
 
 </div>
 </div>
@@ -157,7 +177,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Insert a newline, potentially splitting the current row. </p>
+
+<p>Insert a newline at the cursor position, splitting the line if needed. </p>
+<p>Insert a newline, potentially splitting the current row.</p>
+<p>If <code>E.cx</code> is 0, inserts an empty line above the current line. Otherwise, splits the current row at <code>E.cx</code>, moving the tail to the next line. Advances the cursor to the beginning of the new line.</p>
+<dl class="section post"><dt>Postcondition</dt><dd><code>E.cy</code> increments, <code>E.cx</code> becomes 0. Buffer rows are re-rendered. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__edit.html#gaa29057a4194fec0158f141b54518444a" title="Insert a character at the current cursor position.">editorInsertChar()</a>, <a class="el" href="group__edit.html#gaa95d51659b9b1309d0778d7a832a8abb" title="Delete the character to the left of the cursor or join lines.">editorDelChar()</a>, <a class="el" href="group__row.html#ga3a16dc547e91a2400ef2b63bae16860e" title="Insert a new row into the buffer at a given index.">editorInsertRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -176,7 +201,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Insert a formatted local timestamp string at the cursor. </p>
+
+<p>Insert a timestamp string at the cursor. </p>
+<p>Insert a formatted local timestamp string at the cursor.</p>
+<p>Inserts the current local time formatted as "%Y-%m-%d %H:%M:%S" by calling <a class="el" href="group__edit.html#gaa29057a4194fec0158f141b54518444a" title="Insert a character at the current cursor position.">editorInsertChar()</a> for each character.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>Buffer is modified; cursor advances by the length of the timestamp. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__edit.html#gaa29057a4194fec0158f141b54518444a" title="Insert a character at the current cursor position.">editorInsertChar()</a> </dd></dl>
 
 </div>
 </div>

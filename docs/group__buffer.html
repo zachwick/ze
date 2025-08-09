@@ -106,8 +106,10 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga9dd3715258f4c42aeb40ae92f51422e9" id="r_ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#ga9dd3715258f4c42aeb40ae92f51422e9">abAppend</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab, const char *s, int len)</td></tr>
+<tr class="memdesc:ga9dd3715258f4c42aeb40ae92f51422e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append raw bytes to the dynamic append buffer.  <br /></td></tr>
 <tr class="separator:ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa676d43ad5c715bcf8ec2c3b2df0f4e0" id="r_gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0">abFree</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
+<tr class="memdesc:gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory held by an append buffer.  <br /></td></tr>
 <tr class="separator:gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -159,14 +161,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Append raw bytes to the dynamic append buffer. </p>
 <p>Append a string segment to the buffer, reallocating as needed. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ab</td><td>Target buffer </td></tr>
     <tr><td class="paramname">s</td><td>String data to append </td></tr>
-    <tr><td class="paramname">len</td><td>Length of <code>s</code> </td></tr>
+    <tr><td class="paramname">len</td><td>Length of <code>s</code></td></tr>
   </table>
   </dd>
 </dl>
+<p>Reallocates the buffer as needed and copies the requested number of bytes to the end of the buffer. The resulting buffer is not NUL-terminated; use the maintained length field <code>ab-&gt;len</code>.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>On success, <code>ab-&gt;b</code> may be reallocated and <code>ab-&gt;len</code> increases by the number of appended bytes. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>On allocation failure, the function returns early and leaves the buffer unchanged. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0" title="Free the memory held by an append buffer.">abFree()</a>, <a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>
@@ -185,7 +193,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Free any memory owned by the buffer. </p>
+
+<p>Free the memory held by an append buffer. </p>
+<p>Free any memory owned by the buffer.</p>
+<p>Releases <code>ab-&gt;b</code> if non-NULL. Does not reset <code>ab-&gt;len</code> to 0.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ab</td><td>Append buffer whose storage should be freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__buffer.html#ga9dd3715258f4c42aeb40ae92f51422e9" title="Append raw bytes to the dynamic append buffer.">abAppend()</a> </dd></dl>
 
 </div>
 </div>

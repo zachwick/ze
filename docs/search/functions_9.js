@@ -8,7 +8,7 @@ var searchData=
   ['scmclonetemplate_5',['scmCloneTemplate',['../group__plugins.html#ga183ef2478133b2631c58a2381e036b2a',1,'plugins.c']]],
   ['scmdeletechar_6',['scmDeleteChar',['../group__plugins.html#ga67a6b5a73e98c291053d41270dc10410',1,'plugins.c']]],
   ['scmdeleteline_7',['scmDeleteLine',['../group__plugins.html#ga2c4d4c699c6bde194c2f057be465f8ee',1,'plugins.c']]],
-  ['scmeditorsetstatusmessage_8',['scmeditorsetstatusmessage',['../group__status.html#gae61f73b5bb12f499fa305a9c1c3b96c7',1,'scmEditorSetStatusMessage(SCM message):&#160;status.c'],['../group__status.html#gae61f73b5bb12f499fa305a9c1c3b96c7',1,'scmEditorSetStatusMessage(SCM message):&#160;status.c']]],
+  ['scmeditorsetstatusmessage_8',['scmEditorSetStatusMessage',['../group__status.html#gae61f73b5bb12f499fa305a9c1c3b96c7',1,'status.c']]],
   ['scmgetcursor_9',['scmGetCursor',['../group__plugins.html#ga5b19ed9dc86e9349aea7edb142707c85',1,'plugins.c']]],
   ['scmgetfilename_10',['scmGetFilename',['../group__plugins.html#ga310f0958617de3a98e9defba9f8ab526',1,'plugins.c']]],
   ['scmgetfiletype_11',['scmGetFiletype',['../group__plugins.html#gaa8b6e25318fa2cf14ea511928bc100c0',1,'plugins.c']]],

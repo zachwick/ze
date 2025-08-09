@@ -87,6 +87,7 @@ Collaboration diagram for Initialization:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga979919615ca983efccb1209f1a39cf5a" id="r_ga979919615ca983efccb1209f1a39cf5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__init.html#ga979919615ca983efccb1209f1a39cf5a">initEditor</a> (void)</td></tr>
+<tr class="memdesc:ga979919615ca983efccb1209f1a39cf5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize global editor state and screen dimensions.  <br /></td></tr>
 <tr class="separator:ga979919615ca983efccb1209f1a39cf5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -106,7 +107,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialize <code>E</code> and compute initial screen dimensions. </p>
+
+<p>Initialize global editor state and screen dimensions. </p>
+<p>Initialize <code>E</code> and compute initial screen dimensions.</p>
+<p>Resets the global <code>E</code> struct to a clean state, queries the terminal size, and reserves two rows for the status and message bars.</p>
+<dl class="section post"><dt>Postcondition</dt><dd><code>E</code> fields are initialized; on failure, terminates via <a class="el" href="group__terminal.html#gaefa25608d36aae10af5209451e23e8e2" title="Print an error, reset terminal, and exit the process.">die()</a>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__terminal.html#ga37aaa5d8dd5b525007a0645edf49638f" title="Enable raw terminal mode with minimal processing.">enableRawMode()</a>, <a class="el" href="group__terminal.html#gaeb7a921b1f250259a639fe7b24166021" title="Determine the terminal window size in characters.">getWindowSize()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>

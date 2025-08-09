@@ -72,8 +72,8 @@ $(function() {
   <div class="headertitle"><div class="title">ze </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_docs_2index"></a> ze - a simple extensible text editor</p>
-<p>ze is a very simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift.</p>
+<div class="textblock"><p><a class="anchor" id="md_docs_2index"></a> ze - zach's extensible text editor</p>
+<p>ze is a simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Installation</h1>
 <p>First, you must install GNU Guile (and its related libraries) on your system. You can follow the <a href="https://www.gnu.org/software/guile/download/">official installation instructions</a> or by simply doing</p>
@@ -256,7 +256,7 @@ Templates</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">char</span>* email_template = <span class="stringliteral">&quot;&quot;</span>;</div>
 </div><!-- fragment --><p>Next, you must also add your new template as an option in the <code>editorCloneTemplate</code> method in <code>ze.c</code>. You should do this by adding your new template as an option in the prompt, and by adding a new "else if" block to the large if/elseif/else block in that method. Continuing the example of adding an email template, I'd replace the line around line 871 that currently reads</p>
 <div class="fragment"><div class="line"><span class="keywordtype">char</span> *<span class="keyword">template</span> = <a class="code hl_function" href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a>(<span class="stringliteral">&quot;Select Template: (N)otes | (R)eadme &quot;</span>, NULL);</div>
-<div class="ttc" id="agroup__input_html_ga4de965d803aea82e894820b40e0ed097"><div class="ttname"><a href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a></div><div class="ttdeci">char * editorPrompt(char *prompt, void(*callback)(char *, int))</div><div class="ttdef"><b>Definition</b> input.c:23</div></div>
+<div class="ttc" id="agroup__input_html_ga4de965d803aea82e894820b40e0ed097"><div class="ttname"><a href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a></div><div class="ttdeci">char * editorPrompt(char *prompt, void(*callback)(char *, int))</div><div class="ttdoc">Prompt the user for input with a live callback.</div><div class="ttdef"><b>Definition</b> input.c:38</div></div>
 </div><!-- fragment --><p> with a new prompt that includes the new email template:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">char</span> *<span class="keyword">template</span> = <a class="code hl_function" href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a>(<span class="stringliteral">&quot;Select Template: (N)otes | (R)eadme | (E)mail&quot;</span>, NULL);</div>
 </div><!-- fragment --><p>The "else if" block that needs to be added after the last "else if" but before the final "else" block would then look like the following:</p>
@@ -264,7 +264,7 @@ Templates</h2>
 <div class="line">   <a class="code hl_function" href="group__status.html#ga507fc962f80d3c43c23718965348520e">editorSetStatusMessage</a>(<span class="stringliteral">&quot;Load Email template&quot;</span>);</div>
 <div class="line">   templateFile = fopen(email_template, <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"> }</div>
-<div class="ttc" id="agroup__status_html_ga507fc962f80d3c43c23718965348520e"><div class="ttname"><a href="group__status.html#ga507fc962f80d3c43c23718965348520e">editorSetStatusMessage</a></div><div class="ttdeci">void editorSetStatusMessage(const char *fmt,...)</div><div class="ttdef"><b>Definition</b> status.c:16</div></div>
+<div class="ttc" id="agroup__status_html_ga507fc962f80d3c43c23718965348520e"><div class="ttname"><a href="group__status.html#ga507fc962f80d3c43c23718965348520e">editorSetStatusMessage</a></div><div class="ttdeci">void editorSetStatusMessage(const char *fmt,...)</div><div class="ttdoc">Set the transient status message using printf-style formatting.</div><div class="ttdef"><b>Definition</b> status.c:28</div></div>
 </div><!-- fragment --><p>Note that <code>email_template</code> here should match whatever you named your global varible in the first step.</p>
 <p>The actual filepath to your new template file is defined in your <code>zerc.scm</code> configuration file. You'll need to define a Guile variable that is a string of the path of your template file. To do this, you need to add a line like the following to your <code>zerc.scm</code> file and ensure that the stringified path is correct.</p>
 <div class="fragment"><div class="line">(define email_template &#39;&quot;/Users/zwick/.ze/templates/email&quot;)</div>
@@ -276,7 +276,7 @@ Templates</h2>
 </div><!-- fragment --><p>After you've made these four changes, you can simply invoke <code>make install</code> to build and install your new version of ze that contains your new template.</p>
 <h1><a class="anchor" id="autotoc_md12"></a>
 License</h1>
-<p>ze is copyright 2018, 2019, 2020 zach wick <a href="#" onclick="location.href='mai'+'lto:'+'zac'+'h@'+'zac'+'hw'+'ick'+'.c'+'om'; return false;">zach@<span class="obfuscator">.nosp@m.</span>zach<span class="obfuscator">.nosp@m.</span>wick.<span class="obfuscator">.nosp@m.</span>com</a> and is licensed under the GNU GPLv3 or later. You can find a copy of the GNU GPLv3 included in the project as the file named <a href="https://github.com/zachwick/genie/blob/master/LICENSE">License</a>. </p>
+<p>ze is copyright 2018, 2019, 2020, 2025 zach wick <a href="#" onclick="location.href='mai'+'lto:'+'zac'+'h@'+'zac'+'hw'+'ick'+'.c'+'om'; return false;">zach@<span class="obfuscator">.nosp@m.</span>zach<span class="obfuscator">.nosp@m.</span>wick.<span class="obfuscator">.nosp@m.</span>com</a> and is licensed under the GNU GPLv3 or later. You can find a copy of the GNU GPLv3 included in the project as the file named <a href="https://github.com/zachwick/genie/blob/master/LICENSE">License</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

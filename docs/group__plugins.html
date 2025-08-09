@@ -218,7 +218,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Prompt for and evaluate a single Scheme expression (mini-REPL). </p>
-<p>Read, eval, print a Scheme expression entered via prompt. </p>
 
 </div>
 </div>
@@ -238,7 +237,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize the in-memory key binding table. </p>
 <p>Initialize the in-memory key binding table. </p>
 
 </div>
@@ -260,7 +258,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Load Scheme plugins from "$HOME/.ze/plugins" (all .scm files). </p>
-<p>Load Scheme plugins from <code>~/.ze/plugins</code> (*.scm) if present. </p>
 
 </div>
 </div>
@@ -281,7 +278,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Fetch a registered hook by name. </p>
-<p>Optional hook registry accessor by name.</p>
 <p>Recognized names: "preDirOpenHook", "postDirOpenHook", "preFileOpenHook", "postFileOpenHook", "preSaveHook", "postSaveHook".</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -289,7 +285,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Scheme object for the hook or #SCM_BOOL_F if unset/unknown. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scheme object for the hook or <code>SCM_BOOL_F</code> if unset/unknown. </dd></dl>
 
 </div>
 </div>
@@ -310,7 +306,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>If a Scheme binding exists for the key, invoke it. </p>
-<p>If a binding exists for this key, invoke it and return non-zero.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>Key code. </td></tr>
@@ -345,7 +340,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -376,7 +371,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Bind a key specification to a Scheme procedure. </p>
-<p>Bind a key specification (e.g., "C-x" or "a") to a Scheme procedure.</p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: bind-key key-spec proc </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -385,7 +379,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T on success, #SCM_BOOL_F on failure. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code> on success, <code>SCM_BOOL_F</code> on failure. </dd></dl>
 
 </div>
 </div>
@@ -473,7 +467,7 @@ Functions</h2></td></tr>
 
 <p>Clone a template into the current buffer (interactive selection). </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: clone-template! </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -495,7 +489,7 @@ Functions</h2></td></tr>
 
 <p>Delete the character to the left of the cursor (backspace). </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: delete-char! </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -523,7 +517,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T on success, #SCM_BOOL_F if out of range. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code> on success, <code>SCM_BOOL_F</code> if out of range. </dd></dl>
 
 </div>
 </div>
@@ -567,7 +561,7 @@ Functions</h2></td></tr>
 
 <p>Get the current filename, if any. </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: get-filename </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>Scheme string filename, or #SCM_BOOL_F if unnamed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scheme string filename, or <code>SCM_BOOL_F</code> if unnamed. </dd></dl>
 
 </div>
 </div>
@@ -589,7 +583,7 @@ Functions</h2></td></tr>
 
 <p>Get the current filetype name from syntax highlighting. </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: get-filetype </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>Scheme string filetype, or #SCM_BOOL_F if none. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scheme string filetype, or <code>SCM_BOOL_F</code> if none. </dd></dl>
 
 </div>
 </div>
@@ -617,7 +611,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Scheme string for the line, or #SCM_BOOL_F if out of range. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scheme string for the line, or <code>SCM_BOOL_F</code> if out of range. </dd></dl>
 
 </div>
 </div>
@@ -645,7 +639,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -684,7 +678,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -706,7 +700,7 @@ Functions</h2></td></tr>
 
 <p>Insert a newline at the cursor position. </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: insert-newline! </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -734,7 +728,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -784,7 +778,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -812,7 +806,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -840,7 +834,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Scheme string response, or #SCM_BOOL_F on cancel. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scheme string response, or <code>SCM_BOOL_F</code> on cancel. </dd></dl>
 
 </div>
 </div>
@@ -862,7 +856,7 @@ Functions</h2></td></tr>
 
 <p>Force a screen refresh. </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: refresh-screen! </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -884,7 +878,7 @@ Functions</h2></td></tr>
 
 <p>Save the current buffer to disk. </p>
 <dl class="section note"><dt>Note</dt><dd>Scheme procedure: save-file! </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -934,7 +928,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pair (y . x) of the match position, or #SCM_BOOL_F if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair (y . x) of the match position, or <code>SCM_BOOL_F</code> if not found. </dd></dl>
 
 </div>
 </div>
@@ -962,7 +956,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -990,7 +984,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -1029,7 +1023,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -1057,7 +1051,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
@@ -1096,7 +1090,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T on success, #SCM_BOOL_F if index is out of range. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code> on success, <code>SCM_BOOL_F</code> if index is out of range. </dd></dl>
 
 </div>
 </div>
@@ -1124,7 +1118,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>#SCM_BOOL_T. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>SCM_BOOL_T</code>. </dd></dl>
 
 </div>
 </div>
