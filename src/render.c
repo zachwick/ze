@@ -120,7 +120,7 @@ void editorDrawRows(struct abuf *ab) {
 }
 
 /**
- * @brief Render the inverse-video status bar.
+ * @brief Draw the status bar (filename, ft, position).
  * @ingroup render
  *
  * Shows filename, line count, modified flag, and right-aligned filetype and
@@ -170,7 +170,7 @@ void editorDrawMessageBar(struct abuf *ab) {
 }
 
 /**
- * @brief Produce a full-screen redraw into the terminal.
+ * @brief Update viewport offsets to keep the cursor visible.
  * @ingroup render
  *
  * Scrolls the viewport, composes rows, status, and message bars into a dynamic

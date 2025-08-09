@@ -130,7 +130,7 @@ int is_separator(int c) {
 }
 
 /**
- * @brief Compute syntax highlighting classes for a row.
+ * @brief Compute highlighting for a row based on current filetype.
  * @ingroup syntax
  *
  * Updates @c row->hl based on the current filetype rules in @c E.syntax,
@@ -286,7 +286,7 @@ int editorSyntaxToColor(int hl) {
 }
 
 /**
- * @brief Select the syntax highlighting rules based on the filename.
+ * @brief Select appropriate language rules based on `E.filename`.
  * @ingroup syntax
  *
  * Sets @c E.syntax to a matching entry in @c HLDB by extension or substring,

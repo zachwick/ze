@@ -60,7 +60,7 @@ int editorRowRxToCx(erow *row, int rx) {
 }
 
 /**
- * @brief Rebuild the render buffer and syntax highlights for a row.
+ * @brief Recompute `render`, `rsize`, and syntax highlighting for a row.
  * @ingroup row
  *
  * Allocates/updates @c row->render from @c row->chars expanding tabs, updates
@@ -96,7 +96,7 @@ void editorUpdateRow(erow *row) {
 }
 
 /**
- * @brief Insert a new row into the buffer at a given index.
+ * @brief Insert a new row at position `at` initialized from a string.
  * @ingroup row
  *
  * Shifts rows after @p at, initializes the new row's fields, and updates
@@ -149,7 +149,7 @@ void editorFreeRow(erow *row) {
 }
 
 /**
- * @brief Delete a row from the buffer.
+ * @brief Delete row at index `at`.
  * @ingroup row
  *
  * Frees the row, compacts the array, updates indices, and marks the buffer dirty.
@@ -171,7 +171,7 @@ void editorDelRow(int at) {
 }
 
 /**
- * @brief Insert a character into a row at a position.
+ * @brief Insert a character into a row at index `at`.
  * @ingroup row
  *
  * Reallocates the row text, shifts tail, inserts @p c, updates render and marks dirty.
@@ -215,7 +215,7 @@ void editorRowAppendString(erow *row, char *s, size_t len) {
 }
 
 /**
- * @brief Delete a character from a row.
+ * @brief Delete a character at index `at` in a row.
  * @ingroup row
  *
  * Removes the byte at @p at, shifts the tail left, updates render and marks dirty.

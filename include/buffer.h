@@ -26,7 +26,6 @@ struct abuf {
  */
 void abAppend(struct abuf *ab, const char *s, int len);
 
-/** Free any memory owned by the buffer. */
 void abFree(struct abuf *ab);
 
 /** @} */

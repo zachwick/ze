@@ -34,7 +34,7 @@ void editorInsertChar(int c) {
 }
 
 /**
- * @brief Insert a timestamp string at the cursor.
+ * @brief Insert a formatted local timestamp string at the cursor.
  * @ingroup edit
  *
  * Inserts the current local time formatted as "%Y-%m-%d %H:%M:%S" by calling
@@ -83,7 +83,7 @@ void editorInsertNewline(void) {
 }
 
 /**
- * @brief Delete the character to the left of the cursor or join lines.
+ * @brief Delete the character left of the cursor or join with previous row.
  * @ingroup edit
  *
  * If at the beginning of a line (column 0) and not at the top of the file,

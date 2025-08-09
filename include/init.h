@@ -7,7 +7,6 @@
  */
 #pragma once
 
-/** Initialize `E` and compute initial screen dimensions. */
 void initEditor(void);
 
 /** @} */

@@ -15,7 +15,7 @@
 extern struct editorConfig E;
 
 /**
- * @brief Print an error, reset terminal, and exit the process.
+ * @brief Abort the program after resetting the screen and printing perror.
  * @ingroup terminal
  *
  * Clears the screen, moves the cursor home, prints a perror() message for @p s,
@@ -45,7 +45,7 @@ void disableRawMode(void) {
 }
 
 /**
- * @brief Enable raw terminal mode with minimal processing.
+ * @brief Enable raw terminal mode and register an atexit handler.
  * @ingroup terminal
  *
  * Captures current termios into @c E.orig_termios, registers atexit handler to
@@ -74,7 +74,7 @@ void enableRawMode(void) {
 }
 
 /**
- * @brief Read a single key from stdin, interpreting escape sequences.
+ * @brief Read a key, decoding escape sequences into `editorKey` values.
  * @ingroup terminal
  *
  * Blocks until one byte is read; if the byte begins an escape sequence,
@@ -174,7 +174,7 @@ int getCursorPosition(int *rows, int *cols) {
 }
 
 /**
- * @brief Determine the terminal window size in characters.
+ * @brief Obtain terminal window size in rows and columns.
  * @ingroup terminal
  *
  * Uses ioctl(TIOCGWINSZ) and falls back to cursor probing if needed.

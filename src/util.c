@@ -6,7 +6,7 @@
 #include <dirent.h>
 
 /**
- * @brief scandir() selector that accepts all entries.
+ * @brief Scandir selector that accepts all entries.
  * @ingroup util
  *
  * Ignores its parameter and returns 1 to include every directory entry when

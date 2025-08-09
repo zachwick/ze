@@ -13,7 +13,7 @@
 extern struct editorConfig E;
 
 /**
- * @brief Live-search callback to update match highlighting and cursor.
+ * @brief Highlight matches and move cursor during interactive search.
  * @ingroup search
  *
  * Maintains search state across invocations. On arrow keys, changes search
@@ -80,7 +80,7 @@ void editorFindCallback(char *query, int key) {
 }
 
 /**
- * @brief Prompt for a search query and jump to matches interactively.
+ * @brief Prompt for a query and perform an interactive forward search.
  * @ingroup search
  *
  * Prompts the user with "Search: " and uses editorFindCallback() to move to

@@ -21,7 +21,7 @@
 extern struct editorConfig E;
 
 /**
- * @brief Prompt the user for input with a live callback.
+ * @brief Display a prompt and capture input with optional incremental callback.
  * @ingroup input
  *
  * Displays a prompt on the status line, appending the current input buffer,
