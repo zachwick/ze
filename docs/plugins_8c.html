@@ -158,74 +158,109 @@ Include dependency graph for plugins.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga55ad8c5cfa0f6c6eb6870755911782b2" id="r_ga55ad8c5cfa0f6c6eb6870755911782b2"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga55ad8c5cfa0f6c6eb6870755911782b2">pluginsGetHook</a> (const char *name)</td></tr>
+<tr class="memdesc:ga55ad8c5cfa0f6c6eb6870755911782b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch a registered hook by name.  <br /></td></tr>
 <tr class="separator:ga55ad8c5cfa0f6c6eb6870755911782b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf8a22c5f040f52588b876ddefd6ddd1a" id="r_gaf8a22c5f040f52588b876ddefd6ddd1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaf8a22c5f040f52588b876ddefd6ddd1a">pluginsHandleKey</a> (unsigned char code)</td></tr>
+<tr class="memdesc:gaf8a22c5f040f52588b876ddefd6ddd1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a Scheme binding exists for the key, invoke it.  <br /></td></tr>
 <tr class="separator:gaf8a22c5f040f52588b876ddefd6ddd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf2c717f60b190173e56454ae476a4cf5" id="r_gaf2c717f60b190173e56454ae476a4cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaf2c717f60b190173e56454ae476a4cf5">initKeyBindings</a> (void)</td></tr>
+<tr class="memdesc:gaf2c717f60b190173e56454ae476a4cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the in-memory key binding table.  <br /></td></tr>
 <tr class="separator:gaf2c717f60b190173e56454ae476a4cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0c41183a4c941f3e63462920444c932d" id="r_ga0c41183a4c941f3e63462920444c932d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga0c41183a4c941f3e63462920444c932d">loadPlugins</a> (void)</td></tr>
+<tr class="memdesc:ga0c41183a4c941f3e63462920444c932d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load Scheme plugins from "$HOME/.ze/plugins" (all .scm files).  <br /></td></tr>
 <tr class="separator:ga0c41183a4c941f3e63462920444c932d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae57a724800e6a1a17db4da6ddd2e4722" id="r_gae57a724800e6a1a17db4da6ddd2e4722"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gae57a724800e6a1a17db4da6ddd2e4722">scmBindKey</a> (SCM keySpec, SCM proc)</td></tr>
+<tr class="memdesc:gae57a724800e6a1a17db4da6ddd2e4722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a key specification to a Scheme procedure.  <br /></td></tr>
 <tr class="separator:gae57a724800e6a1a17db4da6ddd2e4722"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga81a03f34f4c9c7c7dc62a6bcf4a83433" id="r_ga81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga81a03f34f4c9c7c7dc62a6bcf4a83433">editorExec</a> (void)</td></tr>
+<tr class="memdesc:ga81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt for and evaluate a single Scheme expression (mini-REPL).  <br /></td></tr>
 <tr class="separator:ga81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae3a93a63cce39f220631f81e6d71c24e" id="r_gae3a93a63cce39f220631f81e6d71c24e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gae3a93a63cce39f220631f81e6d71c24e">scmBufferToString</a> (void)</td></tr>
+<tr class="memdesc:gae3a93a63cce39f220631f81e6d71c24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the entire buffer as a Scheme string.  <br /></td></tr>
 <tr class="separator:gae3a93a63cce39f220631f81e6d71c24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab22cf02cb210d5ac42ee7280cd84c626" id="r_gab22cf02cb210d5ac42ee7280cd84c626"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gab22cf02cb210d5ac42ee7280cd84c626">scmBufferLineCount</a> (void)</td></tr>
+<tr class="memdesc:gab22cf02cb210d5ac42ee7280cd84c626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of lines in the current buffer.  <br /></td></tr>
 <tr class="separator:gab22cf02cb210d5ac42ee7280cd84c626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga97dbf8cfed087644e55626ab597346db" id="r_ga97dbf8cfed087644e55626ab597346db"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga97dbf8cfed087644e55626ab597346db">scmGetLine</a> (SCM idx_scm)</td></tr>
+<tr class="memdesc:ga97dbf8cfed087644e55626ab597346db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of a line by index.  <br /></td></tr>
 <tr class="separator:ga97dbf8cfed087644e55626ab597346db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a3b3ed20db9e516ca5ae1ca448a578e" id="r_ga9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga9a3b3ed20db9e516ca5ae1ca448a578e">scmSetLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
+<tr class="memdesc:ga9a3b3ed20db9e516ca5ae1ca448a578e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the contents of a line.  <br /></td></tr>
 <tr class="separator:ga9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7136f43e2b0916468437bd7a90e3013a" id="r_ga7136f43e2b0916468437bd7a90e3013a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga7136f43e2b0916468437bd7a90e3013a">scmInsertLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
+<tr class="memdesc:ga7136f43e2b0916468437bd7a90e3013a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new line at index.  <br /></td></tr>
 <tr class="separator:ga7136f43e2b0916468437bd7a90e3013a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaca2d090eee1a15a36b8a986b7f7d14c9" id="r_gaca2d090eee1a15a36b8a986b7f7d14c9"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaca2d090eee1a15a36b8a986b7f7d14c9">scmAppendLine</a> (SCM str_scm)</td></tr>
+<tr class="memdesc:gaca2d090eee1a15a36b8a986b7f7d14c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a new line at the end of the buffer.  <br /></td></tr>
 <tr class="separator:gaca2d090eee1a15a36b8a986b7f7d14c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c4d4c699c6bde194c2f057be465f8ee" id="r_ga2c4d4c699c6bde194c2f057be465f8ee"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga2c4d4c699c6bde194c2f057be465f8ee">scmDeleteLine</a> (SCM idx_scm)</td></tr>
+<tr class="memdesc:ga2c4d4c699c6bde194c2f057be465f8ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a line by index.  <br /></td></tr>
 <tr class="separator:ga2c4d4c699c6bde194c2f057be465f8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3d7df946c05cbaf4d07dbf89ef6c1ffd" id="r_ga3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga3d7df946c05cbaf4d07dbf89ef6c1ffd">scmInsertText</a> (SCM str_scm)</td></tr>
+<tr class="memdesc:ga3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert text at the cursor position, interpreting newlines.  <br /></td></tr>
 <tr class="separator:ga3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c36144573bc2bcce539f0df181507ea" id="r_ga2c36144573bc2bcce539f0df181507ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga2c36144573bc2bcce539f0df181507ea">scmInsertChar</a> (SCM ch_scm)</td></tr>
+<tr class="memdesc:ga2c36144573bc2bcce539f0df181507ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a single character at the cursor.  <br /></td></tr>
 <tr class="separator:ga2c36144573bc2bcce539f0df181507ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga13b255733769c711c3ba2de6cb05fdf7" id="r_ga13b255733769c711c3ba2de6cb05fdf7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga13b255733769c711c3ba2de6cb05fdf7">scmInsertNewline</a> (void)</td></tr>
+<tr class="memdesc:ga13b255733769c711c3ba2de6cb05fdf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a newline at the cursor position.  <br /></td></tr>
 <tr class="separator:ga13b255733769c711c3ba2de6cb05fdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga67a6b5a73e98c291053d41270dc10410" id="r_ga67a6b5a73e98c291053d41270dc10410"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga67a6b5a73e98c291053d41270dc10410">scmDeleteChar</a> (void)</td></tr>
+<tr class="memdesc:ga67a6b5a73e98c291053d41270dc10410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the character to the left of the cursor (backspace).  <br /></td></tr>
 <tr class="separator:ga67a6b5a73e98c291053d41270dc10410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5b19ed9dc86e9349aea7edb142707c85" id="r_ga5b19ed9dc86e9349aea7edb142707c85"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga5b19ed9dc86e9349aea7edb142707c85">scmGetCursor</a> (void)</td></tr>
+<tr class="memdesc:ga5b19ed9dc86e9349aea7edb142707c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current cursor position.  <br /></td></tr>
 <tr class="separator:ga5b19ed9dc86e9349aea7edb142707c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaac9a1f510aed1700b69b7ee26008644e" id="r_gaac9a1f510aed1700b69b7ee26008644e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaac9a1f510aed1700b69b7ee26008644e">scmSetCursor</a> (SCM x_scm, SCM y_scm)</td></tr>
+<tr class="memdesc:gaac9a1f510aed1700b69b7ee26008644e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set cursor position, clamped to the current buffer.  <br /></td></tr>
 <tr class="separator:gaac9a1f510aed1700b69b7ee26008644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf73418325c779010cb9f90f6ed8b8ea" id="r_gadf73418325c779010cb9f90f6ed8b8ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gadf73418325c779010cb9f90f6ed8b8ea">scmMoveCursor</a> (SCM dir_scm)</td></tr>
+<tr class="memdesc:gadf73418325c779010cb9f90f6ed8b8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the cursor in a direction.  <br /></td></tr>
 <tr class="separator:gadf73418325c779010cb9f90f6ed8b8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1edf3aea9100dc47ec938734b1b81a4a" id="r_ga1edf3aea9100dc47ec938734b1b81a4a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga1edf3aea9100dc47ec938734b1b81a4a">scmScreenSize</a> (void)</td></tr>
+<tr class="memdesc:ga1edf3aea9100dc47ec938734b1b81a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the editor screen size in rows and columns.  <br /></td></tr>
 <tr class="separator:ga1edf3aea9100dc47ec938734b1b81a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade7ce76f0f95afe9a6aa8f4547a2edd4" id="r_gade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gade7ce76f0f95afe9a6aa8f4547a2edd4">scmOpenFile</a> (SCM path_scm)</td></tr>
+<tr class="memdesc:gade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a file into the editor.  <br /></td></tr>
 <tr class="separator:gade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga33b71b39959b659f92fa10a9491ea598" id="r_ga33b71b39959b659f92fa10a9491ea598"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga33b71b39959b659f92fa10a9491ea598">scmSaveFile</a> (void)</td></tr>
+<tr class="memdesc:ga33b71b39959b659f92fa10a9491ea598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the current buffer to disk.  <br /></td></tr>
 <tr class="separator:ga33b71b39959b659f92fa10a9491ea598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga310f0958617de3a98e9defba9f8ab526" id="r_ga310f0958617de3a98e9defba9f8ab526"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga310f0958617de3a98e9defba9f8ab526">scmGetFilename</a> (void)</td></tr>
+<tr class="memdesc:ga310f0958617de3a98e9defba9f8ab526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current filename, if any.  <br /></td></tr>
 <tr class="separator:ga310f0958617de3a98e9defba9f8ab526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadcc5eb3464a4ddea9613f4b2e744f05b" id="r_gadcc5eb3464a4ddea9613f4b2e744f05b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gadcc5eb3464a4ddea9613f4b2e744f05b">scmSetFilename</a> (SCM path_scm)</td></tr>
+<tr class="memdesc:gadcc5eb3464a4ddea9613f4b2e744f05b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current filename and reselect syntax highlighting.  <br /></td></tr>
 <tr class="separator:gadcc5eb3464a4ddea9613f4b2e744f05b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga231ec3ab638c187365338c11e8be381b" id="r_ga231ec3ab638c187365338c11e8be381b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga231ec3ab638c187365338c11e8be381b">scmPrompt</a> (SCM msg_scm)</td></tr>
+<tr class="memdesc:ga231ec3ab638c187365338c11e8be381b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt the user and return their input.  <br /></td></tr>
 <tr class="separator:ga231ec3ab638c187365338c11e8be381b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga17dcd73112f11fba64f052bea30524c0" id="r_ga17dcd73112f11fba64f052bea30524c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga17dcd73112f11fba64f052bea30524c0">scmRefreshScreen</a> (void)</td></tr>
+<tr class="memdesc:ga17dcd73112f11fba64f052bea30524c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a screen refresh.  <br /></td></tr>
 <tr class="separator:ga17dcd73112f11fba64f052bea30524c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab6d3d4f4b9933a94daf1adcb0c7131f7" id="r_gab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gab6d3d4f4b9933a94daf1adcb0c7131f7">scmSearchForward</a> (SCM query_scm)</td></tr>
+<tr class="memdesc:gab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search forward for a substring and jump to the next match.  <br /></td></tr>
 <tr class="separator:gab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga70626d22f31d26519307f660719bc119" id="r_ga70626d22f31d26519307f660719bc119"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga70626d22f31d26519307f660719bc119">scmSelectSyntaxForFilename</a> (SCM path_scm)</td></tr>
+<tr class="memdesc:ga70626d22f31d26519307f660719bc119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select syntax based on a filename, without opening the file.  <br /></td></tr>
 <tr class="separator:ga70626d22f31d26519307f660719bc119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8b6e25318fa2cf14ea511928bc100c0" id="r_gaa8b6e25318fa2cf14ea511928bc100c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaa8b6e25318fa2cf14ea511928bc100c0">scmGetFiletype</a> (void)</td></tr>
+<tr class="memdesc:gaa8b6e25318fa2cf14ea511928bc100c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current filetype name from syntax highlighting.  <br /></td></tr>
 <tr class="separator:gaa8b6e25318fa2cf14ea511928bc100c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa501599374f6c5187e4770a4b760c4ed" id="r_gaa501599374f6c5187e4770a4b760c4ed"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaa501599374f6c5187e4770a4b760c4ed">scmUnbindKey</a> (SCM keySpec)</td></tr>
+<tr class="memdesc:gaa501599374f6c5187e4770a4b760c4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key binding.  <br /></td></tr>
 <tr class="separator:gaa501599374f6c5187e4770a4b760c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0607204678802489858c34b3e4862c46" id="r_ga0607204678802489858c34b3e4862c46"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga0607204678802489858c34b3e4862c46">scmListBindings</a> (void)</td></tr>
+<tr class="memdesc:ga0607204678802489858c34b3e4862c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all key bindings.  <br /></td></tr>
 <tr class="separator:ga0607204678802489858c34b3e4862c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga34a1e8f1812781918d98229fc7a76987" id="r_ga34a1e8f1812781918d98229fc7a76987"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga34a1e8f1812781918d98229fc7a76987">scmBufferDirty</a> (void)</td></tr>
+<tr class="memdesc:ga34a1e8f1812781918d98229fc7a76987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the current buffer has unsaved changes.  <br /></td></tr>
 <tr class="separator:ga34a1e8f1812781918d98229fc7a76987"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga041060924a4b1414cf6c0e125d02b08d" id="r_ga041060924a4b1414cf6c0e125d02b08d"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga041060924a4b1414cf6c0e125d02b08d">scmSetBufferDirty</a> (SCM bool_scm)</td></tr>
+<tr class="memdesc:ga041060924a4b1414cf6c0e125d02b08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark the current buffer dirty/clean.  <br /></td></tr>
 <tr class="separator:ga041060924a4b1414cf6c0e125d02b08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga183ef2478133b2631c58a2381e036b2a" id="r_ga183ef2478133b2631c58a2381e036b2a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga183ef2478133b2631c58a2381e036b2a">scmCloneTemplate</a> (void)</td></tr>
+<tr class="memdesc:ga183ef2478133b2631c58a2381e036b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone a template into the current buffer (interactive selection).  <br /></td></tr>
 <tr class="separator:ga183ef2478133b2631c58a2381e036b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
