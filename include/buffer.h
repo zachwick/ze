@@ -20,7 +20,6 @@ struct abuf {
 #define ABUF_INIT {NULL, 0}
 
 /**
- * Append a string segment to the buffer, reallocating as needed.
  * @param ab Target buffer
  * @param s  String data to append
  * @param len Length of `s`
