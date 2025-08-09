@@ -76,9 +76,12 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">search.c File Reference</div></div>
+  <div class="headertitle"><div class="title">search.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__search.html">Search</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interactive forward search implementation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
@@ -89,16 +92,16 @@ Include dependency graph for search.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="search_8c__incl.png" border="0" usemap="#asrc_2search_8c" alt=""/></div>
 <map name="asrc_2search_8c" id="asrc_2search_8c">
-<area shape="rect" title=" " alt="" coords="159,5,258,31"/>
+<area shape="rect" title="Interactive forward search implementation." alt="" coords="159,5,258,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" title=" " alt="" coords="183,33,82,76,80,71,181,28"/>
 <area shape="rect" title=" " alt="" coords="100,79,171,104"/>
 <area shape="poly" title=" " alt="" coords="198,33,159,71,155,67,195,29"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="251,152,300,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="251,152,300,177"/>
 <area shape="poly" title=" " alt="" coords="214,30,223,63,238,103,260,139,256,142,233,105,218,65,209,31"/>
-<area shape="rect" href="row_8h.html" title=" " alt="" coords="247,79,304,104"/>
+<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="247,79,304,104"/>
 <area shape="poly" title=" " alt="" coords="222,29,257,67,253,70,218,33"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="329,79,395,104"/>
+<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="329,79,395,104"/>
 <area shape="poly" title=" " alt="" coords="234,28,326,70,324,75,232,33"/>
 <area shape="rect" title=" " alt="" coords="145,225,219,251"/>
 <area shape="poly" title=" " alt="" coords="262,179,210,219,206,215,259,175"/>
@@ -113,87 +116,19 @@ Include dependency graph for search.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8cf98f19b000d053dbd9ae2cf957d424" id="r_a8cf98f19b000d053dbd9ae2cf957d424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a8cf98f19b000d053dbd9ae2cf957d424">editorFindCallback</a> (char *query, int key)</td></tr>
-<tr class="separator:a8cf98f19b000d053dbd9ae2cf957d424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28cfa432286bd17c79730da8bbcedd48" id="r_a28cfa432286bd17c79730da8bbcedd48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a28cfa432286bd17c79730da8bbcedd48">editorFind</a> (void)</td></tr>
-<tr class="separator:a28cfa432286bd17c79730da8bbcedd48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8cf98f19b000d053dbd9ae2cf957d424" id="r_ga8cf98f19b000d053dbd9ae2cf957d424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga8cf98f19b000d053dbd9ae2cf957d424">editorFindCallback</a> (char *query, int key)</td></tr>
+<tr class="separator:ga8cf98f19b000d053dbd9ae2cf957d424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28cfa432286bd17c79730da8bbcedd48" id="r_ga28cfa432286bd17c79730da8bbcedd48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga28cfa432286bd17c79730da8bbcedd48">editorFind</a> (void)</td></tr>
+<tr class="separator:ga28cfa432286bd17c79730da8bbcedd48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a28cfa432286bd17c79730da8bbcedd48" name="a28cfa432286bd17c79730da8bbcedd48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28cfa432286bd17c79730da8bbcedd48">&#9670;&#160;</a></span>editorFind()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorFind </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8cf98f19b000d053dbd9ae2cf957d424" name="a8cf98f19b000d053dbd9ae2cf957d424"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cf98f19b000d053dbd9ae2cf957d424">&#9670;&#160;</a></span>editorFindCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorFindCallback </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>query</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interactive forward search implementation. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

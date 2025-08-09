@@ -78,14 +78,17 @@ $(function() {
   <div class="headertitle"><div class="title">fileio.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>File and directory loading/saving utilities.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for fileio.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileio_8h__incl.png" border="0" usemap="#ainclude_2fileio_8h" alt=""/></div>
 <map name="ainclude_2fileio_8h" id="ainclude_2fileio_8h">
-<area shape="rect" title=" " alt="" coords="77,5,195,31"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="111,79,161,104"/>
+<area shape="rect" title="File and directory loading/saving utilities." alt="" coords="77,5,195,31"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="111,79,161,104"/>
 <area shape="poly" title=" " alt="" coords="139,31,139,65,133,65,133,31"/>
 <area shape="rect" title=" " alt="" coords="5,152,80,177"/>
 <area shape="poly" title=" " alt="" coords="123,106,70,146,67,141,119,102"/>
@@ -100,14 +103,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileio_8h__dep__incl.png" border="0" usemap="#ainclude_2fileio_8hdep" alt=""/></div>
 <map name="ainclude_2fileio_8hdep" id="ainclude_2fileio_8hdep">
-<area shape="rect" title=" " alt="" coords="166,5,283,31"/>
-<area shape="rect" href="hooks_8c.html" title=" " alt="" coords="5,79,100,104"/>
+<area shape="rect" title="File and directory loading/saving utilities." alt="" coords="166,5,283,31"/>
+<area shape="rect" href="hooks_8c.html" title="Scheme hook invocation implementations." alt="" coords="5,79,100,104"/>
 <area shape="poly" title=" " alt="" coords="186,38,82,81,80,76,184,33"/>
-<area shape="rect" href="input_8c.html" title=" " alt="" coords="124,79,213,104"/>
+<area shape="rect" href="input_8c.html" title="Prompt and keypress handling implementations." alt="" coords="124,79,213,104"/>
 <area shape="poly" title=" " alt="" coords="209,43,180,80,176,77,205,40"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="237,79,327,104"/>
+<area shape="rect" href="main_8c.html" title="Program entry point and runtime initialization." alt="" coords="237,79,327,104"/>
 <area shape="poly" title=" " alt="" coords="245,40,275,77,271,80,240,43"/>
-<area shape="rect" href="plugins_8c.html" title=" " alt="" coords="351,79,453,104"/>
+<area shape="rect" href="plugins_8c.html" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="351,79,453,104"/>
 <area shape="poly" title=" " alt="" coords="267,33,374,76,372,81,265,38"/>
 </map>
 </div>
@@ -116,89 +119,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab194682d67a26adec30476ce08cc5474" id="r_ab194682d67a26adec30476ce08cc5474"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8h.html#ab194682d67a26adec30476ce08cc5474">editorRowsToString</a> (int *buflen)</td></tr>
-<tr class="separator:ab194682d67a26adec30476ce08cc5474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad29870caec9105592288383963af8a14" id="r_ad29870caec9105592288383963af8a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8h.html#ad29870caec9105592288383963af8a14">editorCloneTemplate</a> (void)</td></tr>
-<tr class="separator:ad29870caec9105592288383963af8a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7e9106f11ecfa36e5695996c1f6e316" id="r_ac7e9106f11ecfa36e5695996c1f6e316"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8h.html#ac7e9106f11ecfa36e5695996c1f6e316">editorOpen</a> (char *filename)</td></tr>
-<tr class="separator:ac7e9106f11ecfa36e5695996c1f6e316"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68263950ddb1d812b168bfec55eed130" id="r_a68263950ddb1d812b168bfec55eed130"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8h.html#a68263950ddb1d812b168bfec55eed130">editorSave</a> (void)</td></tr>
-<tr class="separator:a68263950ddb1d812b168bfec55eed130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab194682d67a26adec30476ce08cc5474" id="r_gab194682d67a26adec30476ce08cc5474"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fileio.html#gab194682d67a26adec30476ce08cc5474">editorRowsToString</a> (int *buflen)</td></tr>
+<tr class="separator:gab194682d67a26adec30476ce08cc5474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad29870caec9105592288383963af8a14" id="r_gad29870caec9105592288383963af8a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fileio.html#gad29870caec9105592288383963af8a14">editorCloneTemplate</a> (void)</td></tr>
+<tr class="separator:gad29870caec9105592288383963af8a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7e9106f11ecfa36e5695996c1f6e316" id="r_gac7e9106f11ecfa36e5695996c1f6e316"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fileio.html#gac7e9106f11ecfa36e5695996c1f6e316">editorOpen</a> (char *filename)</td></tr>
+<tr class="separator:gac7e9106f11ecfa36e5695996c1f6e316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68263950ddb1d812b168bfec55eed130" id="r_ga68263950ddb1d812b168bfec55eed130"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fileio.html#ga68263950ddb1d812b168bfec55eed130">editorSave</a> (void)</td></tr>
+<tr class="separator:ga68263950ddb1d812b168bfec55eed130"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ad29870caec9105592288383963af8a14" name="ad29870caec9105592288383963af8a14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad29870caec9105592288383963af8a14">&#9670;&#160;</a></span>editorCloneTemplate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorCloneTemplate </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac7e9106f11ecfa36e5695996c1f6e316" name="ac7e9106f11ecfa36e5695996c1f6e316"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7e9106f11ecfa36e5695996c1f6e316">&#9670;&#160;</a></span>editorOpen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorOpen </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab194682d67a26adec30476ce08cc5474" name="ab194682d67a26adec30476ce08cc5474"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab194682d67a26adec30476ce08cc5474">&#9670;&#160;</a></span>editorRowsToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * editorRowsToString </td>
-          <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>buflen</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a68263950ddb1d812b168bfec55eed130" name="a68263950ddb1d812b168bfec55eed130"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68263950ddb1d812b168bfec55eed130">&#9670;&#160;</a></span>editorSave()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorSave </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>File and directory loading/saving utilities. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

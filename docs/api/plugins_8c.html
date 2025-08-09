@@ -76,9 +76,12 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">plugins.c File Reference</div></div>
+  <div class="headertitle"><div class="title">plugins.c File Reference<div class="ingroups"><a class="el" href="group__core.html">Core types and globals</a> &raquo; <a class="el" href="group__plugins.html">Plugins</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Guile/Scheme plugin and keybinding implementation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;dirent.h&gt;</code><br />
 <code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
@@ -100,7 +103,7 @@ Include dependency graph for plugins.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="plugins_8c__incl.png" border="0" usemap="#asrc_2plugins_8c" alt=""/></div>
 <map name="asrc_2plugins_8c" id="asrc_2plugins_8c">
-<area shape="rect" title=" " alt="" coords="682,5,785,31"/>
+<area shape="rect" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="682,5,785,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,77,104"/>
 <area shape="poly" title=" " alt="" coords="682,24,431,41,264,58,91,81,90,76,263,53,431,36,682,19"/>
 <area shape="rect" title=" " alt="" coords="102,79,173,104"/>
@@ -117,21 +120,21 @@ Include dependency graph for plugins.c:</div>
 <area shape="poly" title=" " alt="" coords="716,33,648,74,646,69,713,28"/>
 <area shape="rect" title=" " alt="" coords="692,152,775,177"/>
 <area shape="poly" title=" " alt="" coords="733,31,726,64,724,104,730,138,724,139,719,104,720,63,727,30"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="1019,152,1069,177"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="1019,152,1069,177"/>
 <area shape="poly" title=" " alt="" coords="751,29,803,63,872,102,943,130,1007,150,1005,156,941,135,870,106,800,68,748,33"/>
-<area shape="rect" href="status_8h.html" title=" " alt="" coords="733,79,808,104"/>
+<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="733,79,808,104"/>
 <area shape="poly" title=" " alt="" coords="742,30,761,65,756,68,737,32"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="883,79,949,104"/>
+<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="883,79,949,104"/>
 <area shape="poly" title=" " alt="" coords="764,28,874,71,872,76,762,33"/>
-<area shape="rect" href="row_8h.html" title=" " alt="" coords="974,79,1031,104"/>
+<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="974,79,1031,104"/>
 <area shape="poly" title=" " alt="" coords="779,28,962,76,960,81,777,33"/>
-<area shape="rect" href="edit_8h.html" title=" " alt="" coords="1056,79,1115,104"/>
+<area shape="rect" href="edit_8h.html" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="1056,79,1115,104"/>
 <area shape="poly" title=" " alt="" coords="785,25,899,46,1043,76,1042,81,898,52,785,31"/>
-<area shape="rect" href="fileio_8h.html" title=" " alt="" coords="1139,79,1205,104"/>
+<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="1139,79,1205,104"/>
 <area shape="poly" title=" " alt="" coords="786,23,934,43,1126,76,1125,81,934,49,785,28"/>
-<area shape="rect" href="render_8h.html" title=" " alt="" coords="1333,79,1408,104"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="1333,79,1408,104"/>
 <area shape="poly" title=" " alt="" coords="785,20,1013,38,1164,54,1320,76,1319,81,1163,59,1013,43,785,25"/>
-<area shape="rect" href="syntax_8h.html" title=" " alt="" coords="1230,79,1309,104"/>
+<area shape="rect" href="syntax_8h.html" title="Syntax highlighting engine and language selection." alt="" coords="1230,79,1309,104"/>
 <area shape="poly" title=" " alt="" coords="785,21,971,41,1217,76,1216,81,971,47,784,27"/>
 <area shape="rect" title=" " alt="" coords="913,225,988,251"/>
 <area shape="poly" title=" " alt="" coords="1031,179,978,219,975,215,1027,175"/>
@@ -146,7 +149,7 @@ Include dependency graph for plugins.c:</div>
 <area shape="poly" title=" " alt="" coords="1081,106,1060,141,1055,139,1076,103"/>
 <area shape="poly" title=" " alt="" coords="1153,106,1078,147,1076,143,1150,102"/>
 <area shape="poly" title=" " alt="" coords="1334,104,1322,107,1083,158,1081,153,1321,101,1332,99"/>
-<area shape="rect" href="buffer_8h.html" title=" " alt="" coords="1335,152,1406,177"/>
+<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="1335,152,1406,177"/>
 <area shape="poly" title=" " alt="" coords="1373,104,1373,138,1368,138,1368,104"/>
 <area shape="poly" title=" " alt="" coords="1234,107,1083,154,1081,149,1232,101"/>
 </map>
@@ -154,777 +157,85 @@ Include dependency graph for plugins.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a55ad8c5cfa0f6c6eb6870755911782b2" id="r_a55ad8c5cfa0f6c6eb6870755911782b2"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a55ad8c5cfa0f6c6eb6870755911782b2">pluginsGetHook</a> (const char *name)</td></tr>
-<tr class="separator:a55ad8c5cfa0f6c6eb6870755911782b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8a22c5f040f52588b876ddefd6ddd1a" id="r_af8a22c5f040f52588b876ddefd6ddd1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#af8a22c5f040f52588b876ddefd6ddd1a">pluginsHandleKey</a> (unsigned char code)</td></tr>
-<tr class="separator:af8a22c5f040f52588b876ddefd6ddd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2c717f60b190173e56454ae476a4cf5" id="r_af2c717f60b190173e56454ae476a4cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#af2c717f60b190173e56454ae476a4cf5">initKeyBindings</a> (void)</td></tr>
-<tr class="separator:af2c717f60b190173e56454ae476a4cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c41183a4c941f3e63462920444c932d" id="r_a0c41183a4c941f3e63462920444c932d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a0c41183a4c941f3e63462920444c932d">loadPlugins</a> (void)</td></tr>
-<tr class="separator:a0c41183a4c941f3e63462920444c932d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae57a724800e6a1a17db4da6ddd2e4722" id="r_ae57a724800e6a1a17db4da6ddd2e4722"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#ae57a724800e6a1a17db4da6ddd2e4722">scmBindKey</a> (SCM keySpec, SCM proc)</td></tr>
-<tr class="separator:ae57a724800e6a1a17db4da6ddd2e4722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81a03f34f4c9c7c7dc62a6bcf4a83433" id="r_a81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a81a03f34f4c9c7c7dc62a6bcf4a83433">editorExec</a> (void)</td></tr>
-<tr class="separator:a81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3a93a63cce39f220631f81e6d71c24e" id="r_ae3a93a63cce39f220631f81e6d71c24e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#ae3a93a63cce39f220631f81e6d71c24e">scmBufferToString</a> (void)</td></tr>
-<tr class="separator:ae3a93a63cce39f220631f81e6d71c24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab22cf02cb210d5ac42ee7280cd84c626" id="r_ab22cf02cb210d5ac42ee7280cd84c626"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#ab22cf02cb210d5ac42ee7280cd84c626">scmBufferLineCount</a> (void)</td></tr>
-<tr class="separator:ab22cf02cb210d5ac42ee7280cd84c626"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97dbf8cfed087644e55626ab597346db" id="r_a97dbf8cfed087644e55626ab597346db"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a97dbf8cfed087644e55626ab597346db">scmGetLine</a> (SCM idx_scm)</td></tr>
-<tr class="separator:a97dbf8cfed087644e55626ab597346db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a3b3ed20db9e516ca5ae1ca448a578e" id="r_a9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a9a3b3ed20db9e516ca5ae1ca448a578e">scmSetLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
-<tr class="separator:a9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7136f43e2b0916468437bd7a90e3013a" id="r_a7136f43e2b0916468437bd7a90e3013a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a7136f43e2b0916468437bd7a90e3013a">scmInsertLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
-<tr class="separator:a7136f43e2b0916468437bd7a90e3013a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca2d090eee1a15a36b8a986b7f7d14c9" id="r_aca2d090eee1a15a36b8a986b7f7d14c9"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#aca2d090eee1a15a36b8a986b7f7d14c9">scmAppendLine</a> (SCM str_scm)</td></tr>
-<tr class="separator:aca2d090eee1a15a36b8a986b7f7d14c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c4d4c699c6bde194c2f057be465f8ee" id="r_a2c4d4c699c6bde194c2f057be465f8ee"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a2c4d4c699c6bde194c2f057be465f8ee">scmDeleteLine</a> (SCM idx_scm)</td></tr>
-<tr class="separator:a2c4d4c699c6bde194c2f057be465f8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d7df946c05cbaf4d07dbf89ef6c1ffd" id="r_a3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a3d7df946c05cbaf4d07dbf89ef6c1ffd">scmInsertText</a> (SCM str_scm)</td></tr>
-<tr class="separator:a3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c36144573bc2bcce539f0df181507ea" id="r_a2c36144573bc2bcce539f0df181507ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a2c36144573bc2bcce539f0df181507ea">scmInsertChar</a> (SCM ch_scm)</td></tr>
-<tr class="separator:a2c36144573bc2bcce539f0df181507ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13b255733769c711c3ba2de6cb05fdf7" id="r_a13b255733769c711c3ba2de6cb05fdf7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a13b255733769c711c3ba2de6cb05fdf7">scmInsertNewline</a> (void)</td></tr>
-<tr class="separator:a13b255733769c711c3ba2de6cb05fdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a6b5a73e98c291053d41270dc10410" id="r_a67a6b5a73e98c291053d41270dc10410"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a67a6b5a73e98c291053d41270dc10410">scmDeleteChar</a> (void)</td></tr>
-<tr class="separator:a67a6b5a73e98c291053d41270dc10410"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b19ed9dc86e9349aea7edb142707c85" id="r_a5b19ed9dc86e9349aea7edb142707c85"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a5b19ed9dc86e9349aea7edb142707c85">scmGetCursor</a> (void)</td></tr>
-<tr class="separator:a5b19ed9dc86e9349aea7edb142707c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac9a1f510aed1700b69b7ee26008644e" id="r_aac9a1f510aed1700b69b7ee26008644e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#aac9a1f510aed1700b69b7ee26008644e">scmSetCursor</a> (SCM x_scm, SCM y_scm)</td></tr>
-<tr class="separator:aac9a1f510aed1700b69b7ee26008644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf73418325c779010cb9f90f6ed8b8ea" id="r_adf73418325c779010cb9f90f6ed8b8ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#adf73418325c779010cb9f90f6ed8b8ea">scmMoveCursor</a> (SCM dir_scm)</td></tr>
-<tr class="separator:adf73418325c779010cb9f90f6ed8b8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1edf3aea9100dc47ec938734b1b81a4a" id="r_a1edf3aea9100dc47ec938734b1b81a4a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a1edf3aea9100dc47ec938734b1b81a4a">scmScreenSize</a> (void)</td></tr>
-<tr class="separator:a1edf3aea9100dc47ec938734b1b81a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade7ce76f0f95afe9a6aa8f4547a2edd4" id="r_ade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#ade7ce76f0f95afe9a6aa8f4547a2edd4">scmOpenFile</a> (SCM path_scm)</td></tr>
-<tr class="separator:ade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33b71b39959b659f92fa10a9491ea598" id="r_a33b71b39959b659f92fa10a9491ea598"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a33b71b39959b659f92fa10a9491ea598">scmSaveFile</a> (void)</td></tr>
-<tr class="separator:a33b71b39959b659f92fa10a9491ea598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a310f0958617de3a98e9defba9f8ab526" id="r_a310f0958617de3a98e9defba9f8ab526"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a310f0958617de3a98e9defba9f8ab526">scmGetFilename</a> (void)</td></tr>
-<tr class="separator:a310f0958617de3a98e9defba9f8ab526"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcc5eb3464a4ddea9613f4b2e744f05b" id="r_adcc5eb3464a4ddea9613f4b2e744f05b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#adcc5eb3464a4ddea9613f4b2e744f05b">scmSetFilename</a> (SCM path_scm)</td></tr>
-<tr class="separator:adcc5eb3464a4ddea9613f4b2e744f05b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a231ec3ab638c187365338c11e8be381b" id="r_a231ec3ab638c187365338c11e8be381b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a231ec3ab638c187365338c11e8be381b">scmPrompt</a> (SCM msg_scm)</td></tr>
-<tr class="separator:a231ec3ab638c187365338c11e8be381b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17dcd73112f11fba64f052bea30524c0" id="r_a17dcd73112f11fba64f052bea30524c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a17dcd73112f11fba64f052bea30524c0">scmRefreshScreen</a> (void)</td></tr>
-<tr class="separator:a17dcd73112f11fba64f052bea30524c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d3d4f4b9933a94daf1adcb0c7131f7" id="r_ab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#ab6d3d4f4b9933a94daf1adcb0c7131f7">scmSearchForward</a> (SCM query_scm)</td></tr>
-<tr class="separator:ab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70626d22f31d26519307f660719bc119" id="r_a70626d22f31d26519307f660719bc119"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a70626d22f31d26519307f660719bc119">scmSelectSyntaxForFilename</a> (SCM path_scm)</td></tr>
-<tr class="separator:a70626d22f31d26519307f660719bc119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8b6e25318fa2cf14ea511928bc100c0" id="r_aa8b6e25318fa2cf14ea511928bc100c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#aa8b6e25318fa2cf14ea511928bc100c0">scmGetFiletype</a> (void)</td></tr>
-<tr class="separator:aa8b6e25318fa2cf14ea511928bc100c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa501599374f6c5187e4770a4b760c4ed" id="r_aa501599374f6c5187e4770a4b760c4ed"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#aa501599374f6c5187e4770a4b760c4ed">scmUnbindKey</a> (SCM keySpec)</td></tr>
-<tr class="separator:aa501599374f6c5187e4770a4b760c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0607204678802489858c34b3e4862c46" id="r_a0607204678802489858c34b3e4862c46"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a0607204678802489858c34b3e4862c46">scmListBindings</a> (void)</td></tr>
-<tr class="separator:a0607204678802489858c34b3e4862c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34a1e8f1812781918d98229fc7a76987" id="r_a34a1e8f1812781918d98229fc7a76987"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a34a1e8f1812781918d98229fc7a76987">scmBufferDirty</a> (void)</td></tr>
-<tr class="separator:a34a1e8f1812781918d98229fc7a76987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a041060924a4b1414cf6c0e125d02b08d" id="r_a041060924a4b1414cf6c0e125d02b08d"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a041060924a4b1414cf6c0e125d02b08d">scmSetBufferDirty</a> (SCM bool_scm)</td></tr>
-<tr class="separator:a041060924a4b1414cf6c0e125d02b08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183ef2478133b2631c58a2381e036b2a" id="r_a183ef2478133b2631c58a2381e036b2a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a183ef2478133b2631c58a2381e036b2a">scmCloneTemplate</a> (void)</td></tr>
-<tr class="separator:a183ef2478133b2631c58a2381e036b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55ad8c5cfa0f6c6eb6870755911782b2" id="r_ga55ad8c5cfa0f6c6eb6870755911782b2"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga55ad8c5cfa0f6c6eb6870755911782b2">pluginsGetHook</a> (const char *name)</td></tr>
+<tr class="separator:ga55ad8c5cfa0f6c6eb6870755911782b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8a22c5f040f52588b876ddefd6ddd1a" id="r_gaf8a22c5f040f52588b876ddefd6ddd1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaf8a22c5f040f52588b876ddefd6ddd1a">pluginsHandleKey</a> (unsigned char code)</td></tr>
+<tr class="separator:gaf8a22c5f040f52588b876ddefd6ddd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2c717f60b190173e56454ae476a4cf5" id="r_gaf2c717f60b190173e56454ae476a4cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaf2c717f60b190173e56454ae476a4cf5">initKeyBindings</a> (void)</td></tr>
+<tr class="separator:gaf2c717f60b190173e56454ae476a4cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c41183a4c941f3e63462920444c932d" id="r_ga0c41183a4c941f3e63462920444c932d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga0c41183a4c941f3e63462920444c932d">loadPlugins</a> (void)</td></tr>
+<tr class="separator:ga0c41183a4c941f3e63462920444c932d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae57a724800e6a1a17db4da6ddd2e4722" id="r_gae57a724800e6a1a17db4da6ddd2e4722"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gae57a724800e6a1a17db4da6ddd2e4722">scmBindKey</a> (SCM keySpec, SCM proc)</td></tr>
+<tr class="separator:gae57a724800e6a1a17db4da6ddd2e4722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81a03f34f4c9c7c7dc62a6bcf4a83433" id="r_ga81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga81a03f34f4c9c7c7dc62a6bcf4a83433">editorExec</a> (void)</td></tr>
+<tr class="separator:ga81a03f34f4c9c7c7dc62a6bcf4a83433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3a93a63cce39f220631f81e6d71c24e" id="r_gae3a93a63cce39f220631f81e6d71c24e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gae3a93a63cce39f220631f81e6d71c24e">scmBufferToString</a> (void)</td></tr>
+<tr class="separator:gae3a93a63cce39f220631f81e6d71c24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab22cf02cb210d5ac42ee7280cd84c626" id="r_gab22cf02cb210d5ac42ee7280cd84c626"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gab22cf02cb210d5ac42ee7280cd84c626">scmBufferLineCount</a> (void)</td></tr>
+<tr class="separator:gab22cf02cb210d5ac42ee7280cd84c626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97dbf8cfed087644e55626ab597346db" id="r_ga97dbf8cfed087644e55626ab597346db"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga97dbf8cfed087644e55626ab597346db">scmGetLine</a> (SCM idx_scm)</td></tr>
+<tr class="separator:ga97dbf8cfed087644e55626ab597346db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9a3b3ed20db9e516ca5ae1ca448a578e" id="r_ga9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga9a3b3ed20db9e516ca5ae1ca448a578e">scmSetLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
+<tr class="separator:ga9a3b3ed20db9e516ca5ae1ca448a578e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7136f43e2b0916468437bd7a90e3013a" id="r_ga7136f43e2b0916468437bd7a90e3013a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga7136f43e2b0916468437bd7a90e3013a">scmInsertLine</a> (SCM idx_scm, SCM str_scm)</td></tr>
+<tr class="separator:ga7136f43e2b0916468437bd7a90e3013a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca2d090eee1a15a36b8a986b7f7d14c9" id="r_gaca2d090eee1a15a36b8a986b7f7d14c9"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaca2d090eee1a15a36b8a986b7f7d14c9">scmAppendLine</a> (SCM str_scm)</td></tr>
+<tr class="separator:gaca2d090eee1a15a36b8a986b7f7d14c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c4d4c699c6bde194c2f057be465f8ee" id="r_ga2c4d4c699c6bde194c2f057be465f8ee"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga2c4d4c699c6bde194c2f057be465f8ee">scmDeleteLine</a> (SCM idx_scm)</td></tr>
+<tr class="separator:ga2c4d4c699c6bde194c2f057be465f8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d7df946c05cbaf4d07dbf89ef6c1ffd" id="r_ga3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga3d7df946c05cbaf4d07dbf89ef6c1ffd">scmInsertText</a> (SCM str_scm)</td></tr>
+<tr class="separator:ga3d7df946c05cbaf4d07dbf89ef6c1ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c36144573bc2bcce539f0df181507ea" id="r_ga2c36144573bc2bcce539f0df181507ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga2c36144573bc2bcce539f0df181507ea">scmInsertChar</a> (SCM ch_scm)</td></tr>
+<tr class="separator:ga2c36144573bc2bcce539f0df181507ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13b255733769c711c3ba2de6cb05fdf7" id="r_ga13b255733769c711c3ba2de6cb05fdf7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga13b255733769c711c3ba2de6cb05fdf7">scmInsertNewline</a> (void)</td></tr>
+<tr class="separator:ga13b255733769c711c3ba2de6cb05fdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67a6b5a73e98c291053d41270dc10410" id="r_ga67a6b5a73e98c291053d41270dc10410"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga67a6b5a73e98c291053d41270dc10410">scmDeleteChar</a> (void)</td></tr>
+<tr class="separator:ga67a6b5a73e98c291053d41270dc10410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b19ed9dc86e9349aea7edb142707c85" id="r_ga5b19ed9dc86e9349aea7edb142707c85"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga5b19ed9dc86e9349aea7edb142707c85">scmGetCursor</a> (void)</td></tr>
+<tr class="separator:ga5b19ed9dc86e9349aea7edb142707c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac9a1f510aed1700b69b7ee26008644e" id="r_gaac9a1f510aed1700b69b7ee26008644e"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaac9a1f510aed1700b69b7ee26008644e">scmSetCursor</a> (SCM x_scm, SCM y_scm)</td></tr>
+<tr class="separator:gaac9a1f510aed1700b69b7ee26008644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf73418325c779010cb9f90f6ed8b8ea" id="r_gadf73418325c779010cb9f90f6ed8b8ea"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gadf73418325c779010cb9f90f6ed8b8ea">scmMoveCursor</a> (SCM dir_scm)</td></tr>
+<tr class="separator:gadf73418325c779010cb9f90f6ed8b8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1edf3aea9100dc47ec938734b1b81a4a" id="r_ga1edf3aea9100dc47ec938734b1b81a4a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga1edf3aea9100dc47ec938734b1b81a4a">scmScreenSize</a> (void)</td></tr>
+<tr class="separator:ga1edf3aea9100dc47ec938734b1b81a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade7ce76f0f95afe9a6aa8f4547a2edd4" id="r_gade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gade7ce76f0f95afe9a6aa8f4547a2edd4">scmOpenFile</a> (SCM path_scm)</td></tr>
+<tr class="separator:gade7ce76f0f95afe9a6aa8f4547a2edd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33b71b39959b659f92fa10a9491ea598" id="r_ga33b71b39959b659f92fa10a9491ea598"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga33b71b39959b659f92fa10a9491ea598">scmSaveFile</a> (void)</td></tr>
+<tr class="separator:ga33b71b39959b659f92fa10a9491ea598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga310f0958617de3a98e9defba9f8ab526" id="r_ga310f0958617de3a98e9defba9f8ab526"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga310f0958617de3a98e9defba9f8ab526">scmGetFilename</a> (void)</td></tr>
+<tr class="separator:ga310f0958617de3a98e9defba9f8ab526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadcc5eb3464a4ddea9613f4b2e744f05b" id="r_gadcc5eb3464a4ddea9613f4b2e744f05b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gadcc5eb3464a4ddea9613f4b2e744f05b">scmSetFilename</a> (SCM path_scm)</td></tr>
+<tr class="separator:gadcc5eb3464a4ddea9613f4b2e744f05b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga231ec3ab638c187365338c11e8be381b" id="r_ga231ec3ab638c187365338c11e8be381b"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga231ec3ab638c187365338c11e8be381b">scmPrompt</a> (SCM msg_scm)</td></tr>
+<tr class="separator:ga231ec3ab638c187365338c11e8be381b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17dcd73112f11fba64f052bea30524c0" id="r_ga17dcd73112f11fba64f052bea30524c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga17dcd73112f11fba64f052bea30524c0">scmRefreshScreen</a> (void)</td></tr>
+<tr class="separator:ga17dcd73112f11fba64f052bea30524c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6d3d4f4b9933a94daf1adcb0c7131f7" id="r_gab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gab6d3d4f4b9933a94daf1adcb0c7131f7">scmSearchForward</a> (SCM query_scm)</td></tr>
+<tr class="separator:gab6d3d4f4b9933a94daf1adcb0c7131f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70626d22f31d26519307f660719bc119" id="r_ga70626d22f31d26519307f660719bc119"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga70626d22f31d26519307f660719bc119">scmSelectSyntaxForFilename</a> (SCM path_scm)</td></tr>
+<tr class="separator:ga70626d22f31d26519307f660719bc119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8b6e25318fa2cf14ea511928bc100c0" id="r_gaa8b6e25318fa2cf14ea511928bc100c0"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaa8b6e25318fa2cf14ea511928bc100c0">scmGetFiletype</a> (void)</td></tr>
+<tr class="separator:gaa8b6e25318fa2cf14ea511928bc100c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa501599374f6c5187e4770a4b760c4ed" id="r_gaa501599374f6c5187e4770a4b760c4ed"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#gaa501599374f6c5187e4770a4b760c4ed">scmUnbindKey</a> (SCM keySpec)</td></tr>
+<tr class="separator:gaa501599374f6c5187e4770a4b760c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0607204678802489858c34b3e4862c46" id="r_ga0607204678802489858c34b3e4862c46"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga0607204678802489858c34b3e4862c46">scmListBindings</a> (void)</td></tr>
+<tr class="separator:ga0607204678802489858c34b3e4862c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34a1e8f1812781918d98229fc7a76987" id="r_ga34a1e8f1812781918d98229fc7a76987"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga34a1e8f1812781918d98229fc7a76987">scmBufferDirty</a> (void)</td></tr>
+<tr class="separator:ga34a1e8f1812781918d98229fc7a76987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga041060924a4b1414cf6c0e125d02b08d" id="r_ga041060924a4b1414cf6c0e125d02b08d"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga041060924a4b1414cf6c0e125d02b08d">scmSetBufferDirty</a> (SCM bool_scm)</td></tr>
+<tr class="separator:ga041060924a4b1414cf6c0e125d02b08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga183ef2478133b2631c58a2381e036b2a" id="r_ga183ef2478133b2631c58a2381e036b2a"><td class="memItemLeft" align="right" valign="top">SCM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__plugins.html#ga183ef2478133b2631c58a2381e036b2a">scmCloneTemplate</a> (void)</td></tr>
+<tr class="separator:ga183ef2478133b2631c58a2381e036b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2102c449d589a72385cc03ed8906854f" id="r_a2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plugins_8c.html#a2102c449d589a72385cc03ed8906854f">E</a></td></tr>
-<tr class="separator:a2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2102c449d589a72385cc03ed8906854f" id="r_ga2102c449d589a72385cc03ed8906854f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structeditorConfig.html">editorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga2102c449d589a72385cc03ed8906854f">E</a></td></tr>
+<tr class="separator:ga2102c449d589a72385cc03ed8906854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a81a03f34f4c9c7c7dc62a6bcf4a83433" name="a81a03f34f4c9c7c7dc62a6bcf4a83433"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81a03f34f4c9c7c7dc62a6bcf4a83433">&#9670;&#160;</a></span>editorExec()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorExec </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af2c717f60b190173e56454ae476a4cf5" name="af2c717f60b190173e56454ae476a4cf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2c717f60b190173e56454ae476a4cf5">&#9670;&#160;</a></span>initKeyBindings()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void initKeyBindings </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0c41183a4c941f3e63462920444c932d" name="a0c41183a4c941f3e63462920444c932d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c41183a4c941f3e63462920444c932d">&#9670;&#160;</a></span>loadPlugins()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void loadPlugins </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a55ad8c5cfa0f6c6eb6870755911782b2" name="a55ad8c5cfa0f6c6eb6870755911782b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55ad8c5cfa0f6c6eb6870755911782b2">&#9670;&#160;</a></span>pluginsGetHook()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM pluginsGetHook </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af8a22c5f040f52588b876ddefd6ddd1a" name="af8a22c5f040f52588b876ddefd6ddd1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8a22c5f040f52588b876ddefd6ddd1a">&#9670;&#160;</a></span>pluginsHandleKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int pluginsHandleKey </td>
-          <td>(</td>
-          <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>code</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aca2d090eee1a15a36b8a986b7f7d14c9" name="aca2d090eee1a15a36b8a986b7f7d14c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca2d090eee1a15a36b8a986b7f7d14c9">&#9670;&#160;</a></span>scmAppendLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmAppendLine </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>str_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae57a724800e6a1a17db4da6ddd2e4722" name="ae57a724800e6a1a17db4da6ddd2e4722"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae57a724800e6a1a17db4da6ddd2e4722">&#9670;&#160;</a></span>scmBindKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmBindKey </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>keySpec</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>proc</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a34a1e8f1812781918d98229fc7a76987" name="a34a1e8f1812781918d98229fc7a76987"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34a1e8f1812781918d98229fc7a76987">&#9670;&#160;</a></span>scmBufferDirty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmBufferDirty </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab22cf02cb210d5ac42ee7280cd84c626" name="ab22cf02cb210d5ac42ee7280cd84c626"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab22cf02cb210d5ac42ee7280cd84c626">&#9670;&#160;</a></span>scmBufferLineCount()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmBufferLineCount </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae3a93a63cce39f220631f81e6d71c24e" name="ae3a93a63cce39f220631f81e6d71c24e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3a93a63cce39f220631f81e6d71c24e">&#9670;&#160;</a></span>scmBufferToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmBufferToString </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a183ef2478133b2631c58a2381e036b2a" name="a183ef2478133b2631c58a2381e036b2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a183ef2478133b2631c58a2381e036b2a">&#9670;&#160;</a></span>scmCloneTemplate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmCloneTemplate </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a67a6b5a73e98c291053d41270dc10410" name="a67a6b5a73e98c291053d41270dc10410"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67a6b5a73e98c291053d41270dc10410">&#9670;&#160;</a></span>scmDeleteChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmDeleteChar </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2c4d4c699c6bde194c2f057be465f8ee" name="a2c4d4c699c6bde194c2f057be465f8ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c4d4c699c6bde194c2f057be465f8ee">&#9670;&#160;</a></span>scmDeleteLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmDeleteLine </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>idx_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5b19ed9dc86e9349aea7edb142707c85" name="a5b19ed9dc86e9349aea7edb142707c85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b19ed9dc86e9349aea7edb142707c85">&#9670;&#160;</a></span>scmGetCursor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmGetCursor </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a310f0958617de3a98e9defba9f8ab526" name="a310f0958617de3a98e9defba9f8ab526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a310f0958617de3a98e9defba9f8ab526">&#9670;&#160;</a></span>scmGetFilename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmGetFilename </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa8b6e25318fa2cf14ea511928bc100c0" name="aa8b6e25318fa2cf14ea511928bc100c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8b6e25318fa2cf14ea511928bc100c0">&#9670;&#160;</a></span>scmGetFiletype()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmGetFiletype </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a97dbf8cfed087644e55626ab597346db" name="a97dbf8cfed087644e55626ab597346db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97dbf8cfed087644e55626ab597346db">&#9670;&#160;</a></span>scmGetLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmGetLine </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>idx_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2c36144573bc2bcce539f0df181507ea" name="a2c36144573bc2bcce539f0df181507ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c36144573bc2bcce539f0df181507ea">&#9670;&#160;</a></span>scmInsertChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmInsertChar </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>ch_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7136f43e2b0916468437bd7a90e3013a" name="a7136f43e2b0916468437bd7a90e3013a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7136f43e2b0916468437bd7a90e3013a">&#9670;&#160;</a></span>scmInsertLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmInsertLine </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>idx_scm</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>str_scm</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a13b255733769c711c3ba2de6cb05fdf7" name="a13b255733769c711c3ba2de6cb05fdf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13b255733769c711c3ba2de6cb05fdf7">&#9670;&#160;</a></span>scmInsertNewline()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmInsertNewline </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3d7df946c05cbaf4d07dbf89ef6c1ffd" name="a3d7df946c05cbaf4d07dbf89ef6c1ffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d7df946c05cbaf4d07dbf89ef6c1ffd">&#9670;&#160;</a></span>scmInsertText()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmInsertText </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>str_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0607204678802489858c34b3e4862c46" name="a0607204678802489858c34b3e4862c46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0607204678802489858c34b3e4862c46">&#9670;&#160;</a></span>scmListBindings()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmListBindings </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adf73418325c779010cb9f90f6ed8b8ea" name="adf73418325c779010cb9f90f6ed8b8ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf73418325c779010cb9f90f6ed8b8ea">&#9670;&#160;</a></span>scmMoveCursor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmMoveCursor </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>dir_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ade7ce76f0f95afe9a6aa8f4547a2edd4" name="ade7ce76f0f95afe9a6aa8f4547a2edd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade7ce76f0f95afe9a6aa8f4547a2edd4">&#9670;&#160;</a></span>scmOpenFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmOpenFile </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>path_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a231ec3ab638c187365338c11e8be381b" name="a231ec3ab638c187365338c11e8be381b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a231ec3ab638c187365338c11e8be381b">&#9670;&#160;</a></span>scmPrompt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmPrompt </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>msg_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a17dcd73112f11fba64f052bea30524c0" name="a17dcd73112f11fba64f052bea30524c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17dcd73112f11fba64f052bea30524c0">&#9670;&#160;</a></span>scmRefreshScreen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmRefreshScreen </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a33b71b39959b659f92fa10a9491ea598" name="a33b71b39959b659f92fa10a9491ea598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33b71b39959b659f92fa10a9491ea598">&#9670;&#160;</a></span>scmSaveFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSaveFile </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1edf3aea9100dc47ec938734b1b81a4a" name="a1edf3aea9100dc47ec938734b1b81a4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1edf3aea9100dc47ec938734b1b81a4a">&#9670;&#160;</a></span>scmScreenSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmScreenSize </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab6d3d4f4b9933a94daf1adcb0c7131f7" name="ab6d3d4f4b9933a94daf1adcb0c7131f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6d3d4f4b9933a94daf1adcb0c7131f7">&#9670;&#160;</a></span>scmSearchForward()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSearchForward </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>query_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a70626d22f31d26519307f660719bc119" name="a70626d22f31d26519307f660719bc119"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70626d22f31d26519307f660719bc119">&#9670;&#160;</a></span>scmSelectSyntaxForFilename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSelectSyntaxForFilename </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>path_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a041060924a4b1414cf6c0e125d02b08d" name="a041060924a4b1414cf6c0e125d02b08d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a041060924a4b1414cf6c0e125d02b08d">&#9670;&#160;</a></span>scmSetBufferDirty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSetBufferDirty </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>bool_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aac9a1f510aed1700b69b7ee26008644e" name="aac9a1f510aed1700b69b7ee26008644e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac9a1f510aed1700b69b7ee26008644e">&#9670;&#160;</a></span>scmSetCursor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSetCursor </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>x_scm</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>y_scm</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adcc5eb3464a4ddea9613f4b2e744f05b" name="adcc5eb3464a4ddea9613f4b2e744f05b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcc5eb3464a4ddea9613f4b2e744f05b">&#9670;&#160;</a></span>scmSetFilename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSetFilename </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>path_scm</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9a3b3ed20db9e516ca5ae1ca448a578e" name="a9a3b3ed20db9e516ca5ae1ca448a578e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a3b3ed20db9e516ca5ae1ca448a578e">&#9670;&#160;</a></span>scmSetLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmSetLine </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>idx_scm</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>str_scm</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa501599374f6c5187e4770a4b760c4ed" name="aa501599374f6c5187e4770a4b760c4ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa501599374f6c5187e4770a4b760c4ed">&#9670;&#160;</a></span>scmUnbindKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SCM scmUnbindKey </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>keySpec</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2102c449d589a72385cc03ed8906854f" name="a2102c449d589a72385cc03ed8906854f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2102c449d589a72385cc03ed8906854f">&#9670;&#160;</a></span>E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structeditorConfig.html">editorConfig</a> E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Guile/Scheme plugin and keybinding implementation. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

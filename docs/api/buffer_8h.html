@@ -80,23 +80,26 @@ $(function() {
   <div class="headertitle"><div class="title">buffer.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Simple append-only string buffer used for terminal drawing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="buffer_8h__dep__incl.png" border="0" usemap="#ainclude_2buffer_8hdep" alt=""/></div>
 <map name="ainclude_2buffer_8hdep" id="ainclude_2buffer_8hdep">
-<area shape="rect" title=" " alt="" coords="237,5,359,31"/>
-<area shape="rect" href="render_8h.html" title=" " alt="" coords="100,79,227,104"/>
+<area shape="rect" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="237,5,359,31"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="100,79,227,104"/>
 <area shape="poly" title=" " alt="" coords="266,39,187,81,184,76,263,35"/>
-<area shape="rect" href="buffer_8c.html" title=" " alt="" coords="251,79,345,104"/>
+<area shape="rect" href="buffer_8c.html" title="Implementation of the append&#45;only output buffer." alt="" coords="251,79,345,104"/>
 <area shape="poly" title=" " alt="" coords="301,44,301,79,295,79,295,44"/>
-<area shape="rect" href="render_8c.html" title=" " alt="" coords="369,79,467,104"/>
+<area shape="rect" href="render_8c.html" title="Terminal rendering of buffer contents and UI." alt="" coords="369,79,467,104"/>
 <area shape="poly" title=" " alt="" coords="331,35,400,76,397,81,328,40"/>
-<area shape="rect" href="input_8c.html" title=" " alt="" coords="5,152,95,177"/>
+<area shape="rect" href="input_8c.html" title="Prompt and keypress handling implementations." alt="" coords="5,152,95,177"/>
 <area shape="poly" title=" " alt="" coords="135,114,70,154,67,150,132,109"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="119,152,208,177"/>
+<area shape="rect" href="main_8c.html" title="Program entry point and runtime initialization." alt="" coords="119,152,208,177"/>
 <area shape="poly" title=" " alt="" coords="166,118,166,152,161,152,161,118"/>
-<area shape="rect" href="plugins_8c.html" title=" " alt="" coords="232,152,335,177"/>
+<area shape="rect" href="plugins_8c.html" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="232,152,335,177"/>
 <area shape="poly" title=" " alt="" coords="196,109,265,149,262,154,193,113"/>
 </map>
 </div>
@@ -110,85 +113,19 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a338375e0d9379e2c297acac89c4049e7" id="r_a338375e0d9379e2c297acac89c4049e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8h.html#a338375e0d9379e2c297acac89c4049e7">ABUF_INIT</a>&#160;&#160;&#160;{NULL, 0}</td></tr>
-<tr class="separator:a338375e0d9379e2c297acac89c4049e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga338375e0d9379e2c297acac89c4049e7" id="r_ga338375e0d9379e2c297acac89c4049e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#ga338375e0d9379e2c297acac89c4049e7">ABUF_INIT</a>&#160;&#160;&#160;{NULL, 0}</td></tr>
+<tr class="separator:ga338375e0d9379e2c297acac89c4049e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9dd3715258f4c42aeb40ae92f51422e9" id="r_a9dd3715258f4c42aeb40ae92f51422e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8h.html#a9dd3715258f4c42aeb40ae92f51422e9">abAppend</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab, const char *s, int len)</td></tr>
-<tr class="separator:a9dd3715258f4c42aeb40ae92f51422e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa676d43ad5c715bcf8ec2c3b2df0f4e0" id="r_aa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8h.html#aa676d43ad5c715bcf8ec2c3b2df0f4e0">abFree</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
-<tr class="separator:aa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dd3715258f4c42aeb40ae92f51422e9" id="r_ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#ga9dd3715258f4c42aeb40ae92f51422e9">abAppend</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab, const char *s, int len)</td></tr>
+<tr class="separator:ga9dd3715258f4c42aeb40ae92f51422e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa676d43ad5c715bcf8ec2c3b2df0f4e0" id="r_gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0">abFree</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
+<tr class="separator:gaa676d43ad5c715bcf8ec2c3b2df0f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a338375e0d9379e2c297acac89c4049e7" name="a338375e0d9379e2c297acac89c4049e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a338375e0d9379e2c297acac89c4049e7">&#9670;&#160;</a></span>ABUF_INIT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ABUF_INIT&#160;&#160;&#160;{NULL, 0}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a9dd3715258f4c42aeb40ae92f51422e9" name="a9dd3715258f4c42aeb40ae92f51422e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dd3715258f4c42aeb40ae92f51422e9">&#9670;&#160;</a></span>abAppend()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void abAppend </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structabuf.html">abuf</a> *&#160;</td>
-          <td class="paramname"><em>ab</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa676d43ad5c715bcf8ec2c3b2df0f4e0" name="aa676d43ad5c715bcf8ec2c3b2df0f4e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa676d43ad5c715bcf8ec2c3b2df0f4e0">&#9670;&#160;</a></span>abFree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void abFree </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structabuf.html">abuf</a> *&#160;</td>
-          <td class="paramname"><em>ab</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Simple append-only string buffer used for terminal drawing. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

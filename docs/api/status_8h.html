@@ -78,6 +78,9 @@ $(function() {
   <div class="headertitle"><div class="title">status.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Status/message bar helpers and Scheme binding.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
 <code>#include &lt;libguile.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -85,8 +88,8 @@ Include dependency graph for status.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="status_8h__incl.png" border="0" usemap="#ainclude_2status_8h" alt=""/></div>
 <map name="ainclude_2status_8h" id="ainclude_2status_8h">
-<area shape="rect" title=" " alt="" coords="119,5,244,31"/>
-<area shape="rect" href="ze_8h.html" title=" " alt="" coords="111,79,161,104"/>
+<area shape="rect" title="Status/message bar helpers and Scheme binding." alt="" coords="119,5,244,31"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="111,79,161,104"/>
 <area shape="poly" title=" " alt="" coords="176,32,153,69,148,66,172,30"/>
 <area shape="rect" title=" " alt="" coords="185,79,268,104"/>
 <area shape="poly" title=" " alt="" coords="191,30,214,66,210,69,187,32"/>
@@ -103,16 +106,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="status_8h__dep__incl.png" border="0" usemap="#ainclude_2status_8hdep" alt=""/></div>
 <map name="ainclude_2status_8hdep" id="ainclude_2status_8hdep">
-<area shape="rect" title=" " alt="" coords="219,5,344,31"/>
-<area shape="rect" href="fileio_8c.html" title=" " alt="" coords="5,79,93,104"/>
+<area shape="rect" title="Status/message bar helpers and Scheme binding." alt="" coords="219,5,344,31"/>
+<area shape="rect" href="fileio_8c.html" title="File and directory loading/saving implementation." alt="" coords="5,79,93,104"/>
 <area shape="poly" title=" " alt="" coords="232,37,88,81,86,76,230,32"/>
-<area shape="rect" href="hooks_8c.html" title=" " alt="" coords="118,79,213,104"/>
+<area shape="rect" href="hooks_8c.html" title="Scheme hook invocation implementations." alt="" coords="118,79,213,104"/>
 <area shape="poly" title=" " alt="" coords="253,40,186,81,183,76,250,35"/>
-<area shape="rect" href="input_8c.html" title=" " alt="" coords="237,79,326,104"/>
+<area shape="rect" href="input_8c.html" title="Prompt and keypress handling implementations." alt="" coords="237,79,326,104"/>
 <area shape="poly" title=" " alt="" coords="284,44,284,79,279,79,279,44"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="350,79,439,104"/>
+<area shape="rect" href="main_8c.html" title="Program entry point and runtime initialization." alt="" coords="350,79,439,104"/>
 <area shape="poly" title=" " alt="" coords="313,36,378,76,375,81,310,40"/>
-<area shape="rect" href="plugins_8c.html" title=" " alt="" coords="463,79,566,104"/>
+<area shape="rect" href="plugins_8c.html" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="463,79,566,104"/>
 <area shape="poly" title=" " alt="" coords="332,32,478,76,476,81,331,37"/>
 </map>
 </div>
@@ -121,59 +124,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a507fc962f80d3c43c23718965348520e" id="r_a507fc962f80d3c43c23718965348520e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="status_8h.html#a507fc962f80d3c43c23718965348520e">editorSetStatusMessage</a> (const char *fmt,...)</td></tr>
-<tr class="separator:a507fc962f80d3c43c23718965348520e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61f73b5bb12f499fa305a9c1c3b96c7" id="r_ae61f73b5bb12f499fa305a9c1c3b96c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="status_8h.html#ae61f73b5bb12f499fa305a9c1c3b96c7">scmEditorSetStatusMessage</a> (SCM message)</td></tr>
-<tr class="separator:ae61f73b5bb12f499fa305a9c1c3b96c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga507fc962f80d3c43c23718965348520e" id="r_ga507fc962f80d3c43c23718965348520e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__status.html#ga507fc962f80d3c43c23718965348520e">editorSetStatusMessage</a> (const char *fmt,...)</td></tr>
+<tr class="separator:ga507fc962f80d3c43c23718965348520e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae61f73b5bb12f499fa305a9c1c3b96c7" id="r_gae61f73b5bb12f499fa305a9c1c3b96c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__status.html#gae61f73b5bb12f499fa305a9c1c3b96c7">scmEditorSetStatusMessage</a> (SCM message)</td></tr>
+<tr class="separator:gae61f73b5bb12f499fa305a9c1c3b96c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a507fc962f80d3c43c23718965348520e" name="a507fc962f80d3c43c23718965348520e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a507fc962f80d3c43c23718965348520e">&#9670;&#160;</a></span>editorSetStatusMessage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void editorSetStatusMessage </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fmt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae61f73b5bb12f499fa305a9c1c3b96c7" name="ae61f73b5bb12f499fa305a9c1c3b96c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae61f73b5bb12f499fa305a9c1c3b96c7">&#9670;&#160;</a></span>scmEditorSetStatusMessage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void scmEditorSetStatusMessage </td>
-          <td>(</td>
-          <td class="paramtype">SCM&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Status/message bar helpers and Scheme binding. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
