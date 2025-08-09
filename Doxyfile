@@ -20,3 +20,6 @@ USE_MDFILE_AS_MAINPAGE = docs/index.md
 # Keep logs quieter in CI
 QUIET                  = YES
 
+# Emit warnings for missing docs
+WARN_IF_UNDOCUMENTED   = YES
+WARN_NO_PARAMDOC       = YES

@@ -1,8 +1,8 @@
 # ze
 
-ze - a simple extensible text editor
+ze - zach's extensible text editor
 
-ze is a very simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift. 
+ze is a simple text editor that uses GNU Guile as its extension language. It supports running guile code as pre- and post- hooks upon opening a file, opening a directory, or saving a file. It supports highlighting for C, Python, Ruby, PHP, Rust, APL, and Swift. 
 
 ## Installation
 
@@ -221,6 +221,6 @@ After you've made these four changes, you can simply invoke `make install` to bu
 
 ## License
 
-ze is copyright 2018, 2019, 2020 zach wick <zach@zachwick.com> and is licensed
+ze is copyright 2018, 2019, 2020, 2025 zach wick <zach@zachwick.com> and is licensed
 under the GNU GPLv3 or later. You can find a copy of the GNU GPLv3
 included in the project as the file named [License](https://github.com/zachwick/genie/blob/master/LICENSE).
