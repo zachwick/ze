@@ -116,10 +116,30 @@ struct editorSyntax HLDB[] = {
 
 #define HLDB_ENTRIES (sizeof(HLDB) / sizeof(HLDB[0]))
 
+/**
+ * @brief Determine whether a byte is a token separator for highlighting.
+ * @ingroup syntax
+ *
+ * Separators include whitespace, NUL, and common punctuation.
+ *
+ * @param[in] c Byte value to test.
+ * @return Non-zero if @p c is a separator; 0 otherwise.
+ */
 int is_separator(int c) {
   return isspace(c) || c == '\0' || strchr(",.()+-/*=~%<>[];", c) != NULL;
 }
 
+/**
+ * @brief Compute syntax highlighting classes for a row.
+ * @ingroup syntax
+ *
+ * Updates @c row->hl based on the current filetype rules in @c E.syntax,
+ * marking comments, strings, numbers, and keywords. Propagates multi-line
+ * comment state to the following row when it changes.
+ *
+ * @param[in,out] row Row whose render buffer has been prepared.
+ * @sa editorUpdateRow(), editorSelectSyntaxHighlight()
+ */
 void editorUpdateSyntax(erow *row) {
   row->hl = realloc(row->hl, row->rsize);
   memset(row->hl, HL_NORMAL, row->rsize);
@@ -238,6 +258,13 @@ void editorUpdateSyntax(erow *row) {
   }
 }
 
+/**
+ * @brief Map a highlight class to an ANSI color code.
+ * @ingroup syntax
+ *
+ * @param[in] hl One of HL_* constants.
+ * @return ANSI color code suitable for 30–37 range.
+ */
 int editorSyntaxToColor(int hl) {
   switch (hl) {
   case HL_COMMENT:
@@ -258,6 +285,15 @@ int editorSyntaxToColor(int hl) {
   }
 }
 
+/**
+ * @brief Select the syntax highlighting rules based on the filename.
+ * @ingroup syntax
+ *
+ * Sets @c E.syntax to a matching entry in @c HLDB by extension or substring,
+ * and recomputes highlighting for all rows.
+ *
+ * @post @c E.syntax may change; row highlights are updated accordingly.
+ */
 void editorSelectSyntaxHighlight(void) {
   E.syntax = NULL;
   if (E.filename == NULL) {

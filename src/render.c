@@ -15,6 +15,16 @@
 
 extern struct editorConfig E;
 
+/**
+ * @brief Recompute scroll offsets to keep the cursor visible.
+ * @ingroup render
+ *
+ * Updates @c E.rowoff and @c E.coloff based on cursor location and render x
+ * coordinate (rx) so that the cursor remains within the viewport.
+ *
+ * @post Viewport offsets may change.
+ * @sa editorDrawRows(), editorRefreshScreen(), editorRowCxToRx()
+ */
 void editorScroll(void) {
   E.rx = 0;
   if (E.cy < E.numrows) {
@@ -34,6 +44,16 @@ void editorScroll(void) {
   }
 }
 
+/**
+ * @brief Render visible rows to the append buffer.
+ * @ingroup render
+ *
+ * Writes the visible portion of the buffer into @p ab using ANSI escapes and
+ * syntax highlighting. Control characters are inverted for visibility.
+ *
+ * @param[in,out] ab Append buffer to receive terminal bytes.
+ * @sa editorDrawStatusBar(), editorDrawMessageBar(), editorRefreshScreen()
+ */
 void editorDrawRows(struct abuf *ab) {
   for (int y = 0; y < E.screenrows; y++) {
     int filerow = y + E.rowoff;
@@ -99,6 +119,16 @@ void editorDrawRows(struct abuf *ab) {
   }
 }
 
+/**
+ * @brief Render the inverse-video status bar.
+ * @ingroup render
+ *
+ * Shows filename, line count, modified flag, and right-aligned filetype and
+ * cursor position.
+ *
+ * @param[in,out] ab Append buffer to receive terminal bytes.
+ * @sa editorDrawMessageBar()
+ */
 void editorDrawStatusBar(struct abuf *ab) {
   abAppend(ab, "\x1b[7m", 4);
   char status[80], rstatus[80];
@@ -122,6 +152,14 @@ void editorDrawStatusBar(struct abuf *ab) {
   abAppend(ab, "\r\n", 2);
 }
 
+/**
+ * @brief Render the transient message bar.
+ * @ingroup render
+ *
+ * Clears the line and draws the current status message if set recently.
+ *
+ * @param[in,out] ab Append buffer to receive terminal bytes.
+ */
 void editorDrawMessageBar(struct abuf *ab) {
   abAppend(ab, "\x1b[K", 3);
   int msglen = (int)strlen(E.statusmsg);
@@ -131,6 +169,16 @@ void editorDrawMessageBar(struct abuf *ab) {
   }
 }
 
+/**
+ * @brief Produce a full-screen redraw into the terminal.
+ * @ingroup render
+ *
+ * Scrolls the viewport, composes rows, status, and message bars into a dynamic
+ * buffer, restores the cursor position, and writes to STDOUT.
+ *
+ * @post Terminal output is written; the append buffer is freed by abFree().
+ * @sa editorScroll(), editorDrawRows(), abAppend(), abFree()
+ */
 void editorRefreshScreen(void) {
   editorScroll();
   struct abuf ab = ABUF_INIT;

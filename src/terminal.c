@@ -14,6 +14,15 @@
 
 extern struct editorConfig E;
 
+/**
+ * @brief Print an error, reset terminal, and exit the process.
+ * @ingroup terminal
+ *
+ * Clears the screen, moves the cursor home, prints a perror() message for @p s,
+ * and exits with code 1.
+ *
+ * @param[in] s Message passed to perror(). Must be a NUL-terminated string.
+ */
 void die(const char *s) {
   write(STDOUT_FILENO, "\x1b[2J", 4);
   write(STDOUT_FILENO, "\x1b[H", 3);
@@ -21,12 +30,30 @@ void die(const char *s) {
   exit(1);
 }
 
+/**
+ * @brief Restore cooked terminal mode.
+ * @ingroup terminal
+ *
+ * Restores original termios captured in @c E.orig_termios. On failure, calls die().
+ *
+ * @sa enableRawMode()
+ */
 void disableRawMode(void) {
   if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &E.orig_termios) == -1) {
     die("tcsetattr");
   }
 }
 
+/**
+ * @brief Enable raw terminal mode with minimal processing.
+ * @ingroup terminal
+ *
+ * Captures current termios into @c E.orig_termios, registers atexit handler to
+ * restore it, and configures raw input/output settings.
+ *
+ * @post Raw mode active; on failure, terminates via die().
+ * @sa disableRawMode()
+ */
 void enableRawMode(void) {
   if (tcgetattr(STDIN_FILENO, &E.orig_termios) == -1) {
     die("tcgetattr");
@@ -46,6 +73,15 @@ void enableRawMode(void) {
   }
 }
 
+/**
+ * @brief Read a single key from stdin, interpreting escape sequences.
+ * @ingroup terminal
+ *
+ * Blocks until one byte is read; if the byte begins an escape sequence,
+ * attempts to parse known sequences into control codes.
+ *
+ * @return ASCII char or one of the custom key codes (e.g., ARROW_*).
+ */
 char editorReadKey(void) {
   int nread;
   char c;
@@ -102,6 +138,16 @@ char editorReadKey(void) {
   }
 }
 
+/**
+ * @brief Query the terminal for the current cursor position.
+ * @ingroup terminal
+ *
+ * Sends CSI 6n and parses the response.
+ *
+ * @param[out] rows Receives 1-based row number.
+ * @param[out] cols Receives 1-based column number.
+ * @return 0 on success; -1 on failure.
+ */
 int getCursorPosition(int *rows, int *cols) {
   char buf[32];
   unsigned int i = 0;
@@ -127,6 +173,17 @@ int getCursorPosition(int *rows, int *cols) {
   return 0;
 }
 
+/**
+ * @brief Determine the terminal window size in characters.
+ * @ingroup terminal
+ *
+ * Uses ioctl(TIOCGWINSZ) and falls back to cursor probing if needed.
+ *
+ * @param[out] rows Receives number of rows.
+ * @param[out] cols Receives number of columns.
+ * @return 0 on success; -1 on failure.
+ * @sa getCursorPosition()
+ */
 int getWindowSize(int *rows, int *cols) {
   struct winsize ws;
   if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {

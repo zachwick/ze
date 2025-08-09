@@ -22,6 +22,16 @@ struct editorConfig E;
 char* notes_template = "";
 char* readme_template = "";
 
+/**
+ * @brief Initialize global editor state and screen dimensions.
+ * @ingroup init
+ *
+ * Resets the global @c E struct to a clean state, queries the terminal size,
+ * and reserves two rows for the status and message bars.
+ *
+ * @post @c E fields are initialized; on failure, terminates via die().
+ * @sa enableRawMode(), getWindowSize(), editorRefreshScreen()
+ */
 void initEditor(void) {
   E.cx = 0;
   E.cy = 0;
@@ -41,6 +51,18 @@ void initEditor(void) {
   E.screenrows -= 2;
 }
 
+/**
+ * @brief Program entry point.
+ *
+ * Sets terminal raw mode, initializes editor state, sets up Guile runtime and
+ * Scheme bindings, loads plugins and config, optionally opens a file from argv,
+ * then enters the main UI loop.
+ *
+ * @param[in] argc Argument count.
+ * @param[in] argv Argument vector; @c argv[1] is treated as a filename if present.
+ * @return Standard process exit code (not reached under normal operation).
+ * @sa enableRawMode(), initKeyBindings(), loadPlugins(), editorOpen()
+ */
 int main(int argc, char *argv[]) {
   enableRawMode();
   initEditor();

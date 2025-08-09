@@ -12,6 +12,16 @@
 
 extern struct editorConfig E;
 
+/**
+ * @brief Invoke the Scheme @c preDirOpenHook with the directory path.
+ * @ingroup hooks
+ *
+ * Calls the Guile function @c preDirOpenHook with @c E.filename as a Scheme
+ * string and displays its returned message in the status bar.
+ *
+ * @post Status message is updated via editorSetStatusMessage().
+ * @sa postDirOpenHook(), preFileOpenHook(), editorOpen()
+ */
 void preDirOpenHook(void) {
   SCM preDirOpenHook;
   SCM results_scm;
@@ -22,6 +32,17 @@ void preDirOpenHook(void) {
   editorSetStatusMessage(results);
 }
 
+/**
+ * @brief Invoke the Scheme @c postDirOpenHook with the file count.
+ * @ingroup hooks
+ *
+ * Calls @c postDirOpenHook with the number of directory entries scanned and
+ * displays its returned message.
+ *
+ * @param[in] num_files Number of entries returned by scandir(). Must be >= 0.
+ * @post Status message is updated.
+ * @sa preDirOpenHook(), editorOpen()
+ */
 void postDirOpenHook(int num_files) {
   SCM postDirOpenHook;
   SCM results_scm;
@@ -32,6 +53,16 @@ void postDirOpenHook(int num_files) {
   editorSetStatusMessage(results);
 }
 
+/**
+ * @brief Invoke the Scheme @c preFileOpenHook with the filename.
+ * @ingroup hooks
+ *
+ * Calls @c preFileOpenHook with @c E.filename and displays the returned
+ * message.
+ *
+ * @post Status message is updated.
+ * @sa postFileOpenHook(), editorOpen()
+ */
 void preFileOpenHook(void) {
   SCM preFileOpenHook;
   SCM results_scm;
@@ -42,6 +73,19 @@ void preFileOpenHook(void) {
   editorSetStatusMessage(results);
 }
 
+/**
+ * @brief Invoke the Scheme @c postFileOpenHook with current buffer contents.
+ * @ingroup hooks
+ *
+ * Serializes the buffer with editorRowsToString() and passes it to
+ * @c postFileOpenHook. The returned Scheme string is shown in the status bar.
+ *
+ * Ownership: the temporary buffer from editorRowsToString() is freed in Guile
+ * after conversion; no NUL terminator is guaranteed—length is respected.
+ *
+ * @post Status message is updated.
+ * @sa preFileOpenHook(), editorRowsToString(), editorOpen()
+ */
 void postFileOpenHook(void) {
   SCM postFileOpenHook;
   SCM results_scm;
@@ -54,6 +98,16 @@ void postFileOpenHook(void) {
   editorSetStatusMessage(results);
 }
 
+/**
+ * @brief Invoke the Scheme @c preSaveHook with current buffer contents.
+ * @ingroup hooks
+ *
+ * Serializes the buffer and passes it to @c preSaveHook, displaying the
+ * returned message.
+ *
+ * @post Status message is updated.
+ * @sa editorRowsToString(), editorSave(), editorPostSaveHook()
+ */
 void editorPreSaveHook(void) {
   SCM preSaveHook;
   SCM results_scm;
@@ -66,6 +120,16 @@ void editorPreSaveHook(void) {
   editorSetStatusMessage(results);
 }
 
+/**
+ * @brief Invoke the Scheme @c postSaveHook with current buffer contents.
+ * @ingroup hooks
+ *
+ * Serializes the buffer and passes it to @c postSaveHook, displaying the
+ * returned message.
+ *
+ * @post Status message is updated.
+ * @sa editorRowsToString(), editorSave(), editorPreSaveHook()
+ */
 void editorPostSaveHook(void) {
   SCM postSaveHook;
   SCM results_scm;

@@ -20,6 +20,21 @@
 
 extern struct editorConfig E;
 
+/**
+ * @brief Prompt the user for input with a live callback.
+ * @ingroup input
+ *
+ * Displays a prompt on the status line, appending the current input buffer,
+ * and reads keypresses until Enter (returns the input) or Escape (returns NULL).
+ * If a callback is provided, it is invoked after each keypress with the
+ * current buffer and the last key code, enabling live behaviors (e.g., search).
+ *
+ * Allocation/ownership: returns a heap-allocated, NUL-terminated C string on
+ * success; caller must free(). On cancel (Escape), returns NULL.
+ *
+ * @post Status message is cleared on completion; screen is refreshed during input.
+ * @sa editorFind(), editorOpen(), editorSave(), editorSetStatusMessage()
+ */
 char* editorPrompt(char *prompt, void (*callback)(char *, int)) {
   size_t bufsize = 128;
   char *buf = malloc(bufsize);
@@ -54,6 +69,19 @@ char* editorPrompt(char *prompt, void (*callback)(char *, int)) {
   }
 }
 
+/**
+ * @brief Move the cursor one step in the given direction, clamped to content.
+ * @ingroup input
+ *
+ * Updates @c E.cx and @c E.cy according to @p key. When moving left from the
+ * beginning of a line, moves to the end of the previous line. When moving right
+ * past the end of a line, moves to the start of the next line. Ensures @c E.cx
+ * is not beyond the line length.
+ *
+ * @param[in] key One of ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN.
+ * @post Cursor position is updated; no modifications to buffer contents.
+ * @sa editorMoveCursor() (Scheme binding), editorInsertNewline()
+ */
 void editorMoveCursor(char key) {
   erow *row = (E.cy >= E.numrows) ? NULL : &E.row[E.cy];
   switch (key) {
@@ -85,6 +113,17 @@ void editorMoveCursor(char key) {
   if (E.cx > rowlen) { E.cx = rowlen; }
 }
 
+/**
+ * @brief Decode a keypress and execute the corresponding editor action.
+ * @ingroup input
+ *
+ * Reads one key via editorReadKey(), dispatches plugin key handlers first, and
+ * falls back to built-in controls (insert/delete/newline/save/open/search/etc.).
+ * May modify the buffer, cursor, dirty state, and status message.
+ *
+ * @post Editor state may change; screen will be refreshed by the main loop.
+ * @sa editorReadKey(), pluginsHandleKey(), editorRefreshScreen()
+ */
 void editorProcessKeypress(void) {
   static int quit_times = ZE_QUIT_TIMES;
   char c = editorReadKey();
