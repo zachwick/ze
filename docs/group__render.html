@@ -100,13 +100,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga6236022e462c2ceeed7163aac57751e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render visible rows to the append buffer.  <br /></td></tr>
 <tr class="separator:ga6236022e462c2ceeed7163aac57751e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4c6fae25603df97fe6647bc9b650e2cd" id="r_ga4c6fae25603df97fe6647bc9b650e2cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__render.html#ga4c6fae25603df97fe6647bc9b650e2cd">editorDrawStatusBar</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
-<tr class="memdesc:ga4c6fae25603df97fe6647bc9b650e2cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the inverse-video status bar.  <br /></td></tr>
+<tr class="memdesc:ga4c6fae25603df97fe6647bc9b650e2cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the status bar (filename, ft, position).  <br /></td></tr>
 <tr class="separator:ga4c6fae25603df97fe6647bc9b650e2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0ae24faf3ef9e6982f6e41f45c9eebde" id="r_ga0ae24faf3ef9e6982f6e41f45c9eebde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__render.html#ga0ae24faf3ef9e6982f6e41f45c9eebde">editorDrawMessageBar</a> (struct <a class="el" href="structabuf.html">abuf</a> *ab)</td></tr>
 <tr class="memdesc:ga0ae24faf3ef9e6982f6e41f45c9eebde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the transient message bar.  <br /></td></tr>
 <tr class="separator:ga0ae24faf3ef9e6982f6e41f45c9eebde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacee58e6036bf106ea038464d67dfc201" id="r_gacee58e6036bf106ea038464d67dfc201"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201">editorRefreshScreen</a> (void)</td></tr>
-<tr class="memdesc:gacee58e6036bf106ea038464d67dfc201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a full-screen redraw into the terminal.  <br /></td></tr>
+<tr class="memdesc:gacee58e6036bf106ea038464d67dfc201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update viewport offsets to keep the cursor visible.  <br /></td></tr>
 <tr class="separator:gacee58e6036bf106ea038464d67dfc201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -128,7 +128,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Render the transient message bar. </p>
-<p>Draw the transient message bar.</p>
 <p>Clears the line and draws the current status message if set recently.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -156,7 +155,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Render visible rows to the append buffer. </p>
-<p>Draw the buffer rows into the append buffer.</p>
 <p>Writes the visible portion of the buffer into <code>ab</code> using ANSI escapes and syntax highlighting. Control characters are inverted for visibility.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -164,7 +162,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__render.html#ga4c6fae25603df97fe6647bc9b650e2cd" title="Render the inverse-video status bar.">editorDrawStatusBar()</a>, <a class="el" href="group__render.html#ga0ae24faf3ef9e6982f6e41f45c9eebde" title="Render the transient message bar.">editorDrawMessageBar()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__render.html#ga4c6fae25603df97fe6647bc9b650e2cd" title="Draw the status bar (filename, ft, position).">editorDrawStatusBar()</a>, <a class="el" href="group__render.html#ga0ae24faf3ef9e6982f6e41f45c9eebde" title="Render the transient message bar.">editorDrawMessageBar()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Update viewport offsets to keep the cursor visible.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>
@@ -184,8 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Render the inverse-video status bar. </p>
-<p>Draw the status bar (filename, ft, position).</p>
+<p>Draw the status bar (filename, ft, position). </p>
 <p>Shows filename, line count, modified flag, and right-aligned filetype and cursor position.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -213,8 +210,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Produce a full-screen redraw into the terminal. </p>
-<p>Re-render the full screen and place the cursor.</p>
+<p>Update viewport offsets to keep the cursor visible. </p>
 <p>Scrolls the viewport, composes rows, status, and message bars into a dynamic buffer, restores the cursor position, and writes to STDOUT.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>Terminal output is written; the append buffer is freed by <a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0" title="Free the memory held by an append buffer.">abFree()</a>. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__render.html#gac4bae93e2e5ada20a06816b4162e37ca" title="Recompute scroll offsets to keep the cursor visible.">editorScroll()</a>, <a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__buffer.html#ga9dd3715258f4c42aeb40ae92f51422e9" title="Append raw bytes to the dynamic append buffer.">abAppend()</a>, <a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0" title="Free the memory held by an append buffer.">abFree()</a> </dd></dl>
@@ -238,10 +234,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Recompute scroll offsets to keep the cursor visible. </p>
-<p>Update viewport offsets to keep the cursor visible.</p>
 <p>Updates <code>E.rowoff</code> and <code>E.coloff</code> based on cursor location and render x coordinate (rx) so that the cursor remains within the viewport.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>Viewport offsets may change. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a>, <a class="el" href="group__row.html#gac292db94a14cf6392c830afc31a5f644" title="Convert an index in characters (cx) to a render index (rx).">editorRowCxToRx()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Update viewport offsets to keep the cursor visible.">editorRefreshScreen()</a>, <a class="el" href="group__row.html#gac292db94a14cf6392c830afc31a5f644" title="Convert an index in characters (cx) to a render index (rx).">editorRowCxToRx()</a> </dd></dl>
 
 </div>
 </div>

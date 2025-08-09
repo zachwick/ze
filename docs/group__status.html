@@ -129,7 +129,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the transient status message using printf-style formatting. </p>
-<p>Set a printf-style status message shown transiently at the bottom.</p>
 <p>Formats into <code>E.statusmsg</code> and records the current time for display in the message bar.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -160,7 +159,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the status message from a Scheme string. </p>
-<p>Set the status message from a Scheme string.</p>
 <p>Converts <code>message</code> to a C string, copies into <code>E.statusmsg</code> (clamped to buffer size), and updates the timestamp.</p>
 <p>Ownership: the temporary C string is freed before return; <code>message</code> remains owned by Guile.</p>
 <dl class="params"><dt>Parameters</dt><dd>

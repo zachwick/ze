@@ -123,22 +123,22 @@ Include dependency graph for terminal.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaefa25608d36aae10af5209451e23e8e2" id="r_gaefa25608d36aae10af5209451e23e8e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaefa25608d36aae10af5209451e23e8e2">die</a> (const char *s)</td></tr>
-<tr class="memdesc:gaefa25608d36aae10af5209451e23e8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print an error, reset terminal, and exit the process.  <br /></td></tr>
+<tr class="memdesc:gaefa25608d36aae10af5209451e23e8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort the program after resetting the screen and printing perror.  <br /></td></tr>
 <tr class="separator:gaefa25608d36aae10af5209451e23e8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf950834ca7c59ac798ad1995a16e6d06" id="r_gaf950834ca7c59ac798ad1995a16e6d06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaf950834ca7c59ac798ad1995a16e6d06">disableRawMode</a> (void)</td></tr>
 <tr class="memdesc:gaf950834ca7c59ac798ad1995a16e6d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restore cooked terminal mode.  <br /></td></tr>
 <tr class="separator:gaf950834ca7c59ac798ad1995a16e6d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37aaa5d8dd5b525007a0645edf49638f" id="r_ga37aaa5d8dd5b525007a0645edf49638f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#ga37aaa5d8dd5b525007a0645edf49638f">enableRawMode</a> (void)</td></tr>
-<tr class="memdesc:ga37aaa5d8dd5b525007a0645edf49638f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable raw terminal mode with minimal processing.  <br /></td></tr>
+<tr class="memdesc:ga37aaa5d8dd5b525007a0645edf49638f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable raw terminal mode and register an atexit handler.  <br /></td></tr>
 <tr class="separator:ga37aaa5d8dd5b525007a0645edf49638f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabfa040986935a1e03cd7c2052bba2b2d" id="r_gabfa040986935a1e03cd7c2052bba2b2d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d">editorReadKey</a> (void)</td></tr>
-<tr class="memdesc:gabfa040986935a1e03cd7c2052bba2b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a single key from stdin, interpreting escape sequences.  <br /></td></tr>
+<tr class="memdesc:gabfa040986935a1e03cd7c2052bba2b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a key, decoding escape sequences into <code>editorKey</code> values.  <br /></td></tr>
 <tr class="separator:gabfa040986935a1e03cd7c2052bba2b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga485c870734764c8e5acce9e16e4d70ac" id="r_ga485c870734764c8e5acce9e16e4d70ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#ga485c870734764c8e5acce9e16e4d70ac">getCursorPosition</a> (int *rows, int *cols)</td></tr>
 <tr class="memdesc:ga485c870734764c8e5acce9e16e4d70ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the terminal for the current cursor position.  <br /></td></tr>
 <tr class="separator:ga485c870734764c8e5acce9e16e4d70ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb7a921b1f250259a639fe7b24166021" id="r_gaeb7a921b1f250259a639fe7b24166021"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminal.html#gaeb7a921b1f250259a639fe7b24166021">getWindowSize</a> (int *rows, int *cols)</td></tr>
-<tr class="memdesc:gaeb7a921b1f250259a639fe7b24166021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine the terminal window size in characters.  <br /></td></tr>
+<tr class="memdesc:gaeb7a921b1f250259a639fe7b24166021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain terminal window size in rows and columns.  <br /></td></tr>
 <tr class="separator:gaeb7a921b1f250259a639fe7b24166021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>

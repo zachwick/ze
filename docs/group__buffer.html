@@ -174,7 +174,7 @@ Functions</h2></td></tr>
 <p>Reallocates the buffer as needed and copies the requested number of bytes to the end of the buffer. The resulting buffer is not NUL-terminated; use the maintained length field <code>ab-&gt;len</code>.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>On success, <code>ab-&gt;b</code> may be reallocated and <code>ab-&gt;len</code> increases by the number of appended bytes. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>On allocation failure, the function returns early and leaves the buffer unchanged. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0" title="Free the memory held by an append buffer.">abFree()</a>, <a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__buffer.html#gaa676d43ad5c715bcf8ec2c3b2df0f4e0" title="Free the memory held by an append buffer.">abFree()</a>, <a class="el" href="group__render.html#ga6236022e462c2ceeed7163aac57751e1" title="Render visible rows to the append buffer.">editorDrawRows()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Update viewport offsets to keep the cursor visible.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>
@@ -195,7 +195,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Free the memory held by an append buffer. </p>
-<p>Free any memory owned by the buffer.</p>
 <p>Releases <code>ab-&gt;b</code> if non-NULL. Does not reset <code>ab-&gt;len</code> to 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

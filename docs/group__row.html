@@ -100,25 +100,25 @@ Functions</h2></td></tr>
 <tr class="memdesc:gae94c7e64a0a5c007cef67fed6e295514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a render index (rx) to a character index (cx).  <br /></td></tr>
 <tr class="separator:gae94c7e64a0a5c007cef67fed6e295514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga82d95ee3b40943bcaa021a89756aafa8" id="r_ga82d95ee3b40943bcaa021a89756aafa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8">editorUpdateRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
-<tr class="memdesc:ga82d95ee3b40943bcaa021a89756aafa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebuild the render buffer and syntax highlights for a row.  <br /></td></tr>
+<tr class="memdesc:ga82d95ee3b40943bcaa021a89756aafa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recompute <code>render</code>, <code>rsize</code>, and syntax highlighting for a row.  <br /></td></tr>
 <tr class="separator:ga82d95ee3b40943bcaa021a89756aafa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3a16dc547e91a2400ef2b63bae16860e" id="r_ga3a16dc547e91a2400ef2b63bae16860e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga3a16dc547e91a2400ef2b63bae16860e">editorInsertRow</a> (int at, char *s, size_t len)</td></tr>
-<tr class="memdesc:ga3a16dc547e91a2400ef2b63bae16860e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new row into the buffer at a given index.  <br /></td></tr>
+<tr class="memdesc:ga3a16dc547e91a2400ef2b63bae16860e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new row at position <code>at</code> initialized from a string.  <br /></td></tr>
 <tr class="separator:ga3a16dc547e91a2400ef2b63bae16860e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga461e8856decb29eb95e1010b0bbcae43" id="r_ga461e8856decb29eb95e1010b0bbcae43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga461e8856decb29eb95e1010b0bbcae43">editorFreeRow</a> (<a class="el" href="structerow.html">erow</a> *row)</td></tr>
 <tr class="memdesc:ga461e8856decb29eb95e1010b0bbcae43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free dynamic memory associated with a row.  <br /></td></tr>
 <tr class="separator:ga461e8856decb29eb95e1010b0bbcae43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3554979118d68fa8482814ea8e45ba62" id="r_ga3554979118d68fa8482814ea8e45ba62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga3554979118d68fa8482814ea8e45ba62">editorDelRow</a> (int at)</td></tr>
-<tr class="memdesc:ga3554979118d68fa8482814ea8e45ba62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a row from the buffer.  <br /></td></tr>
+<tr class="memdesc:ga3554979118d68fa8482814ea8e45ba62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete row at index <code>at</code>.  <br /></td></tr>
 <tr class="separator:ga3554979118d68fa8482814ea8e45ba62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafdb757e8ae4057355e181a02396b8c55" id="r_gafdb757e8ae4057355e181a02396b8c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55">editorRowInsertChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at, int c)</td></tr>
-<tr class="memdesc:gafdb757e8ae4057355e181a02396b8c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a character into a row at a position.  <br /></td></tr>
+<tr class="memdesc:gafdb757e8ae4057355e181a02396b8c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a character into a row at index <code>at</code>.  <br /></td></tr>
 <tr class="separator:gafdb757e8ae4057355e181a02396b8c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1e282bcd8f1f442f9c6b1e6e610379dd" id="r_ga1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga1e282bcd8f1f442f9c6b1e6e610379dd">editorRowAppendString</a> (<a class="el" href="structerow.html">erow</a> *row, char *s, size_t len)</td></tr>
 <tr class="memdesc:ga1e282bcd8f1f442f9c6b1e6e610379dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a byte sequence to the end of a row.  <br /></td></tr>
 <tr class="separator:ga1e282bcd8f1f442f9c6b1e6e610379dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4bc8521084efa00016a83cd7f11334e1" id="r_ga4bc8521084efa00016a83cd7f11334e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1">editorRowDelChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
-<tr class="memdesc:ga4bc8521084efa00016a83cd7f11334e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a character from a row.  <br /></td></tr>
+<tr class="memdesc:ga4bc8521084efa00016a83cd7f11334e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a character at index <code>at</code> in a row.  <br /></td></tr>
 <tr class="separator:ga4bc8521084efa00016a83cd7f11334e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0889ad85970b818eedf1f475dceab4d7" id="r_ga0889ad85970b818eedf1f475dceab4d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__row.html#ga0889ad85970b818eedf1f475dceab4d7">editorDelRowAtChar</a> (<a class="el" href="structerow.html">erow</a> *row, int at)</td></tr>
 <tr class="memdesc:ga0889ad85970b818eedf1f475dceab4d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete from a row starting at a character index to the end of the line.  <br /></td></tr>
@@ -142,8 +142,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Delete a row from the buffer. </p>
-<p>Delete row at index <code>at</code>.</p>
+<p>Delete row at index <code>at</code>. </p>
 <p>Frees the row, compacts the array, updates indices, and marks the buffer dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -151,7 +150,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga3a16dc547e91a2400ef2b63bae16860e" title="Insert a new row into the buffer at a given index.">editorInsertRow()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga3a16dc547e91a2400ef2b63bae16860e" title="Insert a new row at position at initialized from a string.">editorInsertRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -182,7 +181,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Delete from a row starting at a character index to the end of the line. </p>
-<p>Delete from character <code>at</code> to end of row (kill-line style).</p>
 <p>Deletes characters from <code>at</code> (exclusive) to the end, effectively trimming the line at <code>at</code>. Updates render and marks dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -211,7 +209,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Free dynamic memory associated with a row. </p>
-<p>Free memory owned by a row.</p>
 <p>Releases <code>render</code>, <code>chars</code>, and <code>hl</code> arrays if allocated.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -254,8 +251,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Insert a new row into the buffer at a given index. </p>
-<p>Insert a new row at position <code>at</code> initialized from a string.</p>
+<p>Insert a new row at position <code>at</code> initialized from a string. </p>
 <p>Shifts rows after <code>at</code>, initializes the new row's fields, and updates indexes and dirty state. Copies exactly <code>len</code> bytes from <code>s</code> and appends a NUL terminator.</p>
 <p>Ownership: <code>s</code> is not owned and is not modified. The new row holds its own NUL-terminated copy.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -266,7 +262,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga3554979118d68fa8482814ea8e45ba62" title="Delete a row from the buffer.">editorDelRow()</a>, <a class="el" href="group__edit.html#ga5f684231e33ad611337fbe52ea910a47" title="Insert a newline at the cursor position, splitting the line if needed.">editorInsertNewline()</a>, <a class="el" href="group__row.html#ga1e282bcd8f1f442f9c6b1e6e610379dd" title="Append a byte sequence to the end of a row.">editorRowAppendString()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga3554979118d68fa8482814ea8e45ba62" title="Delete row at index at.">editorDelRow()</a>, <a class="el" href="group__edit.html#ga5f684231e33ad611337fbe52ea910a47" title="Insert a newline at the cursor position, splitting the line if needed.">editorInsertNewline()</a>, <a class="el" href="group__row.html#ga1e282bcd8f1f442f9c6b1e6e610379dd" title="Append a byte sequence to the end of a row.">editorRowAppendString()</a> </dd></dl>
 
 </div>
 </div>
@@ -303,7 +299,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Append a byte sequence to the end of a row. </p>
-<p>Append a string to a row.</p>
 <p>Extends <code>row-&gt;chars</code> by <code>len</code> bytes from <code>s</code>, appends a NUL terminator, updates render and dirty state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -313,7 +308,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at a position.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Rebuild the render buffer and syntax highlights for a row.">editorUpdateRow()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at index at.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Recompute render, rsize, and syntax highlighting for a row.">editorUpdateRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -344,7 +339,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Convert an index in characters (cx) to a render index (rx). </p>
-<p>Convert a character index to a render index accounting for tabs.</p>
 <p>Accounts for tabs expanding to <code>ZE_TAB_STOP</code> columns.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -384,8 +378,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Delete a character from a row. </p>
-<p>Delete a character at index <code>at</code> in a row.</p>
+<p>Delete a character at index <code>at</code> in a row. </p>
 <p>Removes the byte at <code>at</code>, shifts the tail left, updates render and marks dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -394,7 +387,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at a position.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Rebuild the render buffer and syntax highlights for a row.">editorUpdateRow()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at index at.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Recompute render, rsize, and syntax highlighting for a row.">editorUpdateRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -430,8 +423,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Insert a character into a row at a position. </p>
-<p>Insert a character into a row at index <code>at</code>.</p>
+<p>Insert a character into a row at index <code>at</code>. </p>
 <p>Reallocates the row text, shifts tail, inserts <code>c</code>, updates render and marks dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -441,7 +433,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1" title="Delete a character from a row.">editorRowDelChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Rebuild the render buffer and syntax highlights for a row.">editorUpdateRow()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1" title="Delete a character at index at in a row.">editorRowDelChar()</a>, <a class="el" href="group__row.html#ga82d95ee3b40943bcaa021a89756aafa8" title="Recompute render, rsize, and syntax highlighting for a row.">editorUpdateRow()</a> </dd></dl>
 
 </div>
 </div>
@@ -472,7 +464,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Convert a render index (rx) to a character index (cx). </p>
-<p>Convert a render index back to a character index.</p>
 <p>Inverse of <a class="el" href="group__row.html#gac292db94a14cf6392c830afc31a5f644" title="Convert an index in characters (cx) to a render index (rx).">editorRowCxToRx()</a>, handling tab expansion.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -502,8 +493,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Rebuild the render buffer and syntax highlights for a row. </p>
-<p>Recompute <code>render</code>, <code>rsize</code>, and syntax highlighting for a row.</p>
+<p>Recompute <code>render</code>, <code>rsize</code>, and syntax highlighting for a row. </p>
 <p>Allocates/updates <code>row-&gt;render</code> from <code>row-&gt;chars</code> expanding tabs, updates <code>row-&gt;rsize</code>, and recomputes syntax highlighting. Propagates multi-line comment state to the next row when it changes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -511,7 +501,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__syntax.html#gafaaf0faf104479999b01bc09e894e3e4" title="Compute syntax highlighting classes for a row.">editorUpdateSyntax()</a>, <a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at a position.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1" title="Delete a character from a row.">editorRowDelChar()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__syntax.html#gafaaf0faf104479999b01bc09e894e3e4" title="Compute highlighting for a row based on current filetype.">editorUpdateSyntax()</a>, <a class="el" href="group__row.html#gafdb757e8ae4057355e181a02396b8c55" title="Insert a character into a row at index at.">editorRowInsertChar()</a>, <a class="el" href="group__row.html#ga4bc8521084efa00016a83cd7f11334e1" title="Delete a character at index at in a row.">editorRowDelChar()</a> </dd></dl>
 
 </div>
 </div>

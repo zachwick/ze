@@ -94,7 +94,7 @@ Files</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga4de965d803aea82e894820b40e0ed097" id="r_ga4de965d803aea82e894820b40e0ed097"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input.html#ga4de965d803aea82e894820b40e0ed097">editorPrompt</a> (char *prompt, void(*callback)(char *, int))</td></tr>
-<tr class="memdesc:ga4de965d803aea82e894820b40e0ed097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt the user for input with a live callback.  <br /></td></tr>
+<tr class="memdesc:ga4de965d803aea82e894820b40e0ed097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display a prompt and capture input with optional incremental callback.  <br /></td></tr>
 <tr class="separator:ga4de965d803aea82e894820b40e0ed097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaab3adc94034853ddfe37aa537d27ac5f" id="r_gaab3adc94034853ddfe37aa537d27ac5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input.html#gaab3adc94034853ddfe37aa537d27ac5f">editorMoveCursor</a> (char key)</td></tr>
 <tr class="memdesc:gaab3adc94034853ddfe37aa537d27ac5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the cursor one step in the given direction, clamped to content.  <br /></td></tr>
@@ -122,7 +122,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Move the cursor one step in the given direction, clamped to content. </p>
-<p>Move the cursor in response to an arrow key.</p>
 <p>Updates <code>E.cx</code> and <code>E.cy</code> according to <code>key</code>. When moving left from the beginning of a line, moves to the end of the previous line. When moving right past the end of a line, moves to the start of the next line. Ensures <code>E.cx</code> is not beyond the line length.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -152,10 +151,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Decode a keypress and execute the corresponding editor action. </p>
-<p>Read a key and dispatch to editing or plugin commands.</p>
-<p>Reads one key via <a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d" title="Read a single key from stdin, interpreting escape sequences.">editorReadKey()</a>, dispatches plugin key handlers first, and falls back to built-in controls (insert/delete/newline/save/open/search/etc.). May modify the buffer, cursor, dirty state, and status message.</p>
+<p>Reads one key via <a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d" title="Read a key, decoding escape sequences into editorKey values.">editorReadKey()</a>, dispatches plugin key handlers first, and falls back to built-in controls (insert/delete/newline/save/open/search/etc.). May modify the buffer, cursor, dirty state, and status message.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>Editor state may change; screen will be refreshed by the main loop. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d" title="Read a single key from stdin, interpreting escape sequences.">editorReadKey()</a>, <a class="el" href="group__plugins.html#gaf8a22c5f040f52588b876ddefd6ddd1a" title="If a Scheme binding exists for the key, invoke it.">pluginsHandleKey()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__terminal.html#gabfa040986935a1e03cd7c2052bba2b2d" title="Read a key, decoding escape sequences into editorKey values.">editorReadKey()</a>, <a class="el" href="group__plugins.html#gaf8a22c5f040f52588b876ddefd6ddd1a" title="If a Scheme binding exists for the key, invoke it.">pluginsHandleKey()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Update viewport offsets to keep the cursor visible.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>
@@ -185,8 +183,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prompt the user for input with a live callback. </p>
-<p>Display a prompt and capture input with optional incremental callback. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Display a prompt and capture input with optional incremental callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prompt</td><td>printf-style prompt format including one s for current buffer </td></tr>
     <tr><td class="paramname">callback</td><td>Optional callback receiving (buffer, last_key) </td></tr>
@@ -197,7 +195,7 @@ Functions</h2></td></tr>
 <p>Displays a prompt on the status line, appending the current input buffer, and reads keypresses until Enter (returns the input) or Escape (returns NULL). If a callback is provided, it is invoked after each keypress with the current buffer and the last key code, enabling live behaviors (e.g., search).</p>
 <p>Allocation/ownership: returns a heap-allocated, NUL-terminated C string on success; caller must free(). On cancel (Escape), returns NULL.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>Status message is cleared on completion; screen is refreshed during input. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__search.html#ga28cfa432286bd17c79730da8bbcedd48" title="Prompt for a search query and jump to matches interactively.">editorFind()</a>, <a class="el" href="group__fileio.html#gac7e9106f11ecfa36e5695996c1f6e316">editorOpen()</a>, <a class="el" href="group__fileio.html#ga68263950ddb1d812b168bfec55eed130">editorSave()</a>, <a class="el" href="group__status.html#ga507fc962f80d3c43c23718965348520e" title="Set the transient status message using printf-style formatting.">editorSetStatusMessage()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__search.html#ga28cfa432286bd17c79730da8bbcedd48" title="Prompt for a query and perform an interactive forward search.">editorFind()</a>, <a class="el" href="group__fileio.html#gac7e9106f11ecfa36e5695996c1f6e316">editorOpen()</a>, <a class="el" href="group__fileio.html#ga68263950ddb1d812b168bfec55eed130">editorSave()</a>, <a class="el" href="group__status.html#ga507fc962f80d3c43c23718965348520e" title="Set the transient status message using printf-style formatting.">editorSetStatusMessage()</a> </dd></dl>
 
 </div>
 </div>

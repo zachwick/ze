@@ -109,10 +109,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialize global editor state and screen dimensions. </p>
-<p>Initialize <code>E</code> and compute initial screen dimensions.</p>
 <p>Resets the global <code>E</code> struct to a clean state, queries the terminal size, and reserves two rows for the status and message bars.</p>
-<dl class="section post"><dt>Postcondition</dt><dd><code>E</code> fields are initialized; on failure, terminates via <a class="el" href="group__terminal.html#gaefa25608d36aae10af5209451e23e8e2" title="Print an error, reset terminal, and exit the process.">die()</a>. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__terminal.html#ga37aaa5d8dd5b525007a0645edf49638f" title="Enable raw terminal mode with minimal processing.">enableRawMode()</a>, <a class="el" href="group__terminal.html#gaeb7a921b1f250259a639fe7b24166021" title="Determine the terminal window size in characters.">getWindowSize()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Produce a full-screen redraw into the terminal.">editorRefreshScreen()</a> </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><code>E</code> fields are initialized; on failure, terminates via <a class="el" href="group__terminal.html#gaefa25608d36aae10af5209451e23e8e2" title="Abort the program after resetting the screen and printing perror.">die()</a>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__terminal.html#ga37aaa5d8dd5b525007a0645edf49638f" title="Enable raw terminal mode and register an atexit handler.">enableRawMode()</a>, <a class="el" href="group__terminal.html#gaeb7a921b1f250259a639fe7b24166021" title="Obtain terminal window size in rows and columns.">getWindowSize()</a>, <a class="el" href="group__render.html#gacee58e6036bf106ea038464d67dfc201" title="Update viewport offsets to keep the cursor visible.">editorRefreshScreen()</a> </dd></dl>
 
 </div>
 </div>
