@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
   SCM init_func;
   SCM notes_template_scm;
   SCM readme_template_scm;
-  scm_c_primitive_load("/Users/zach/.ze/zerc.scm");
+  scm_c_primitive_load("/home/zwick/.ze/zerc.scm");
   init_func = scm_variable_ref(scm_c_lookup("ze_config"));
   scm_call_0(init_func);
   scm_c_define_gsubr("set-editor-status", 1, 0, 0, (scm_t_subr)&scmEditorSetStatusMessage);

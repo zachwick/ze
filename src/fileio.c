@@ -3,6 +3,8 @@
  * @brief File and directory loading/saving implementation.
  * @ingroup fileio
  */
+#include "ze.h"
+
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
@@ -12,8 +14,6 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <fcntl.h>
-
-#include "ze.h"
 #include "row.h"
 #include "status.h"
 #include "syntax.h"

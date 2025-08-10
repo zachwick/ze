@@ -1,3 +1,10 @@
+/**
+ * @file plugins.c
+ * @brief Guile/Scheme plugin and keybinding implementation.
+ * @ingroup plugins
+ */
+#include "ze.h"
+
 #include <dirent.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -5,15 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
-/**
- * @file plugins.c
- * @brief Guile/Scheme plugin and keybinding implementation.
- * @ingroup plugins
- */
 #include <libguile.h>
-
-#include "ze.h"
 #include "status.h"
 #include "input.h"
 #include "row.h"
