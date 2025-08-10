@@ -82,7 +82,8 @@ $(function() {
 
 <p>Guile/Scheme plugin and keybinding implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;dirent.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
+<code>#include &lt;dirent.h&gt;</code><br />
 <code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
@@ -90,7 +91,6 @@ $(function() {
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;libguile.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ze_8h_source.html">ze.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="status_8h_source.html">status.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="input_8h_source.html">input.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="row_8h_source.html">row.h</a>&quot;</code><br />
@@ -103,55 +103,55 @@ Include dependency graph for plugins.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="plugins_8c__incl.png" border="0" usemap="#asrc_2plugins_8c" alt=""/></div>
 <map name="asrc_2plugins_8c" id="asrc_2plugins_8c">
-<area shape="rect" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="682,5,785,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,77,104"/>
-<area shape="poly" title=" " alt="" coords="682,24,431,41,264,58,91,81,90,76,263,53,431,36,682,19"/>
-<area shape="rect" title=" " alt="" coords="102,79,173,104"/>
-<area shape="poly" title=" " alt="" coords="682,25,470,44,331,60,187,81,186,76,330,55,469,39,681,20"/>
-<area shape="rect" title=" " alt="" coords="197,79,264,104"/>
-<area shape="poly" title=" " alt="" coords="682,27,507,46,278,81,277,76,506,41,682,21"/>
-<area shape="rect" title=" " alt="" coords="289,79,359,104"/>
-<area shape="poly" title=" " alt="" coords="682,29,546,50,373,81,372,76,545,45,681,24"/>
-<area shape="rect" title=" " alt="" coords="383,79,454,104"/>
-<area shape="poly" title=" " alt="" coords="682,33,468,81,467,76,681,28"/>
-<area shape="rect" title=" " alt="" coords="478,79,549,104"/>
-<area shape="poly" title=" " alt="" coords="699,33,562,77,561,72,697,28"/>
-<area shape="rect" title=" " alt="" coords="573,79,659,104"/>
-<area shape="poly" title=" " alt="" coords="716,33,648,74,646,69,713,28"/>
-<area shape="rect" title=" " alt="" coords="692,152,775,177"/>
-<area shape="poly" title=" " alt="" coords="733,31,726,64,724,104,730,138,724,139,719,104,720,63,727,30"/>
-<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="1019,152,1069,177"/>
-<area shape="poly" title=" " alt="" coords="751,29,803,63,872,102,943,130,1007,150,1005,156,941,135,870,106,800,68,748,33"/>
-<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="733,79,808,104"/>
-<area shape="poly" title=" " alt="" coords="742,30,761,65,756,68,737,32"/>
-<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="883,79,949,104"/>
-<area shape="poly" title=" " alt="" coords="764,28,874,71,872,76,762,33"/>
-<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="974,79,1031,104"/>
-<area shape="poly" title=" " alt="" coords="779,28,962,76,960,81,777,33"/>
-<area shape="rect" href="edit_8h.html" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="1056,79,1115,104"/>
-<area shape="poly" title=" " alt="" coords="785,25,899,46,1043,76,1042,81,898,52,785,31"/>
-<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="1139,79,1205,104"/>
-<area shape="poly" title=" " alt="" coords="786,23,934,43,1126,76,1125,81,934,49,785,28"/>
-<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="1333,79,1408,104"/>
-<area shape="poly" title=" " alt="" coords="785,20,1013,38,1164,54,1320,76,1319,81,1163,59,1013,43,785,25"/>
-<area shape="rect" href="syntax_8h.html" title="Syntax highlighting engine and language selection." alt="" coords="1230,79,1309,104"/>
-<area shape="poly" title=" " alt="" coords="785,21,971,41,1217,76,1216,81,971,47,784,27"/>
-<area shape="rect" title=" " alt="" coords="913,225,988,251"/>
-<area shape="poly" title=" " alt="" coords="1031,179,978,219,975,215,1027,175"/>
-<area shape="rect" title=" " alt="" coords="1012,225,1076,251"/>
-<area shape="poly" title=" " alt="" coords="1047,178,1047,212,1041,212,1041,178"/>
-<area shape="rect" title=" " alt="" coords="1101,225,1185,251"/>
-<area shape="poly" title=" " alt="" coords="1061,175,1117,215,1114,219,1058,180"/>
-<area shape="poly" title=" " alt="" coords="767,106,748,141,743,139,762,103"/>
-<area shape="poly" title=" " alt="" coords="809,100,1007,151,1006,156,807,105"/>
-<area shape="poly" title=" " alt="" coords="938,102,1012,143,1010,147,935,106"/>
-<area shape="poly" title=" " alt="" coords="1012,103,1033,139,1028,141,1007,106"/>
-<area shape="poly" title=" " alt="" coords="1081,106,1060,141,1055,139,1076,103"/>
-<area shape="poly" title=" " alt="" coords="1153,106,1078,147,1076,143,1150,102"/>
-<area shape="poly" title=" " alt="" coords="1334,104,1322,107,1083,158,1081,153,1321,101,1332,99"/>
-<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="1335,152,1406,177"/>
-<area shape="poly" title=" " alt="" coords="1373,104,1373,138,1368,138,1368,104"/>
-<area shape="poly" title=" " alt="" coords="1234,107,1083,154,1081,149,1232,101"/>
+<area shape="rect" title="Guile/Scheme plugin and keybinding implementation." alt="" coords="634,5,737,31"/>
+<area shape="rect" href="ze_8h.html" title="Core editor types, macros, and global state." alt="" coords="1017,152,1066,177"/>
+<area shape="poly" title=" " alt="" coords="737,16,791,19,855,29,920,47,982,76,1012,106,1033,138,1029,141,1008,109,979,81,919,52,854,34,791,25,737,21"/>
+<area shape="rect" title=" " alt="" coords="23,79,95,104"/>
+<area shape="poly" title=" " alt="" coords="634,25,410,43,262,59,109,81,108,76,261,54,409,38,634,20"/>
+<area shape="rect" title=" " alt="" coords="120,79,190,104"/>
+<area shape="poly" title=" " alt="" coords="635,26,449,46,204,81,203,76,448,41,634,21"/>
+<area shape="rect" title=" " alt="" coords="215,79,282,104"/>
+<area shape="poly" title=" " alt="" coords="634,28,486,49,296,81,295,76,485,43,634,23"/>
+<area shape="rect" title=" " alt="" coords="306,79,377,104"/>
+<area shape="poly" title=" " alt="" coords="634,32,391,81,390,76,633,26"/>
+<area shape="rect" title=" " alt="" coords="401,79,472,104"/>
+<area shape="poly" title=" " alt="" coords="646,33,486,79,484,74,645,28"/>
+<area shape="rect" title=" " alt="" coords="496,79,566,104"/>
+<area shape="poly" title=" " alt="" coords="662,33,570,75,568,70,660,28"/>
+<area shape="rect" title=" " alt="" coords="591,79,676,104"/>
+<area shape="poly" title=" " alt="" coords="679,33,652,69,648,66,675,29"/>
+<area shape="rect" title=" " alt="" coords="320,152,403,177"/>
+<area shape="poly" title=" " alt="" coords="634,23,479,26,282,36,105,53,44,66,24,73,13,80,8,91,13,102,32,117,61,129,140,146,228,155,307,160,306,165,228,161,139,151,59,134,29,121,9,106,3,91,9,77,22,68,43,61,104,48,281,30,479,21,634,17"/>
+<area shape="rect" href="status_8h.html" title="Status/message bar helpers and Scheme binding." alt="" coords="700,79,775,104"/>
+<area shape="poly" title=" " alt="" coords="696,29,723,66,719,69,692,33"/>
+<area shape="rect" href="input_8h.html" title="User input handling (prompt, cursor movement, key processing)." alt="" coords="1044,79,1111,104"/>
+<area shape="poly" title=" " alt="" coords="737,25,1026,76,1031,77,1030,82,1025,81,737,30"/>
+<area shape="rect" href="row_8h.html" title="Row data structure manipulation and conversions." alt="" coords="1136,79,1193,104"/>
+<area shape="poly" title=" " alt="" coords="737,21,905,41,1012,56,1123,76,1122,82,1011,62,904,46,737,27"/>
+<area shape="rect" href="edit_8h.html" title="Editing primitives (insert/delete/newline) operating on the buffer." alt="" coords="1218,79,1276,104"/>
+<area shape="poly" title=" " alt="" coords="738,20,939,38,1069,54,1204,76,1204,81,1068,59,938,43,737,25"/>
+<area shape="rect" href="fileio_8h.html" title="File and directory loading/saving utilities." alt="" coords="799,79,866,104"/>
+<area shape="poly" title=" " alt="" coords="710,28,797,70,795,75,708,33"/>
+<area shape="rect" href="render_8h.html" title="Rendering of the editor buffer and UI components to the terminal." alt="" coords="1300,79,1375,104"/>
+<area shape="poly" title=" " alt="" coords="737,20,971,37,1127,54,1287,76,1286,81,1126,59,971,43,737,25"/>
+<area shape="rect" href="syntax_8h.html" title="Syntax highlighting engine and language selection." alt="" coords="890,79,969,104"/>
+<area shape="poly" title=" " alt="" coords="726,28,878,72,876,77,724,33"/>
+<area shape="rect" title=" " alt="" coords="911,225,986,251"/>
+<area shape="poly" title=" " alt="" coords="1028,179,976,219,973,215,1025,175"/>
+<area shape="rect" title=" " alt="" coords="1010,225,1074,251"/>
+<area shape="poly" title=" " alt="" coords="1044,178,1044,212,1039,212,1039,178"/>
+<area shape="rect" title=" " alt="" coords="1098,225,1182,251"/>
+<area shape="poly" title=" " alt="" coords="1059,175,1115,215,1112,219,1056,180"/>
+<area shape="poly" title=" " alt="" coords="776,99,1004,152,1003,157,775,104"/>
+<area shape="poly" title=" " alt="" coords="701,104,689,107,417,157,416,152,688,101,699,99"/>
+<area shape="poly" title=" " alt="" coords="1074,106,1056,141,1051,138,1069,103"/>
+<area shape="poly" title=" " alt="" coords="1146,106,1075,147,1072,143,1143,102"/>
+<area shape="poly" title=" " alt="" coords="1218,105,1080,153,1079,148,1217,100"/>
+<area shape="poly" title=" " alt="" coords="867,101,1005,148,1003,153,865,107"/>
+<area shape="poly" title=" " alt="" coords="1301,104,1080,157,1079,152,1300,99"/>
+<area shape="rect" href="buffer_8h.html" title="Simple append&#45;only string buffer used for terminal drawing." alt="" coords="1302,152,1373,177"/>
+<area shape="poly" title=" " alt="" coords="1340,104,1340,138,1335,138,1335,104"/>
+<area shape="poly" title=" " alt="" coords="949,102,1013,142,1010,147,946,106"/>
 </map>
 </div>
 </div><table class="memberdecls">
